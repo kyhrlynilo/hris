@@ -115,15 +115,15 @@ defined('EDUC_LEVEL_5') OR define('EDUC_LEVEL_5',"Graduate Studies");
 /*<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 //SAMPLE COMMIT
 //test
 //tanginamosteve
 >>>>>>> 0c0d3278d38fa9a4cb433543f12afc8dde733318
-
-//pakyu mel
-//123456
-
-=======
-//test
 >>>>>>> origin/master
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> 38739a41c3128d1b44fbcba565214a315d55f656
