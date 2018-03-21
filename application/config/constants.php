@@ -106,4 +106,11 @@ defined('NATURALIZATION') OR define('NATURALIZATION',"Natralization");
 defined('DUAL') OR define('DUAL',"Filipino,");
 defined('PH') OR define('PH',"Filipino");
 
+defined('EDUC_LEVEL_1') OR define('EDUC_LEVEL_1',"Elementary");
+defined('EDUC_LEVEL_2') OR define('EDUC_LEVEL_2',"Secondary");
+defined('EDUC_LEVEL_3') OR define('EDUC_LEVEL_3',"Vocational/Trade Cours");
+defined('EDUC_LEVEL_4') OR define('EDUC_LEVEL_4',"College");
+defined('EDUC_LEVEL_5') OR define('EDUC_LEVEL_5',"Graduate Studies");
+
+
 
