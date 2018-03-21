@@ -17,7 +17,7 @@
 </div>
 
 <div class="fixed-action-btn">
-	<a id="add" class="btn-floating btn-large waves-effect blue" href="<?php echo base_url(); ?>admin_employees/add_employee"e>
+	<a id="add" class="btn-floating btn-large waves-effect blue" href="<?php echo base_url(); ?>admin_employees/add_employee">
 		<i class="material-icons white-text ">add</i>
 	</a>				
 </div>

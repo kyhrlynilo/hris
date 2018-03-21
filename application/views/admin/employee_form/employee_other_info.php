@@ -9,7 +9,6 @@ crossorigin="anonymous"></script>
 
 
 <div class="container-fluid">
-
     <div class="row">
         <div class="col s12">
             <p>OTHER INFORMATION</p>

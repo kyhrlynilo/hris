@@ -30,7 +30,6 @@ class Admin_employees extends CI_Controller {
 	}
 
 
-
 	public function employee_profile($id)
 	{
 
