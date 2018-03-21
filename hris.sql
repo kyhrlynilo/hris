@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2018 at 03:27 PM
+-- Generation Time: Mar 21, 2018 at 06:59 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -25,35 +25,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emp_address`
---
-
-CREATE TABLE `emp_address` (
-  `id` int(11) NOT NULL,
-  `emp_id` text NOT NULL,
-  `number` text NOT NULL,
-  `sub_vill` text NOT NULL,
-  `municity` text NOT NULL,
-  `street` text NOT NULL,
-  `barangay` text NOT NULL,
-  `province` text NOT NULL,
-  `zip_code` text NOT NULL,
-  `type` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `emp_children`
 --
 
 CREATE TABLE `emp_children` (
   `id` int(15) NOT NULL,
-  `emp_id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
   `child_last_name` text NOT NULL,
   `child_first_name` text NOT NULL,
   `child_mid_name` text NOT NULL,
   `child_date_of_birth` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_civil_service_eligibility`
+--
+
+CREATE TABLE `emp_civil_service_eligibility` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `career_service` text NOT NULL,
+  `rating` text NOT NULL,
+  `date` text NOT NULL,
+  `place` text NOT NULL,
+  `license_number` text NOT NULL,
+  `license_validity_date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_educ_background`
+--
+
+CREATE TABLE `emp_educ_background` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` int(15) NOT NULL,
+  `level` text NOT NULL,
+  `name_of_school` text NOT NULL,
+  `basic_educ` text NOT NULL,
+  `from` text NOT NULL,
+  `to` text NOT NULL,
+  `highest_level` text NOT NULL,
+  `year_graduated` text NOT NULL,
+  `scholarship` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -64,7 +81,7 @@ CREATE TABLE `emp_children` (
 
 CREATE TABLE `emp_family_background` (
   `id` int(11) NOT NULL,
-  `emp_id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
   `spouse_surname` text,
   `spouse_first_name` text,
   `spouse_middle_name` text,
@@ -81,6 +98,20 @@ CREATE TABLE `emp_family_background` (
   `mother_surname` text,
   `mother_first_name` text,
   `mother_middle_name` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_ids`
+--
+
+CREATE TABLE `emp_ids` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `government_id` text NOT NULL,
+  `id_license_passport_no` text NOT NULL,
+  `date_place` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -138,6 +169,119 @@ INSERT INTO `emp_info` (`id`, `cs_id_no`, `last_name`, `first_name`, `mid_name`,
 (1, '1234', 'Nilo', 'Kyle Harley', 'Lumbang', 'Nilo', '20 August, 1996', 'Makati City', 'Male', 'Single', '5\'3', '83 Pounds', 'AB', '123123', '123123', '1231231', '123123', '123123', '123123', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (17, '', 'Mayor', 'Denelyn', 'Morales', '', '9 April, 2018', '', 'Female', 'Single', '', '', '', '', '', '', '', '', '', 'Filipino', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (50, '3333333', '3333333', '3333333333', '', '', '20 March, 2018', '', 'Male', 'Single', '', '', '', '', '', '', '', '', '', 'Filipino', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_learning`
+--
+
+CREATE TABLE `emp_learning` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `name` text NOT NULL,
+  `date_from` text NOT NULL,
+  `date_to` text NOT NULL,
+  `number_of_hours` text NOT NULL,
+  `position` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_other_cont`
+--
+
+CREATE TABLE `emp_other_cont` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `third_degree_flag` text NOT NULL,
+  `fourth_degree_flag` text NOT NULL,
+  `fourth_if_yes` text NOT NULL,
+  `offense_flag` text NOT NULL,
+  `offense_if_yes` text NOT NULL,
+  `criminal_flag` text NOT NULL,
+  `criminal_if_yes` text NOT NULL,
+  `criminal_case_status` text NOT NULL,
+  `crime_flag` text NOT NULL,
+  `crime_if_yes` text NOT NULL,
+  `separated_service_flag` text NOT NULL,
+  `separated_service_if_yes` text NOT NULL,
+  `elect_candidate_flag` text NOT NULL,
+  `elect_candidate_if_yes` text NOT NULL,
+  `campaign_flag` text NOT NULL,
+  `campaign_if_yes` text NOT NULL,
+  `other_resident_flag` text NOT NULL,
+  `other_resident_if_yes` text NOT NULL,
+  `indi_group_flag` text NOT NULL,
+  `indi_group_if_yes` date NOT NULL,
+  `disabled_flag` text NOT NULL,
+  `disabled_if_yes` text NOT NULL,
+  `solo_parent_flag` text NOT NULL,
+  `solo_parent_if_yes` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_other_skills`
+--
+
+CREATE TABLE `emp_other_skills` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `special_skill` text NOT NULL,
+  `distinction` text NOT NULL,
+  `member` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_references`
+--
+
+CREATE TABLE `emp_references` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `name` text NOT NULL,
+  `address` text NOT NULL,
+  `contact` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_vl_work`
+--
+
+CREATE TABLE `emp_vl_work` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `date_from` text NOT NULL,
+  `date_to` text NOT NULL,
+  `position` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_work_experience`
+--
+
+CREATE TABLE `emp_work_experience` (
+  `id` int(11) NOT NULL,
+  `cs_id_no` text NOT NULL,
+  `emp_work_experience` text NOT NULL,
+  `date_from` text NOT NULL,
+  `date_to` text NOT NULL,
+  `position_title` text NOT NULL,
+  `company` text NOT NULL,
+  `monthly_salary` text NOT NULL,
+  `salary_grade` text NOT NULL,
+  `status` text NOT NULL,
+  `gov_service` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -238,7 +382,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1521642184, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1521647347, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'kyhrly@gmail.com', '$2y$08$yR2/5mT8..1ZQJyGaxMRQe8ZMkIqhKuIOZMUV/wJvBr3AFOHY9FUu', NULL, 'kyhrly@gmail.com', NULL, NULL, NULL, NULL, 1520413163, 1520413279, 1, 'Kyle Harley', 'Nilo', 'Developer', '09177386312');
 
 -- --------------------------------------------------------
@@ -272,9 +416,27 @@ ALTER TABLE `emp_children`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `emp_civil_service_eligibility`
+--
+ALTER TABLE `emp_civil_service_eligibility`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emp_educ_background`
+--
+ALTER TABLE `emp_educ_background`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `emp_family_background`
 --
 ALTER TABLE `emp_family_background`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emp_ids`
+--
+ALTER TABLE `emp_ids`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -283,6 +445,36 @@ ALTER TABLE `emp_family_background`
 ALTER TABLE `emp_info`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cs_id_no` (`cs_id_no`(15));
+
+--
+-- Indexes for table `emp_learning`
+--
+ALTER TABLE `emp_learning`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emp_other_skills`
+--
+ALTER TABLE `emp_other_skills`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emp_references`
+--
+ALTER TABLE `emp_references`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emp_vl_work`
+--
+ALTER TABLE `emp_vl_work`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emp_work_experience`
+--
+ALTER TABLE `emp_work_experience`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `groups`
@@ -334,9 +526,27 @@ ALTER TABLE `emp_children`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `emp_civil_service_eligibility`
+--
+ALTER TABLE `emp_civil_service_eligibility`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emp_educ_background`
+--
+ALTER TABLE `emp_educ_background`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `emp_family_background`
 --
 ALTER TABLE `emp_family_background`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emp_ids`
+--
+ALTER TABLE `emp_ids`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -344,6 +554,36 @@ ALTER TABLE `emp_family_background`
 --
 ALTER TABLE `emp_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `emp_learning`
+--
+ALTER TABLE `emp_learning`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emp_other_skills`
+--
+ALTER TABLE `emp_other_skills`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emp_references`
+--
+ALTER TABLE `emp_references`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emp_vl_work`
+--
+ALTER TABLE `emp_vl_work`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emp_work_experience`
+--
+ALTER TABLE `emp_work_experience`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `groups`
