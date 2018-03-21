@@ -112,6 +112,7 @@ defined('EDUC_LEVEL_3') OR define('EDUC_LEVEL_3',"Vocational/Trade Cours");
 defined('EDUC_LEVEL_4') OR define('EDUC_LEVEL_4',"College");
 defined('EDUC_LEVEL_5') OR define('EDUC_LEVEL_5',"Graduate Studies");
 
+<<<<<<< HEAD
 //SAMPLE COMMIT
 //test
 //tanginamosteve
@@ -119,3 +120,6 @@ defined('EDUC_LEVEL_5') OR define('EDUC_LEVEL_5',"Graduate Studies");
 //pakyu mel
 //123456
 
+=======
+//test
+>>>>>>> origin/master
