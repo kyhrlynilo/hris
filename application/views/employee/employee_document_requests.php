@@ -10,6 +10,8 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-		 Employee Document Requests
+		 <a href="<?php echo base_url(); ?>employee_document_requests/reports_hrmo_certificate">Certificate</a><br>
+		 <a href="<?php echo base_url(); ?>employee_document_requests/reports_hrmo_certificate_employment_compensation">Certificate Employment Compensation</a><br>
+		 <a href="<?php echo base_url(); ?>employee_document_requests/reports_service_record">Service Record</a><br>
 	</div>
 </div>
