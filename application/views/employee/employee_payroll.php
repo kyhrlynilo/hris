@@ -10,10 +10,8 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-<<<<<<< HEAD
-		Employee Payroll
-	</div>
-=======
+
+		
 		<div class="container-fluid">
 
 			<div class="row">
@@ -93,4 +91,4 @@
 						</div>
 
 					</div>
->>>>>>> e6cd80f08c909515cfcdefaa0a18ef6b63eb8b92
+				</div>
