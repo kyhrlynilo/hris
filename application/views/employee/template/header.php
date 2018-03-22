@@ -35,8 +35,8 @@ header, main, footer {
 <body>
 	<div class="row" style="padding: 0; margin: 0;">
 		<div class="col s12" style="padding: 0; margin: 0;">	
-			<div id="preloader" class="progress blue darken-4" style="padding: 0; margin: 0; height: 10px;">
-				<div class="indeterminate blue lighten-4"></div>
+			<div id="preloader" class="progress grey darken-4" style="padding: 0; margin: 0; height: 10px;">
+				<div class="indeterminate grey lighten-4"></div>
 			</div>
 		</div>
 	</div>
@@ -56,7 +56,7 @@ header, main, footer {
 </ul>
 <div class="navbar-fixed">
 	<nav>
-		<div class="nav-wrapper  blue darken-1">
+		<div class="nav-wrapper  grey darken-1">
 			<ul class="right ">
 				<li>
 					<a class="dropdown-button" href="#!" data-activates="dropdown1">
@@ -79,7 +79,7 @@ header, main, footer {
 <div class="container-fluid">
 <div class="row" style="margin-bottom: 0;">
 
-	<div class="col s2 blue darken-1" style="padding: 0; height: 100vh; margin-bottom: 0;">
+	<div class="col s2 grey darken-1" style="padding: 0; height: 100vh; margin-bottom: 0;">
 		<div class="row white" style="height: 200px;">
 			<div class="col s4 center" style="padding: 20px;margin-top: 50px;">
 				<img src="<?php echo base_url(); ?>assets\images\user.png" alt="" class="circle">
@@ -90,44 +90,44 @@ header, main, footer {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s12 " style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text " href="<?php echo base_url(); ?>Admin/">
+			<div class="col s12 " style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text " href="<?php echo base_url(); ?>Employee/">
 					<i class="material-icons left">group</i> Personal Data
 				</a>
 			</div>			
 		</div>
 		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_employees/">
+			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text" href="<?php echo base_url(); ?>Employee_document_requests/">
 					<i class="material-icons left">group</i> Document Requests
 				</a>
 			</div>			
 		</div>
 		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_payroll/">
+			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text" href="<?php echo base_url(); ?>Employee_overtime/">
 					<i class="material-icons left">attach_money</i>	Overtime
 				</a>
 			</div>
 		</div>	
 		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_time_keeping/">
+			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text" href="<?php echo base_url(); ?>Employee_leave/">
 					<i class="material-icons left">assignment</i> Leave
 				</a>
 			</div>			
 		</div>
 			
 		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_overtime/">
+			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text" href="<?php echo base_url(); ?>Employee_time_keeping/">
 					<i class="material-icons left">watch_later</i> Time keeping
 				</a>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_leave/">
+			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text" href="<?php echo base_url(); ?>Employee_payroll/">
 					<i class="fa fa-road fa-2x left"></i> Payroll
 				</a>
 			</div>			
