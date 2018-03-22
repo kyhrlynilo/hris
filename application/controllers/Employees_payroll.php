@@ -13,5 +13,4 @@ class Employee_payroll extends CI_Controller {
 	}
 
 
-
 }

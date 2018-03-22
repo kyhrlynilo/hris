@@ -10,7 +10,5 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-	employee payroll
-
-
+		Employee Payroll
 	</div>
