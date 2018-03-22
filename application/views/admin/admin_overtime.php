@@ -3,7 +3,7 @@
 		<nav>
 			<div class="nav-wrapper blue">
 				<div class="col s11">
-					<a href="<?php echo base_url(); ?>admin_employees" class="breadcrumb">Overtime</a>
+					<a href="<?php echo base_url(); ?>Admin_overtime" class="breadcrumb">Overtime</a>
 				</div>		
 			</div>
 		</nav>
