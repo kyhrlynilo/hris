@@ -3,7 +3,7 @@
 		<nav>
 			<div class="nav-wrapper blue">
 				<div class="col s11">
-					<a href="<?php echo base_url(); ?>admin_employees" class="breadcrumb">Request Approval</a>
+					<a href="<?php echo base_url(); ?>admin_request_approvals" class="breadcrumb">Request Approval</a>
 				</div>		
 			</div>
 		</nav>
