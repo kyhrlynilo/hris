@@ -6,8 +6,11 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = "Personal Data";
+		$data['title'] = "Admin";
+
 		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin',$data);
+		$this->load->view('admin/template/footer',$data);
 		/*if( !$this->ion_auth->logged_in() ) 
 		{
 			redirect('Admin/login', 'refresh');
