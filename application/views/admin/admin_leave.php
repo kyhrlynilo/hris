@@ -10,6 +10,6 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-			leave
+		Sample Data
 	</div>
 </div>

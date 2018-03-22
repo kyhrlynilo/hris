@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-
+		Admin Data
 	</div>
 </div>
 
