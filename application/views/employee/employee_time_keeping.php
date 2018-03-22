@@ -10,6 +10,6 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-			Employee Time Keeping<
+			Employee Time Keeping
 	</div>
 </div>
