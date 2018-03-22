@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = "test";
+		$data['title'] = "Personal Data";
 		$this->load->view('admin/template/header',$data);
 		/*if( !$this->ion_auth->logged_in() ) 
 		{

@@ -38,7 +38,7 @@
 					</tr>
 					<tr>
 						<td style="text-align: center;">EARNED</td>
-						<td style="text-align: center;">ABSENCES / <br> OFF-SETTING</td>
+						<td style="text-align: center;">ABSENCES /< br> OFF-SETTING</td>
 						<td style="text-align: center;">BALANCE</td>
 					</tr>
 				</thead>

@@ -19,9 +19,6 @@ class Admin_employees extends CI_Controller {
 	{
 
 		$data['title'] = "Employees";
-		$breadcrumbs = [
-			"Employees" 
-		];
 		$data['employee_list'] = $this->model->get_employees();
 
 		$this->load->view('admin/template/header',$data);
