@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2018 at 06:59 PM
+-- Generation Time: Mar 21, 2018 at 07:07 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -382,7 +382,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1521647347, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1521655435, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'kyhrly@gmail.com', '$2y$08$yR2/5mT8..1ZQJyGaxMRQe8ZMkIqhKuIOZMUV/wJvBr3AFOHY9FUu', NULL, 'kyhrly@gmail.com', NULL, NULL, NULL, NULL, 1520413163, 1520413279, 1, 'Kyle Harley', 'Nilo', 'Developer', '09177386312');
 
 -- --------------------------------------------------------

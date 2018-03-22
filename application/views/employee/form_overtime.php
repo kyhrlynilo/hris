@@ -1,0 +1,202 @@
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <div class="container">
+  	<div class="row">
+  		<div class="col s12 center">
+  			<h4>AUTHIRITY TO RENDER OVERTIME SERVICES</h4>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col s2">
+  			<div class="input-field">
+  				<input type="text" name="">
+  				<label>Date</label>
+  			</div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col s4" style="border: 1px solid black;">
+  			<div class="input-field">
+  				<b>AURORA F. SERRANO</b><br>
+  				Vice President for Administration and Finance
+  			</div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col s2">Dear sir</div>
+  		<div class="col s12 center">
+  			The undersigned employee/s respectfully request/s approval to render overtime work on the herein stated date/s for the following purpose(s)/reason(s):
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col s1" style="text-align: center;">
+  			1
+  		</div>
+  		<div class="col s11">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s1" style="text-align: center;">
+  			2
+  		</div>
+  		<div class="col s11">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s1" style="text-align: center;">
+  			3
+  		</div>
+  		<div class="col s11">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s1" style="text-align: center;">
+  			4
+  		</div>
+  		<div class="col s11">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s1" style="text-align: center;">
+  			5
+  		</div>
+  		<div class="col s11">
+  			<input type="text" name="">
+  		</div>
+  	</div>
+
+  	<div class="row">
+  		<div class="col s4 center">
+  			<u><b>NAME/S</b></u>
+  		</div>
+  		<div class="col s2 center">
+  			<u><b>DEPARTMENT</b></u>
+  		</div>
+  		<div class="col s2 center">
+  			<u><b>DATE</b></u>
+  		</div>
+  		<div class="col s2 center">
+  			<u><b>FROM</b></u>
+  		</div>
+  		<div class="col s2 center">
+  			<b>TO</b></u>
+  		</div>
+  		<!-- 1 -->
+  		<div class="col s1 center">
+  			1
+  		</div>
+  		<div class="col s3 center">  			
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<!-- 2 -->
+  		<div class="col s1 center">
+  			2
+  		</div>
+  		<div class="col s3 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<!-- 3 -->
+  		<div class="col s1 center">
+  			3
+  		</div>
+  		<div class="col s3 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<!-- 4 -->
+  		<div class="col s1 center">
+  			4
+  		</div>
+  		<div class="col s3 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<!-- 5 -->
+  		<div class="col s1 center">
+  			5
+  		</div>
+  		<div class="col s3 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+  		<div class="col s2 center">
+  			<input type="text" name="">
+  		</div>
+
+  	</div>
+  	<div class="row">
+  		<div class="col s12">
+  			Thank you for your most favorable action to this request.
+  		</div>
+  		<div class="col s12">
+  			APPROVED:
+  		</div>		
+  		<div class="col s4" style="border: 1px solid black;">
+  			<div class="input-field">
+  				<b>AURORA F. SERRANO</b><br>
+  				Vice President for Administration and Finance
+  			</div>
+  		</div>
+  		<div class="col s12">
+  			Posted to COC ledger on:	
+  		</div>
+  		
+  	</div>
+
+
+  </div>
+
