@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'http://localhost/HRIS/';
+=======
+$config['base_url'] = 'http://localhost/hris/';
+>>>>>>> 2be815e4424152f03c4e91e8b52346db30d1cb1c
 
 /*
 |--------------------------------------------------------------------------
