@@ -158,6 +158,13 @@ td{
 				</div>
 			</div>
 
+			<div class="row" style="margin-top: 50px;border: 1px solid black; padding: 10px;">
+				<div class="col s12 center">
+					<button class="btn blue">SUBMIT</button>
+					<button type="clear" class="btn orange">CLEAR</button>
+				</div>
+			</div>
+
 
 
 		</div>
