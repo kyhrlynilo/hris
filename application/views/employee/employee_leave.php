@@ -24,6 +24,6 @@ td{
 	</div>
 
 	<div class="col s12 card pad-lg">
-		Request Leave
+		Leave
 	</div>
 </div>
