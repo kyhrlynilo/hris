@@ -6,7 +6,11 @@ integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 crossorigin="anonymous"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+<style media="screen" type="text/css">
+  td {
+    border:1px solid black;
+}
+</style>
 
 <div class="container-fluid">
 
@@ -16,7 +20,7 @@ crossorigin="anonymous"></script>
   <p>We hereby acknowledge to receive from CITY Treasurer of City of Makati, the sums herein specified opposite our respective names, the sum being full compensation for our services rendered during the period stated below, to the correctness of which we hereby severally certify</p>
 </div>
 
-<table border="1" cellspacing="0" cellpadding="0" style="font-size:10px;"> 
+<table  cellspacing="0" cellpadding="0" style="font-size:10px;border: 1px solid black;"> 
 <tbody>
 <tr>
 <td rowspan="2" ><p>No</p></td>

@@ -1,4 +1,4 @@
-<!-- Compiled and minified CSS -->
+ <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <script
 src="https://code.jquery.com/jquery-3.3.1.js"
@@ -7,6 +7,14 @@ crossorigin="anonymous"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+<style type="text/css">
+	td {
+		border: 1px solid black;
+	}
+	table{
+		font-size:10px;
+	}
+</style>
 
 <div class="container-fluid">
 
