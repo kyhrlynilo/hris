@@ -11,6 +11,6 @@ class Admin_leave extends CI_Controller {
 		$this->load->view('admin/admin_leave',$data);
 		$this->load->view('template/footer',$data);
 	}
-
+/*scds*/
 
 }
