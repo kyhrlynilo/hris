@@ -81,7 +81,7 @@ header, main, footer {
 
 	<div class="col s2 grey darken-1" style="padding: 0; height: 100vh; margin-bottom: 0;">
 		<div class="row white" style="height: 200px;">
-			<div class="col s4 center" style="padding: 20px;margin-top: 50px;">
+			<div class="col s3 center" style="padding: 20px;margin-top: 50px;">
 				<img src="<?php echo base_url(); ?>assets\images\user.png" alt="" class="circle">
 			</div>
 			<div class="col s8" style="padding: 20px;margin-top: 50px;">
