@@ -12,6 +12,13 @@ class Employee_leave extends CI_Controller {
 		$this->load->view('employee/template/footer',$data);
 	}
 
+	public function request_leave()
+	{
+		$data['title'] = "Employee Leave Request";
+		$this->load->view('employee/template/header',$data);
+		$this->load->view('employee/employee_leave_request',$data);
+		$this->load->view('employee/template/footer',$data);
+	}
 
 
 }
