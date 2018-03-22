@@ -300,11 +300,6 @@ crossorigin="anonymous"></script>
             </div>
         </div>
         <div class="row">
-            <div class="col s12">
-                <h1>HELLO PONCE</h1>
-            </div>
-        </div>
-        <div class="row">
             <div class="col s6">
                 <p>Government Issued ID<small>(i.e Passport, GSIS, SSS, PRC, Driver's License, Etc)</small></p>
                 <p>PLEASE INDICATE ID Number and Date of Issuance</p>
