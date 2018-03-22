@@ -135,7 +135,7 @@ header, main, footer {
 		<div class="row">
 			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
 				<a class="white-text" href="<?php echo base_url(); ?>Admin_request_approvals/">
-					<i class="material-icons left">attach_file</i> REQUESTS APPROVALS
+					<i class="material-icons left">attach_file</i> Requests Approvals
 				</a>
 			</div>
 		</div>
