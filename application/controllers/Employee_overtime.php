@@ -6,7 +6,7 @@ class Employee_overtime extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = "Employee";
+		$data['title'] = "Employee Overtime";
 		$this->load->view('employee/template/header',$data);
 		$this->load->view('employee/employee_overtime',$data);
 		$this->load->view('employee/template/footer',$data);
