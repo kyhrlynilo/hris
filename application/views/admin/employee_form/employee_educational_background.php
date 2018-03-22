@@ -10,261 +10,409 @@
 
   <div class="container-fluid">
 
-  	<div class="row">
-  		<div class="col s12">
-  			<p>Educational Background</p>
-  		</div>
-  	</div>
-  	<div class="row">
-  		<div class="col s2">
-  			<p>ELEMENTARY</p>
-  		</div>
-  		<div class="col s6">
-  			<div class="input-field ">
-  				<input id="elementary" name="elementary" type="text" class="validate" >
-  				<label for="elementary">NAME OF SCHOOL</label>
-  			</div>
-  		</div>
-  		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="secondary" name="secondary" type="text" class="validate" >
-  				<label for="secondary">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label>
-  			</div>
-  		</div>
-  	</div>
-  	<div class="row">
-  		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="from" name="from" type="text" class="validate" >
-  				<label for="from">From</label>
-  			</div>
-  		</div>
-		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="to" name="to" type="text" class="validate" >
-  				<label for="to">To</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="highlevel" name="highlevel" type="text" class="validate" >
-  				<label for="highlevel">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label>
-  			</div>
-  		</div>
-		<div class="col s2">
-  			<div class="input-field ">
-  				<input id="yrgraduated" name="yrgraduated" type="text" class="validate" >
-  				<label for="yrgraduated">YEAR GRADUATE</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="scholarship" name="scholarship" type="text" class="validate" >
-  				<label for="scholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label>
-  			</div>
-  		</div>
-    </div>
+    <div class="row">
+      <div class="col s12">
+        <p>Educational Background</p>
+      </div>
 
-  	<div class="row">
-  		<div class="col s2">
-  			<p >SECONDARY</p>
-  		</div>
-  		<div class="col s6">
-  			<div class="input-field ">
-  				<input id="selementary" name="selementary" type="text" class="validate" >
-  				<label for="selementary">NAME OF SCHOOL</label>
-  			</div>
-  		</div>
-  		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="ssecondary" name="ssecondary" type="text" class="validate" >
-  				<label for="ssecondary">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label>
-  			</div>
-  		</div>
-  	</div>
-  	<div class="row">
-  		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="sfrom" name="sfrom" type="text" class="validate" >
-  				<label for="sfrom">From</label>
-  			</div>
-  		</div>
-		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="sto" name="sto" type="text" class="validate" >
-  				<label for="sto">To</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="shighlevel" name="shighlevel" type="text" class="validate" >
-  				<label for="shighlevel">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label>
-  			</div>
-  		</div>
-		<div class="col s2">
-  			<div class="input-field ">
-  				<input id="syrgraduated" name="syrgraduated" type="text" class="validate" >
-  				<label for="syrgraduated">YEAR GRADUATE</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="sscholarship" name="sscholarship" type="text" class="validate" >
-  				<label for="sscholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label>
-  			</div>
-  		</div>
-    </div>
+  <?php echo form_open('employee_educational_background/saveeduc');?>
+
+        <?php if($msg = $this->session->flashdata('response')):?>
+          <div class="response">
+            <?php echo $msg; ?>
+          </div>
+        <?php endif;?>
+        <?php
+          $data = array(
+            'level' => '1'
+          );
+        ?>
+        <?php echo form_hidden($data);?>
+      <div class="col s12">
+        <h4><p>ELEMENTARY</p></h4>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'name_of_school[0]','class'=>'textbox']); ?>
+          <?php echo form_label('NAME OF SCHOOL', 'name_of_school[0]');?>
+          <?php echo form_error('name_of_school[0]','<div class="text-danger">','</div>');?>
+        <!--  <input id="name_of_school" name="name_of_school" type="text" class="validate" >
+          <label for="name_of_school">NAME OF SCHOOL</label> -->
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'basic_educ[0]','class'=>'textbox']); ?>
+          <?php echo form_label('BASIC EDUCATION/DEGREE/COURSE (Write in full)', 'basic_educ[0]');?>
+            <?php echo form_error('basic_educ[0]','<div class="text-danger">','</div>');?>
+          <!-- <input id="basic_educ" name="basic_educ" type="text" class="validate" >
+          <label for="basic_educ">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label> -->
+        </div>
+      </div>
+      <div class="col s2">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'date_from[0]','class'=>'textbox']); ?>
+          <?php echo form_label('From', 'date_from[0]');?>
+            <?php echo form_error('date_from[0]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_from" name="date_from" type="text" class="validate" >
+          <label for="date_from">From</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'date_to[0]','class'=>'textbox']); ?>
+          <?php echo form_label('To', 'date_to[0]');?>
+            <?php echo form_error('date_to[0]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_to" name="date_to" type="text" class="validate" >
+          <label for="date_to">To</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'highest_level[0]','class'=>'textbox']); ?>
+          <?php echo form_label('HIGHEST LEVEL/UNITS EARNED (if not graduated)', 'highest_level[0]');?>
+            <?php echo form_error('highest_level[0]','<div class="text-danger">','</div>');?>
+        <!--  <input id="highest_level" name="highest_level" type="text" class="validate" >
+          <label for="highest_level">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'year_graduated[0]','class'=>'textbox']); ?>
+          <?php echo form_label('YEAR GRADUATE', 'year_graduated[0]');?>
+            <?php echo form_error('year_graduated[0]','<div class="text-danger">','</div>');?>
+          <!-- <input id="year_graduated" name="year_graduated" type="text" class="validate" >
+          <label for="year_graduated">YEAR GRADUATE</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'scholarship[0]','class'=>'textbox']); ?>
+          <?php echo form_label('SCHOLARDSHIP/ACADEMIC HONORS RECEIVED', 'scholarship[0]');?>
+            <?php echo form_error('scholarship[0]','<div class="text-danger">','</div>');?>
+          <!-- <input id="scholarship" name="scholarship" type="text" class="validate" >
+          <label for="scholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label> -->
+        </div>
+      </div>
+        </div>
 
 
-  	<div class="row">
-  		<div class="col s2">
-  			<p >VOCATIONAL/TRADE CROUSE</p>
-  		</div>
-  		<div class="col s6">
-  			<div class="input-field ">
-  				<input id="velementary" name="velementary" type="text" class="validate" >
-  				<label for="velementary">NAME OF SCHOOL</label>
-  			</div>
-  		</div>
-  		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="vsecondary" name="vsecondary" type="text" class="validate" >
-  				<label for="vsecondary">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label>
-  			</div>
-  		</div>
-  	</div>
+       <?php
+          $data = array(
+            'level' => '2'
+          );
+        ?>
+        <?php echo form_hidden($data);?>
+    <div class="row">
+      <div class="col s12">
+        <h4><p >SECONDARY</p></h4>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'name_of_school[1]','class'=>'textbox']); ?>
+          <?php echo form_label('NAME OF SCHOOL', 'name_of_school[1]');?>
+          <?php echo form_error('name_of_school[1]','<div class="text-danger">','</div>');?>
+        <!--  <input id="name_of_school" name="name_of_school" type="text" class="validate" >
+          <label for="name_of_school">NAME OF SCHOOL</label> -->
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'basic_educ[1]','class'=>'textbox']); ?>
+          <?php echo form_label('BASIC EDUCATION/DEGREE/COURSE (Write in full)', 'basic_educ[1]');?>
+            <?php echo form_error('basic_educ[1]','<div class="text-danger">','</div>');?>
+          <!-- <input id="basic_educ" name="basic_educ" type="text" class="validate" >
+          <label for="basic_educ">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label> -->
+        </div>
+      </div>
+      <div class="col s2">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'date_from[1]','class'=>'textbox']); ?>
+          <?php echo form_label('From', 'date_from[1]');?>
+            <?php echo form_error('date_from[1]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_from" name="date_from" type="text" class="validate" >
+          <label for="date_from">From</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'date_to[1]','class'=>'textbox']); ?>
+          <?php echo form_label('To', 'date_to[1]');?>
+            <?php echo form_error('date_to[1]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_to" name="date_to" type="text" class="validate" >
+          <label for="date_to">To</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'highest_level[1]','class'=>'textbox']); ?>
+          <?php echo form_label('HIGHEST LEVEL/UNITS EARNED (if not graduated)', 'highest_level[1]');?>
+            <?php echo form_error('highest_level[1]','<div class="text-danger">','</div>');?>
+        <!--  <input id="highest_level" name="highest_level" type="text" class="validate" >
+          <label for="highest_level">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'year_graduated[1]','class'=>'textbox']); ?>
+          <?php echo form_label('YEAR GRADUATE', 'year_graduated[1]');?>
+            <?php echo form_error('year_graduated[1]','<div class="text-danger">','</div>');?>
+          <!-- <input id="year_graduated" name="year_graduated" type="text" class="validate" >
+          <label for="year_graduated">YEAR GRADUATE</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'scholarship[1]','class'=>'textbox']); ?>
+          <?php echo form_label('SCHOLARDSHIP/ACADEMIC HONORS RECEIVED', 'scholarship[1]');?>
+            <?php echo form_error('scholarship[1]','<div class="text-danger">','</div>');?>
+          <!-- <input id="scholarship" name="scholarship" type="text" class="validate" >
+          <label for="scholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label> -->
+        </div>
+      </div>
+      
+   </div>
 
-  	<div class="row">
-  		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="vfrom" name="vfrom" type="text" class="validate" >
-  				<label for="vfrom">From</label>
-  			</div>
-  		</div>
-		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="vto" name="vto" type="text" class="validate" >
-  				<label for="vto">To</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="vhighlevel" name="vhighlevel" type="text" class="validate" >
-  				<label for="vhighlevel">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label>
-  			</div>
-  		</div>
-		<div class="col s2">
-  			<div class="input-field ">
-  				<input id="vyrgraduated" name="vyrgraduated" type="text" class="validate" >
-  				<label for="vyrgraduated">YEAR GRADUATE</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="vscholarship" name="vscholarship" type="text" class="validate" >
-  				<label for="vscholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label>
-  			</div>
-  		</div>
-    </div>
- 	<div class="row">
-  		<div class="col s2">
-  			<p >COLLEGE</p>
-  		</div>
-  		<div class="col s6">
-  			<div class="input-field ">
-  				<input id="celementary" name="celementary" type="text" class="validate" >
-  				<label for="celementary">NAME OF SCHOOL</label>
-  			</div>
-  		</div>
-  		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="csecondary" name="csecondary" type="text" class="validate" >
-  				<label for="csecondary">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label>
-  			</div>
-  		</div>
-  	</div>
 
-  	<div class="row">
-  		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="cfrom" name="cfrom" type="text" class="validate" >
-  				<label for="cfrom">From</label>
-  			</div>
-  		</div>
-		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="cto" name="cto" type="text" class="validate" >
-  				<label for="cto">To</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="chighlevel" name="chighlevel" type="text" class="validate" >
-  				<label for="chighlevel">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label>
-  			</div>
-  		</div>
-		<div class="col s2">
-  			<div class="input-field ">
-  				<input id="cyrgraduated" name="cyrgraduated" type="text" class="validate" >
-  				<label for="cyrgraduated">YEAR GRADUATE</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="cscholarship" name="cscholarship" type="text" class="validate" >
-  				<label for="cscholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label>
-  			</div>
-  		</div>
+    <?php
+          $data = array(
+            'level' => '3'
+          );
+        ?>
+        <?php echo form_hidden($data);?>
+    <div class="row">
+      <div class="col s12">
+        <h4><p >VOCATIONAL/TRADE CROUSE</p></h4>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'name_of_school[2]','class'=>'textbox']); ?>
+          <?php echo form_label('NAME OF SCHOOL', 'name_of_school[2]');?>
+          <?php echo form_error('name_of_school[2]','<div class="text-danger">','</div>');?>
+        <!--  <input id="name_of_school" name="name_of_school" type="text" class="validate" >
+          <label for="name_of_school">NAME OF SCHOOL</label> -->
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'basic_educ[2]','class'=>'textbox']); ?>
+          <?php echo form_label('BASIC EDUCATION/DEGREE/COURSE (Write in full)', 'basic_educ[2]');?>
+            <?php echo form_error('basic_educ[2]','<div class="text-danger">','</div>');?>
+          <!-- <input id="basic_educ" name="basic_educ" type="text" class="validate" >
+          <label for="basic_educ">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label> -->
+        </div>
+      </div>
+      <div class="col s2">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'date_from[2]','class'=>'textbox']); ?>
+          <?php echo form_label('From', 'date_from[2]');?>
+            <?php echo form_error('date_from[2]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_from" name="date_from" type="text" class="validate" >
+          <label for="date_from">From</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'date_to[2]','class'=>'textbox']); ?>
+          <?php echo form_label('To', 'date_to[2]');?>
+            <?php echo form_error('date_to[2]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_to" name="date_to" type="text" class="validate" >
+          <label for="date_to">To</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'highest_level[2]','class'=>'textbox']); ?>
+          <?php echo form_label('HIGHEST LEVEL/UNITS EARNED (if not graduated)', 'highest_level[2]');?>
+            <?php echo form_error('highest_level[2]','<div class="text-danger">','</div>');?>
+        <!--  <input id="highest_level" name="highest_level" type="text" class="validate" >
+          <label for="highest_level">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'year_graduated[2]','class'=>'textbox']); ?>
+          <?php echo form_label('YEAR GRADUATE', 'year_graduated[2]');?>
+            <?php echo form_error('year_graduated[2]','<div class="text-danger">','</div>');?>
+          <!-- <input id="year_graduated" name="year_graduated" type="text" class="validate" >
+          <label for="year_graduated">YEAR GRADUATE</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'scholarship[2]','class'=>'textbox']); ?>
+          <?php echo form_label('SCHOLARDSHIP/ACADEMIC HONORS RECEIVED', 'scholarship[3]');?>
+            <?php echo form_error('scholarship[2]','<div class="text-danger">','</div>');?>
+          <!-- <input id="scholarship" name="scholarship" type="text" class="validate" >
+          <label for="scholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label> -->
+        </div>
+      </div>
+      
+        </div>
+
+
+    <?php
+          $data = array(
+            'level' => '4'
+          );
+        ?>
+        <?php echo form_hidden($data);?>
+  <div class="row">
+      <div class="col s12">
+        <h4><p >COLLEGE</p></h4>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'name_of_school[3]','class'=>'textbox']); ?>
+          <?php echo form_label('NAME OF SCHOOL', 'name_of_school[3]');?>
+          <?php echo form_error('name_of_school[3]','<div class="text-danger">','</div>');?>
+        <!--  <input id="name_of_school" name="name_of_school" type="text" class="validate" >
+          <label for="name_of_school">NAME OF SCHOOL</label> -->
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'basic_educ[3]','class'=>'textbox']); ?>
+          <?php echo form_label('BASIC EDUCATION/DEGREE/COURSE (Write in full)', 'basic_educ[3]');?>
+            <?php echo form_error('basic_educ[3]','<div class="text-danger">','</div>');?>
+          <!-- <input id="basic_educ" name="basic_educ" type="text" class="validate" >
+          <label for="basic_educ">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label> -->
+        </div>
+      </div>
+      <div class="col s2">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'date_from[3]','class'=>'textbox']); ?>
+          <?php echo form_label('From', 'date_from[3]');?>
+            <?php echo form_error('date_from[3]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_from" name="date_from" type="text" class="validate" >
+          <label for="date_from">From</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'date_to[3]','class'=>'textbox']); ?>
+          <?php echo form_label('To', 'date_to[3]');?>
+            <?php echo form_error('date_to[3]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_to" name="date_to" type="text" class="validate" >
+          <label for="date_to">To</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'highest_level[3]','class'=>'textbox']); ?>
+          <?php echo form_label('HIGHEST LEVEL/UNITS EARNED (if not graduated)', 'highest_level[3]');?>
+            <?php echo form_error('highest_level[3]','<div class="text-danger">','</div>');?>
+        <!--  <input id="highest_level" name="highest_level" type="text" class="validate" >
+          <label for="highest_level">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'year_graduated[3]','class'=>'textbox']); ?>
+          <?php echo form_label('YEAR GRADUATE', 'year_graduated[3]');?>
+            <?php echo form_error('year_graduated[3]','<div class="text-danger">','</div>');?>
+          <!-- <input id="year_graduated" name="year_graduated" type="text" class="validate" >
+          <label for="year_graduated">YEAR GRADUATE</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'scholarship[3]','class'=>'textbox']); ?>
+          <?php echo form_label('SCHOLARDSHIP/ACADEMIC HONORS RECEIVED', 'scholarship[3]');?>
+            <?php echo form_error('scholarship[3]','<div class="text-danger">','</div>');?>
+          <!-- <input id="scholarship" name="scholarship" type="text" class="validate" >
+          <label for="scholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label> -->
+        </div>
+      </div>
+      
+        </div>
+
+
+
+    <?php
+          $data = array(
+            'level' => '5'
+          );
+        ?>
+        <?php echo form_hidden($data);?>
+      <div class="row">
+      <div class="col s12">
+        <h4><p >GRADUATE STUDIES</p ></h4>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'name_of_school[4]','class'=>'textbox']); ?>
+          <?php echo form_label('NAME OF SCHOOL', 'name_of_school[4]');?>
+          <?php echo form_error('name_of_school[4]','<div class="text-danger">','</div>');?>
+        <!--  <input id="name_of_school" name="name_of_school" type="text" class="validate" >
+          <label for="name_of_school">NAME OF SCHOOL</label> -->
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'basic_educ[4]','class'=>'textbox']); ?>
+          <?php echo form_label('BASIC EDUCATION/DEGREE/COURSE (Write in full)', 'basic_educ[4]');?>
+            <?php echo form_error('basic_educ[4]','<div class="text-danger">','</div>');?>
+          <!-- <input id="basic_educ" name="basic_educ" type="text" class="validate" >
+          <label for="basic_educ">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label> -->
+        </div>
+      </div>
+      <div class="col s2">
+        <div class="input-field ">
+           <?php echo form_input(['name'=>'date_from[4]','class'=>'textbox']); ?>
+          <?php echo form_label('From', 'date_from[4]');?>
+            <?php echo form_error('date_from[4]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_from" name="date_from" type="text" class="validate" >
+          <label for="date_from">From</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'date_to[4]','class'=>'textbox']); ?>
+          <?php echo form_label('To', 'date_to[4]');?>
+            <?php echo form_error('date_to[4]','<div class="text-danger">','</div>');?>
+          <!-- <input id="date_to" name="date_to" type="text" class="validate" >
+          <label for="date_to">To</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'highest_level[4]','class'=>'textbox']); ?>
+          <?php echo form_label('HIGHEST LEVEL/UNITS EARNED (if not graduated)', 'highest_level[4]');?>
+            <?php echo form_error('highest_level[4]','<div class="text-danger">','</div>');?>
+        <!--  <input id="highest_level" name="highest_level" type="text" class="validate" >
+          <label for="highest_level">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label> -->
+        </div>
+      </div>
+    <div class="col s2">
+        <div class="input-field ">
+            <?php echo form_input(['name'=>'year_graduated[4]','class'=>'textbox']); ?>
+          <?php echo form_label('YEAR GRADUATE', 'year_graduated[4]');?>
+            <?php echo form_error('year_graduated[4]','<div class="text-danger">','</div>');?>
+          <!-- <input id="year_graduated" name="year_graduated" type="text" class="validate" >
+          <label for="year_graduated">YEAR GRADUATE</label> -->
+        </div>
+      </div>
+    <div class="col s4">
+        <div class="input-field ">
+          <?php echo form_input(['name'=>'scholarship[4]','class'=>'textbox']); ?>
+          <?php echo form_label('SCHOLARDSHIP/ACADEMIC HONORS RECEIVED', 'scholarship[4]');?>
+            <?php echo form_error('scholarship[4]','<div class="text-danger">','</div>');?>
+          <!-- <input id="scholarship" name="scholarship" type="text" class="validate" >
+          <label for="scholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label> -->
+        </div>
+      </div>
+      
+        </div>
+        <div class="row">
+                <div class="col s3">
+                  <?php echo form_submit(['name'=>'submit','value'=>'SIGN UP','class'=>'btn btn-primary']); ?>
+                </div>
+                <div class="col s3">
+                </div>
+                <div class="col s6">
+                </div>
+            </div>  
+ <?php echo form_close(); ?>
     </div>
- 	<div class="row">
-  		<div class="col s2">
-  			<p >GRADUATE STUDIES</p	>
-  		</div>
-  		<div class="col s6">
-  			<div class="input-field ">
-  				<input id="gelementary" name="gelementary" type="text" class="validate" >
-  				<label for="gelementary">NAME OF SCHOOL</label>
-  			</div>
-  		</div>
-  		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="gsecondary" name="gsecondary" type="text" class="validate" >
-  				<label for="gsecondary">BASIC EDUCATION/DEGREE/COURSE (Write in full)</label>
-  			</div>
-  		</div>
-  	</div>
-  		<div class="row">
-  		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="gfrom" name="gfrom" type="text" class="validate" >
-  				<label for="gfrom">From</label>
-  			</div>
-  		</div>
-		<div class="col s1">
-  			<div class="input-field ">
-  				<input id="gto" name="gto" type="text" class="validate" >
-  				<label for="gto">To</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="ghighlevel" name="ghighlevel" type="text" class="validate" >
-  				<label for="ghighlevel">HIGHEST LEVEL/UNITS EARNED (if not graduated)</label>
-  			</div>
-  		</div>
-		<div class="col s2">
-  			<div class="input-field ">
-  				<input id="gyrgraduated" name="gyrgraduated" type="text" class="validate" >
-  				<label for="gyrgraduated">YEAR GRADUATE</label>
-  			</div>
-  		</div>
-		<div class="col s4">
-  			<div class="input-field ">
-  				<input id="gscholarship" name="gscholarship" type="text" class="validate" >
-  				<label for="gscholarship">SCHOLARDSHIP/ACADEMIC HONORS RECEIVED</label>
-  			</div>
-  		</div>
-    </div>
-  	
-  	</div>
   </div>
