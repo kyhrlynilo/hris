@@ -1,4 +1,5 @@
-<div class="row">
+<div class="col s12 card pad-lg">
+		<div class="row">
 			<div class="col s12">
 				<div align="center">
 					<h4><b>DAILY TIME RECORD</b></h4>	
@@ -100,3 +101,6 @@
 				</div>	
 			</div>
 		</div>
+	</div>
+
+
