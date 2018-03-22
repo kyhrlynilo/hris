@@ -3,7 +3,7 @@
 		<nav>
 			<div class="nav-wrapper grey">
 				<div class="col s11">
-					<a href="<?php echo base_url(); ?>reports_hrmo_certificate" class="breadcrumb">
+					<a href="<?php echo base_url(); ?>reports_hrmo_certificate_employment_compensation" class="breadcrumb">
 					Employee Document Requests Human Resource Management Office Certificate Employement Compesation</a>
 				</div>		
 			</div>
