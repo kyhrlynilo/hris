@@ -4,7 +4,7 @@
 			<div class="nav-wrapper grey">
 				<div class="col s11">
 					<a href="<?php echo base_url(); ?>employee_document_requests" class="breadcrumb">Employee Document Requests</a>
-					<a href="<?php echo base_url(); ?>reports_hrmo_certificate" class="breadcrumb">Employee Document Requests Human Resource Management Office</a>
+					<a href="<?php echo base_url(); ?>employee_document_requests/reports_hrmo_certificate" class="breadcrumb">Employee Document Requests Human Resource Management Office</a>
 				</div>		
 			</div>
 		</nav>

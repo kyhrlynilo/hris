@@ -4,7 +4,7 @@
 			<div class="nav-wrapper grey">
 				<div class="col s11">
 					<a href="<?php echo base_url(); ?>employee_document_requests" class="breadcrumb">Employee Document Requests</a>
-					<a href="<?php echo base_url(); ?>reports_service_record" class="breadcrumb">Employee Document Requests Reports Service Record</a>
+					<a href="<?php echo base_url(); ?>employee_document_requests/reports_service_record" class="breadcrumb">Employee Document Requests Reports Service Record</a>
 				</div>		
 			</div>
 		</nav>
