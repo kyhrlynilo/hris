@@ -6,6 +6,14 @@ integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 crossorigin="anonymous"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<style type="text/css">
+	td {
+		border: 1px solid black;
+	}
+	table{
+		font-size:10px;
+	}
+</style>
 
 
 <div class="container-fluid">
