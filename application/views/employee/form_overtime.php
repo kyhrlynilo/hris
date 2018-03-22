@@ -185,16 +185,16 @@
   		<div class="col s12">
   			APPROVED:
   		</div>		
-  		<div class="col s4" style="border: 1px solid black;">
+  		<div class="col s4" style="border: 1px solid black;margin-top: ">
   			<div class="input-field">
   				<b>AURORA F. SERRANO</b><br>
   				Vice President for Administration and Finance
   			</div>
   		</div>
-  		<div class="col s12">
+
+  		<div class="col s12" style="margin-top: 10px;">
   			Posted to COC ledger on:	
-  		</div>
-  		
+  		</div>  		
   	</div>
 
 
