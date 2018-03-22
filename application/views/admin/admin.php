@@ -3,7 +3,7 @@
 		<nav>
 			<div class="nav-wrapper blue">
 				<div class="col s11">
-					<a href="<?php echo base_url(); ?>admin_employees" class="breadcrumb">Personal Data</a>
+					<a href="<?php echo base_url(); ?>Admin" class="breadcrumb">Personal Data</a>
 				</div>		
 			</div>
 		</nav>
