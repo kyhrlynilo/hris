@@ -13,35 +13,51 @@ class Employee_educational_background extends CI_Controller {
 
 	public function saveeduc(){
 
-		try{
-			$this->form_validation->set_rules('name_of_school[]','Name of School','required');
-			$this->form_validation->set_rules('basic_educ[]','Secondary','required');
-			$this->form_validation->set_rules('date_from[]','From','required');
-			$this->form_validation->set_rules('date_to[]','To','required');
-			$this->form_validation->set_rules('highest_level[]','Highest Level','required');
-			$this->form_validation->set_rules('year_graduated[]','Year Graduated','required');
-			$this->form_validation->set_rules('scholarship[]','Scholarship','required');
-			
-			if($this->form_validation->run()){
-				$this->load->model('Educ_background_model');
-				$data = $this->input->post();
+		$validation = array(
+			array('field'=>'name_of_school[]','rules'=>'required'),
+			array('field'=>'basic_educ[]','rules'=>'required'),
+			array('field'=>'date_from[]','rules'=>'required'),
+			array('field'=>'date_to[]','rules'=>'required'),
+			array('field'=>'highest_level[]','rules'=>'required'),
+			array('field'=>'year_graduated[]','rules'=>'required'),
+			array('field'=>'scholarship[]','rules'=>'required'),
+		);
 
-				foreach($data as $fkey => $fvalue ){
-				  $ids []= $this->Educ_background_model->register($fvalue);//$Ids is array of returned id
-				}
+		$this->form_validation->set_rules($validation);
+		if($this->form_validation->run()==true){
+			$this->load->model('Educ_background_model');
+		
+			$name_of_school = $this->input->post('name_of_school[]');
+			$basic_educ = $this->input->post('basic_educ[]');
+			$date_from = $this->input->post('date_from[]');
+			$date_to = $this->input->post('date_to[]');
+			$highest_level = $this->input->post('highest_level[]');
+			$year_graduated = $this->input->post('year_graduated[]');
+			$scholarship = $this->input->post('scholarship[]');
+			$value = array();
 
-				unset($data['submit']);
-				if($this->Educ_background_model->register($data)){
-					$this->session->set_flashdata('response','Registered Succesfully');
-				}else{
-					$this->session->set_flashdata('response','Registered Failed');
-				}
-				return redirect('employee_educational_background');
-			}else{
-				echo $this->index();
+
+			for($i = 0;$i<count($name_of_school);$i++){
+				$value[$i] = array(
+					'level' => $i+1,
+					'name_of_school' => $name_of_school[$i],
+					'basic_educ' => $basic_educ[$i],
+					'date_from' => $date_from[$i],
+					'date_to' => $date_to[$i],
+					'highest_level' => $highest_level[$i],
+					'year_graduated' => $year_graduated[$i],
+					'scholarship' => $scholarship[$i],
+				);
 			}
-		}catch(Exception $e){
-			throw $e;
-		}
+			
+			if($this->Educ_background_model->register($value)){
+				$this->session->set_flashdata('msg','save');
+			}else{
+				$this->session->set_flashdata('msg','Failed');
+			}
+
+			redirect('employee_educational_background');
+		
 	}
+}
 }

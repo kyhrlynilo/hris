@@ -22,12 +22,6 @@
             <?php echo $msg; ?>
           </div>
         <?php endif;?>
-        <?php
-          $data = array(
-            'level' => '1'
-          );
-        ?>
-        <?php echo form_hidden($data);?>
       <div class="col s12">
         <h4><p>ELEMENTARY</p></h4>
       </div>
@@ -96,13 +90,6 @@
       </div>
         </div>
 
-
-       <?php
-          $data = array(
-            'level' => '2'
-          );
-        ?>
-        <?php echo form_hidden($data);?>
     <div class="row">
       <div class="col s12">
         <h4><p >SECONDARY</p></h4>
@@ -174,12 +161,6 @@
    </div>
 
 
-    <?php
-          $data = array(
-            'level' => '3'
-          );
-        ?>
-        <?php echo form_hidden($data);?>
     <div class="row">
       <div class="col s12">
         <h4><p >VOCATIONAL/TRADE CROUSE</p></h4>
@@ -251,12 +232,7 @@
         </div>
 
 
-    <?php
-          $data = array(
-            'level' => '4'
-          );
-        ?>
-        <?php echo form_hidden($data);?>
+ 
   <div class="row">
       <div class="col s12">
         <h4><p >COLLEGE</p></h4>
@@ -328,13 +304,6 @@
         </div>
 
 
-
-    <?php
-          $data = array(
-            'level' => '5'
-          );
-        ?>
-        <?php echo form_hidden($data);?>
       <div class="row">
       <div class="col s12">
         <h4><p >GRADUATE STUDIES</p ></h4>
