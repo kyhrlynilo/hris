@@ -60,7 +60,7 @@ header, main, footer {
 			<ul class="right ">
 				<li>
 					<a class="dropdown-button" href="#!" data-activates="dropdown1">
-						<i class="fa fa-user-circle" aria-hidden="true"></i> Admin
+						<i class="fa fa-user-circle" aria-hidden="true"></i> Employee
 						<i class="material-icons right">arrow_drop_down</i>
 					</a>
 				</li>			
@@ -85,8 +85,8 @@ header, main, footer {
 				<img src="<?php echo base_url(); ?>assets\images\user.png" alt="" class="circle">
 			</div>
 			<div class="col s8" style="padding: 20px;margin-top: 50px;">
-				<b>Admin Pedroid</b>
-				admin@admin.com
+				<b>Employee Juandroid</b>
+				juan@employee.com
 			</div>
 		</div>
 		<div class="row">
