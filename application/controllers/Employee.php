@@ -12,6 +12,4 @@ class Employee extends CI_Controller {
 		$this->load->view('employee/template/footer',$data);
 	}
 
-
-
 }
