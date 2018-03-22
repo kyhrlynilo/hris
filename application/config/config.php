@@ -17,13 +17,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | your installation, but due to security concerns the hostname will be set
 | to $_SERVER['SERVER_ADDR'] if available, or localhost otherwise.
 | The auto-detection mechanism exists only for convenience during
-| development and MUST NOT be used in production!
+| development and MUST NOT http://127.0.0.1/HRISbe used in production!
 |
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+<<<<<<< HEAD
+$config['base_url'] = 'http://localhost/HRIS/';
+=======
+$config['base_url'] = 'http://localhost/hris/';
+>>>>>>> 2be815e4424152f03c4e91e8b52346db30d1cb1c
 
 /*
 |--------------------------------------------------------------------------

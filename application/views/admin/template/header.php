@@ -77,9 +77,9 @@ header, main, footer {
 </div>
 
 <div class="container-fluid">
-<div class="row">
+<div class="row" style="margin-bottom: 0;">
 
-	<div class="col s2 blue darken-1" style="padding: 0;">
+	<div class="col s2 blue darken-1" style="padding: 0; height: 100vh; margin-bottom: 0;">
 		<div class="row white" style="height: 200px;">
 			<div class="col s4 center" style="padding: 20px;margin-top: 50px;">
 				<img src="<?php echo base_url(); ?>assets\images\user.png" alt="" class="circle">
@@ -90,8 +90,8 @@ header, main, footer {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin/">
+			<div class="col s12 " style="border-bottom: 1px solid blue;padding-bottom: 10px;">
+				<a class="white-text " href="<?php echo base_url(); ?>Admin/">
 					<i class="material-icons left">group</i> Personal Data
 				</a>
 			</div>			
