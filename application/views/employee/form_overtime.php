@@ -5,9 +5,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
   <div class="container">
-  	<div class="row">
-  		<div class="col s12 center">
-  			<h4>AUTHIRITY TO RENDER OVERTIME SERVICES</h4>
+  	<div class="row" style="margin-top: 20px;">
+  		<div class="col s12 center" style="border: 1px solid black;">
+  			<h4>AUTHORITY TO RENDER OVERTIME SERVICES</h4>
   		</div>
   	</div>
   	<div class="row">
@@ -182,20 +182,54 @@
   		<div class="col s12">
   			Thank you for your most favorable action to this request.
   		</div>
-  		<div class="col s12">
+  		<div class="col s6 center" style="margin-top: 20px;">
+  			Endorsement For Approval
+  		</div>	
+  		<div class="col s6 center" style="margin-top: 20px;">
+  			Recommending Approval
+  		</div>			
+  		<div class="col s6 center">
+  			_________________________________________
+  		</div>
+  		<div class="col s6 center">
+  			_________________________________________
+  		</div>
+  		<div class="col s6 center">
+  			Department Head
+  		</div>
+  		<div class="col s6 center">
+  			Head, HRDMO
+  		</div>
+  		<div class="col s12" style="margin-top: 40px;">
   			APPROVED:
-  		</div>		
-  		<div class="col s4" style="border: 1px solid black;margin-top: ">
+  		</div>  	
+  		<div class="col s4" style="border: 1px solid black;margin-top:20px; ">
   			<div class="input-field">
   				<b>AURORA F. SERRANO</b><br>
   				Vice President for Administration and Finance
   			</div>
-  		</div>
-
-  		<div class="col s12" style="margin-top: 10px;">
-  			Posted to COC ledger on:	
   		</div>  		
   	</div>
+  	<div class="row">
+  		<div class="col s6">
+  			Posted to COC ledger on: __________________________________
+  		</div>
+  		<div class="col s6 center">
+  			by: _________________________________________
+  		</div>
+  		<div class="col 3 offset-s3">
+  			(Date)
+  		</div>
+  		<div class="col 2 offset-s5 center">
+  			HRMO Staff
+  		</div>	
+  	</div>
+    <div class="row" style="margin-top: 50px;border: 1px solid black; padding: 10px;">
+        <div class="col s12 center">
+            <button class="btn blue">SUBMIT</button>
+            <button type="clear" class="btn orange">CLEAR</button>
+        </div>
+    </div>
 
 
   </div>
