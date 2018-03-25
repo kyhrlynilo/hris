@@ -19,7 +19,12 @@
 			Functions  : 
 					view_employees
 					add_employee (new page)
+						gawa ka ng form, based dun sa fields
 					edit_employee (new page)
+						yung $id, http://localhost/hris/Admin_time_keeping/2
+						sample ng id is 2,
+						ige-get mo yung details na ang id ay 2					
+						icopy-paste mo lang yung form, tas lagyan mo ng values, based dun sa na fetch mo
 					delete_employee 
 						update lang sya, set mo lang yung active flag sa N
 
