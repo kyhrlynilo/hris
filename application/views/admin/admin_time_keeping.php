@@ -16,7 +16,8 @@
 
 			Gawa ka nalang ng views 
 			Controller : Admin_time_keeping
-			Functions : 
+			Functions  : 
+					view_employees
 					add_employee (new page)
 					edit_employee (new page)
 					delete_employee 

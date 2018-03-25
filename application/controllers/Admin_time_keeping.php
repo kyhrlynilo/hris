@@ -15,6 +15,16 @@ class Admin_time_keeping extends CI_Controller {
 
 	public function add_employee()
 	{
-		
+
+	}
+
+	public function edit_employee($id = null)
+	{
+
+	}
+
+	public function view_employees()
+	{
+		//employe tables here
 	}
 }
