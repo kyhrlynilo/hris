@@ -10,7 +10,7 @@
 		</nav>
 	</div>
 
-	<div class="col s12 card pad-lg">
+	<div class="col s12 card pad-lg"> 
 		<pre> 
 		INSTRUCTIONS:
 
