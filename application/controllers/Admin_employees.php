@@ -8,10 +8,10 @@ class Admin_employees extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Admin_employees_model","model");
 
-		if( !$this->ion_auth->logged_in() ) 
+		/*if( !$this->ion_auth->logged_in() ) 
 		{
 			redirect('Admin/login', 'refresh');
-		}
+		}*/
 		
 	}
 

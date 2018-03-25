@@ -12,4 +12,9 @@ class Admin_time_keeping extends CI_Controller {
 		$this->load->view('admin/admin_time_keeping',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
+
+	public function add_employee()
+	{
+		
+	}
 }

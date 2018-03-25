@@ -90,8 +90,8 @@ header, main, footer {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s12 " style="border-bottom: 1px solid grey;padding-bottom: 10px;">
-				<a class="white-text " href="<?php echo base_url(); ?>Employee/">
+			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text" href="<?php echo base_url(); ?>Employee/">
 					<i class="material-icons left">group</i> Personal Data
 				</a>
 			</div>			

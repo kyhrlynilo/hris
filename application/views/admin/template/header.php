@@ -89,52 +89,52 @@ header, main, footer {
 				admin@admin.com
 			</div>
 		</div>
-		<div class="row">
-			<div class="col s12 " style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text " href="<?php echo base_url(); ?>Admin/">
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
+				<a class="black-text " href="<?php echo base_url(); ?>Admin/">
 					<i class="material-icons left">group</i> Personal Data
 				</a>
 			</div>			
 		</div>
-		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_employees/">
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
+				<a class="black-text" href="<?php echo base_url(); ?>Admin_employees/">
 					<i class="material-icons left">group</i> Employees
 				</a>
 			</div>			
 		</div>
-		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_payroll/">
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
+				<a class="black-text" href="<?php echo base_url(); ?>Admin_payroll/">
 					<i class="material-icons left">attach_money</i>	Payroll
 				</a>
 			</div>
 		</div>	
-		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12" style="border-bottom: 1px solid blue;padding: 10px;">
 				<a class="white-text" href="<?php echo base_url(); ?>Admin_time_keeping/">
 					<i class="material-icons left">assignment</i> Time Keeping
 				</a>
 			</div>			
 		</div>
 			
-		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_overtime/">
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
+				<a class="black-text" href="<?php echo base_url(); ?>Admin_overtime/">
 					<i class="material-icons left">watch_later</i> Overtime
 				</a>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_leave/">
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
+				<a class="black-text" href="<?php echo base_url(); ?>Admin_leave/">
 					<i class="fa fa-road fa-2x left"></i> Leave
 				</a>
 			</div>			
 		</div>
-		<div class="row">
-			<div class="col s12" style="border-bottom: 1px solid blue;padding-bottom: 10px;">
-				<a class="white-text" href="<?php echo base_url(); ?>Admin_request_approvals/">
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
+				<a class="black-text" href="<?php echo base_url(); ?>Admin_request_approvals/">
 					<i class="material-icons left">attach_file</i> Requests Approvals
 				</a>
 			</div>
