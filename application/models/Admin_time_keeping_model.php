@@ -25,4 +25,9 @@ class Admin_time_keeping_model extends CI_Model{
 			return $employees;
 	}
 
+	public function time_in_out($emp_id, $type)
+	{
+		
+	}
+
 }

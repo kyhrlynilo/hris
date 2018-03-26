@@ -18,7 +18,8 @@ class Admin_time_keeping extends CI_Controller {
 		$this->load->view('admin/template/footer',$data);
 	}
 
-	public function employee_profile($id){
+	public function employee_profile($id)
+	{
 
 		if($id == null OR empty($id))
 			throw new Exception("Parameter Error", 1);
@@ -37,7 +38,7 @@ class Admin_time_keeping extends CI_Controller {
 
 	public function add_employee()
 	{
- 		$data['title'] = "Admin Time Keeping";
+ 		$data['title'] = "Add Employee";
  		$data['uniqid'] = $this->getToken(10);
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_time_keeping_employee_add',$data);
@@ -70,6 +71,16 @@ class Admin_time_keeping extends CI_Controller {
 		$this->load->view('admin/template/footer',$data);
 	}
 
+	function others()
+	{
+		//$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
+		$data['title'] = "Time Records";
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_employees',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
 	public function delete_employee()
 	{
 
@@ -80,7 +91,8 @@ class Admin_time_keeping extends CI_Controller {
 		$this->view_employees();	
 	}
 
-	public function form_validation(){
+	public function form_validation()
+	{
 	
 		$this->form_validation->set_rules('last_name','Last Name','required');
 		$this->form_validation->set_rules('first_name','First Name','required');
@@ -144,7 +156,8 @@ class Admin_time_keeping extends CI_Controller {
 		}
 	}
 
-	function crypto_rand_secure($min, $max){
+	function crypto_rand_secure($min, $max)
+	{
 	    $range = $max - $min;
 	    if ($range < 1) return $min; // not so random...
 	    $log = ceil(log($range, 2));
@@ -158,20 +171,21 @@ class Admin_time_keeping extends CI_Controller {
 	    return $min + $rnd;
 	}
 
-		function getToken($length)
+	function getToken($length)
 	{
-	    $token = "";
-	    $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	    $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-	    $codeAlphabet.= "0123456789";
+		$token = "";
+		$codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		$codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+		$codeAlphabet.= "0123456789";
 	    $max = strlen($codeAlphabet); // edited
 
 	    for ($i=0; $i < $length; $i++) {
-	        $token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
+	    	$token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
 	    }
 
 	    return $token;
 	}
 
+	
 
 }
