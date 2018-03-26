@@ -117,13 +117,13 @@ class Admin_time_keeping extends CI_Controller {
 		
 			if($data['citizenship'] == DUAL)
 			{	
+				$data['citizenship_type'] = "";
 				$data['citizenship'] .= " ". $this->input->post("country"); 
 				unset($data['country']);
 			}
 			
 			if (is_null($data['id']))
 			{  	
-				$data['citizenship_type'] = "";
 				$this->Admin_time_keeping_model->insert_data($data);
 			}
 			else
