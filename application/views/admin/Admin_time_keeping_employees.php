@@ -63,7 +63,8 @@
 
                             <a href="<?php echo base_url(); ?>Admin_time_keeping/edit_employee/<?php echo $row->id; ?>" class="btn green darken-2">Edit</a>
 
-                            <a href="<?php echo base_url(); ?>Admin_time_keeping/delete_employee/<?php echo $row->id; ?>" class="btn orange darken-2 modal-trigger" >Delete</a>
+                            <a onclick="confirm_delete('<?php echo $row->last_name." ".$row->first_name.", " .$row->mid_name?>','<?php echo $row->id; ?>');" class="btn orange darken-2 modal-trigger" >Delete</a>
+                            <a id="main_delete<?php echo $row->id; ?>" style="display: none;" href="<?php echo base_url(); ?>Admin_time_keeping/delete_employee/<?php echo $row->id; ?>" class="btn orange darken-2 modal-trigger" >Delete</a>
                             <!--  <a href="#delete<?php echo $row->id; ?>" class="btn orange darken-2 modal-trigger" >Delete</a> -->
                         </td>
                     </tr>
@@ -91,8 +92,26 @@
         $('#table_employees').DataTable();
         $('select').material_select();
         $('.tap-target').tapTarget('open');
-        $('.modal').modal();
+        $('.modal').modal();        
     });
+
+    function confirm_delete(name,id)
+    {
+        swal({
+            title : "Are you sure?",
+            text  : "You want to delete " +name +"?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((willDelete)=>{
+                if(willDelete) {
+                    window.location.href = '<?php echo base_url(); ?>Admin_time_keeping/delete_employee/' +id;
+                } else {
+                    swal("Deleting cancelled");
+                }
+            }
+        );
+    }
 
 /**
 * delete

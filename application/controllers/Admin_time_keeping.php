@@ -31,7 +31,7 @@ class Admin_time_keeping extends CI_Controller {
 
 	
 		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_time_keeping_view',$data);
+		$this->load->view('admin/admin_time_keeping_employee_view',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
@@ -40,7 +40,7 @@ class Admin_time_keeping extends CI_Controller {
  		$data['title'] = "Admin Time Keeping";
  		$data['uniqid'] = $this->getToken(10);
 		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_time_keeping_add',$data);
+		$this->load->view('admin/admin_time_keeping_employee_add',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
@@ -56,7 +56,7 @@ class Admin_time_keeping extends CI_Controller {
 		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
 
 		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_time_keeping_edit',$data);
+		$this->load->view('admin/admin_time_keeping_employee_edit',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
@@ -73,7 +73,6 @@ class Admin_time_keeping extends CI_Controller {
 	public function delete_employee()
 	{
 
-		$this->load->model('Admin_time_keeping_model');
 
 		$data['active_flag'] = "N";
 		$id = $this->uri->segment(3);;
