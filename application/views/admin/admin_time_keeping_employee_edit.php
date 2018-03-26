@@ -202,7 +202,7 @@
             <button type="submit" id="update" name="update" class="btn waves-effect waves-light green"> 
                 Update
             </button>
-            <a href="<?php echo base_url(); ?>Admin_time_keeping" type="button" class="btn waves-effect waves-light orange">       
+            <a href="<?php echo base_url(); ?>Admin_time_keeping/view_employees" type="button" class="btn waves-effect waves-light orange">       
                 Cancel
             </a>
         </div>

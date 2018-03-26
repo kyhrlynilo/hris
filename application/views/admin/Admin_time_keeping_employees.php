@@ -23,7 +23,7 @@
 
 <div class="row">
     <nav>
-        <div class="nav-wrapper blue">
+        <div class="nav-wrapper blue" style="margin-top: 10px;">
             <ul class="left hide-on-med-and-down">
                 <li><a href="<?php echo base_url(); ?>Admin_time_keeping">Time Keeping</a></li>
                 <li class="active"><a href="<?php echo base_url(); ?>Admin_time_keeping/view_employees">Employees</a></li>
@@ -107,7 +107,7 @@
                 if(willDelete) {
                     window.location.href = '<?php echo base_url(); ?>Admin_time_keeping/delete_employee/' +id;
                 } else {
-                    swal("Deleting cancelled");
+                    swal({title:"Deleting cancelled"});
                 }
             }
         );
