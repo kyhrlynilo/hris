@@ -2,10 +2,16 @@
   $('#admin_time_keeping').addClass('active');
 </script>
 
+<<<<<<< HEAD
 <style type="text/css">
   
 .modal { width: 20% !important ; height: 30% !important ; } 
 </style>
+=======
+	<div class="col s12 card pad-lg"> 
+		<pre> 
+		INSTRUCTIONS:
+>>>>>>> 09d74c799d9a24398223982af6ebb2ff43916696
 
 <!-- Tap Target Structure -->
 <div class="tap-target blue" data-activates="add">
