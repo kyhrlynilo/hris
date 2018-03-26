@@ -8,12 +8,12 @@
 </style>
 
 <!-- Tap Target Structure -->
-<div class="tap-target blue" data-activates="add">
+<!-- <div class="tap-target blue" data-activates="add">
   <div class="tap-target-content white-text">
     <h5>Hello Admin!</h5>
     <p>Click here to add an employee</p>
   </div>
-</div>
+</div> -->
 
 <div class="fixed-action-btn">
   <a id="add" class="btn-floating btn-large waves-effect blue" href="<?php echo base_url(); ?>admin_time_keeping/add_employee">
@@ -53,14 +53,33 @@
               ?>
                 <tr>
                   <td><?php echo $row->last_name." ".$row->first_name.", " .$row->mid_name?></td>
-                  <td><a href="<?php echo base_url(); ?>Admin_time_keeping/employee_profile/<?php echo $row->id; ?>" class="btn blue darken-2">View</a>
-                    <!--  -->
+                  <td>
+                  <a href="<?php echo base_url(); ?>Admin_time_keeping/employee_profile/<?php echo $row->id; ?>" class="btn blue darken-2">View</a>
+          
                   <a href="<?php echo base_url(); ?>Admin_time_keeping/edit_employee/<?php echo $row->id; ?>" class="btn green darken-2">Edit</a>
-                  <!-- <?php echo base_url(); ?>Admin_time_keeping/edit_employee/<?php echo $employee->id; ?> -->
-                  <a href="<?php echo base_url(); ?>Admin_time_keeping/delete_employee/<?php echo $row->id; ?>" class="btn orange darken-2 modal-trigger">Delete</a>
-                  <!--#delete<?php echo $row->id; ?>  -->
+
+                  <a href="<?php echo base_url(); ?>Admin_time_keeping/delete_employee/<?php echo $row->id; ?>" class="btn orange darken-2 modal-trigger" >Delete</a>
+                  <!--  <a href="#delete<?php echo $row->id; ?>" class="btn orange darken-2 modal-trigger" >Delete</a> -->
                 </td>
                 </tr>
+         
+                <!-- Modal Structure -->
+
+              <!--   <div id="delete<?php echo $row->id; ?>" class="modal">
+                  <div class="modal-content">
+                    <h4>Are you sure?</h4>
+                    <p>
+                      Do you want to remove <?php echo "$row->first_name $row->mid_name $row->last_name"; ?>'s records?
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" onclick="delete_emp(id);" id="<?php echo $row->id; ?>" class="btn waves-effect waves-light green"> 
+                      Yes
+                    </button>
+                    <button type="button" href="#!" class="white-text orange modal-action modal-close waves-effect waves-red btn-flat ">No</button>
+                  </div>
+                </div> -->
+
               <?php
             }
           }else{
@@ -76,3 +95,29 @@
 
     </div>
   </div>
+
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#table_employees').DataTable();
+    $('select').material_select();
+    $('.tap-target').tapTarget('open');
+    $('.modal').modal();
+  });
+
+  /**
+  * delete
+  */
+ /* 
+  ayaw mag refresh
+ function delete_emp(id)
+  {
+    button_loader(id,1);
+    $.post("<?php echo base_url() ?>Admin_time_keeping/delete_employee/"+id,
+      function(data){   
+        $('#delete'+id).modal('close');           
+        button_loader(id,0);
+        notify(data, base_url + "admin_time_keeping");
+    });
+  }*/
+</script>

@@ -79,7 +79,7 @@
             <input class="with-gap" name="gender" type="radio" id="cb_male"  value="Male" checked="" />
             <label for="cb_male">Male</label>
 
-            <input name="sex" type="radio" id="cb_female"  value="Female"/>
+            <input name="gender" type="radio" id="cb_female"  value="Female"/>
             <label for="cb_female">Female</label>
           </p>
         </p>
@@ -166,18 +166,18 @@
           <div class="col s3">
             <label for="emp_status">Employment Status</label>
             <select id="emp_status" name="emp_status">
-              <option value="Regular">Regular</option>
-              <option value="Casual">Casual</option>
-              <option value="Parttime">Parttime</option>
-              <option value="Job-order">Job-order</option>
+              <option value="<?php echo ES_R; ?>"><?php echo ES_R; ?></option>
+              <option value="<?php echo ES_C; ?>"><?php echo ES_C; ?></option>
+              <option value="<?php echo ES_PT; ?>"><?php echo ES_PT; ?></option>
+              <option value="<?php echo ES_JO; ?>"><?php echo ES_JO; ?></option>
             </select>
           </div>
             <div class="col s3">
               <label for="emp_type">Employment Type</label>
               <select id="emp_type" name="emp_type">
-              <option value="Admin">Admin</option>
-              <option value="Faculty">Faculty</option>
-              <option value="Student Assistant">Student Assistant</option>
+              <option value="<?php echo ET_A; ?>"><?php echo ET_A; ?></option>
+              <option value="<?php echo ET_F; ?>"><?php echo ET_F; ?></option>
+              <option value="<?php echo ET_SA; ?>"><?php echo ET_SA; ?></option>
             </select>
             </div>
         </div>

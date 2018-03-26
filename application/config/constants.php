@@ -112,6 +112,16 @@ defined('EDUC_LEVEL_3') OR define('EDUC_LEVEL_3',"Vocational/Trade Cours");
 defined('EDUC_LEVEL_4') OR define('EDUC_LEVEL_4',"College");
 defined('EDUC_LEVEL_5') OR define('EDUC_LEVEL_5',"Graduate Studies");
 
+/*EMPLOYMENT STATUS & TYPE*/
+defined('ES_R') OR define('ES_R',"Regular");
+defined('ES_C') OR define('ES_C',"Casual");
+defined('ES_PT') OR define('ES_PT',"Part time");
+defined('ES_JO') OR define('ES_JO',"Job-order");
+
+defined('ET_A') OR define('ET_A',"Admin");
+defined('ET_F') OR define('ET_F',"Faculty");
+defined('ET_SA') OR define('ET_SA',"Student Assistant");
+
 /*<<<<<<< HEAD
 =======
 <<<<<<< HEAD

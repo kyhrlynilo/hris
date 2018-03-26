@@ -79,13 +79,9 @@
          <p>
           <p>
 
-           <!--  <?php 
-              if($details->gender==="Male")
-               
-            ?> -->
             <input class="with-gap" name="gender" type="radio" id="cb_male"  value="Male" <?php echo $details->gender == "Male" ?  "checked" : ""; ?> />
             <label for="cb_male">Male</label>
-            <input name="sex" type="radio" id="cb_female"  value="Female" <?php echo $details->gender == "Female" ?  "checked" : ""; ?>/>
+            <input name="gender" type="radio" id="cb_female"  value="Female" <?php echo $details->gender == "Female" ?  "checked" : ""; ?>/>
             <label for="cb_female">Female</label>
           </p>
         </p>
@@ -178,18 +174,18 @@
           <div class="col s3">
             <label for="emp_status">Employment Status</label>
             <select name="emp_status" >
-              <option value="Regular" <?php echo $details->emp_status == "Regular" ?  "selected" : ""; ?> >Regular</option>
-              <option value="Casual" <?php echo $details->emp_status == "Casual" ?  "selected" : ""; ?> >Casual</option>
-              <option value="Parttime" <?php echo $details->emp_status == "Parttime" ?  "selected" : ""; ?> >Parttime</option>
-              <option value="Job-order" <?php echo $details->emp_status == "Job-order" ?  "selected" : ""; ?> >Job-order</option>
+              <option value="<?php echo ES_R; ?>" <?php echo $details->emp_status == ES_R ?  "selected" : ""; ?> >Regular</option>
+              <option value="<?php echo ES_C; ?>" <?php echo $details->emp_status == ES_C ?  "selected" : ""; ?> >Casual</option>
+              <option value="<?php echo ES_PT; ?>" <?php echo $details->emp_status == ES_PT ?  "selected" : ""; ?> >Parttime</option>
+              <option value="<?php echo ES_JO; ?>" <?php echo $details->emp_status == ES_JO ?  "selected" : ""; ?> >Job-order</option>
             </select>
           </div>
             <div class="col s3">
               <label for="emp_type">Employment Type</label>
               <select name="emp_type" >
-              <option value="Admin" <?php echo $details->emp_type == "Admin" ?  "selected" : ""; ?>>Admin</option>
-              <option value="Faculty" <?php echo $details->emp_type == "Faculty" ?  "selected" : ""; ?>>Faculty</option>
-              <option value="Student Assistant" <?php echo $details->emp_type == "Student Assistant" ?  "selected" : ""; ?>>Student Assistant</option>
+              <option value="<?php echo ET_A; ?>" <?php echo $details->emp_type == ET_A ?  "selected" : ""; ?>>Admin</option>
+              <option value="<?php echo ET_F; ?>" <?php echo $details->emp_type == ET_F ?  "selected" : ""; ?>>Faculty</option>
+              <option value="<?php echo ET_SA; ?>" <?php echo $details->emp_type == ET_SA ?  "selected" : ""; ?>>Student Assistant</option>
             </select>
             </div>
         </div>

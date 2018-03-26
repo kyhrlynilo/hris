@@ -65,11 +65,13 @@ class Admin_time_keeping extends CI_Controller {
 
 	public function delete_employee()
 	{
+
 		$this->load->model('Admin_time_keeping_model');
+
 		$data['active_flag'] = "N";
 		$id = $this->uri->segment(3);;
 		$this->Admin_time_keeping_model->update_data($data,$id);
-		$this->index();		
+		$this->index();	
 	}
 
 	public function form_validation(){
@@ -91,7 +93,7 @@ class Admin_time_keeping extends CI_Controller {
 
 		if($this->form_validation->run()){
 			$this->load->model('Admin_time_keeping_model');
-			$data = $this->input->post();
+			//$data = $this->input->post();
 
 			$data = array(
 				"id"				=>$this->input->post("hidden_id"),
@@ -114,13 +116,14 @@ class Admin_time_keeping extends CI_Controller {
 			);
 		
 			if($data['citizenship'] == DUAL)
-			{
-				$data['citizenship'] = PH .", ". $this->input->post("country"); 
+			{	
+				$data['citizenship'] .= " ". $this->input->post("country"); 
 				unset($data['country']);
 			}
 			
 			if (is_null($data['id']))
-			{  
+			{  	
+				$data['citizenship_type'] = "";
 				$this->Admin_time_keeping_model->insert_data($data);
 			}
 			else
