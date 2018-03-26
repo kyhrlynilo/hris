@@ -3,12 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_time_keeping extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model("Admin_time_keeping_model");
+	}
 	
 	public function index()
-	{
-
-		$this->load->model("Admin_time_keeping_model");
-		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
+	{		
 		$data['title'] = "Time Keeping";
 
 		$this->load->view('admin/template/header',$data);
@@ -24,7 +26,7 @@ class Admin_time_keeping extends CI_Controller {
 		
 		$data['title'] = "View Time Keeping";
 		$user_id = $this->uri->segment(3);
-		$this->load->model("Admin_time_keeping_model");
+		
 		$data['user_data'] = $this->Admin_time_keeping_model->get_single_employee($user_id);
 
 	
@@ -49,7 +51,7 @@ class Admin_time_keeping extends CI_Controller {
 			throw new Exception("Parameter Error", 1);
 		$data['title'] = "Edit Employee";
 		$user_id = $this->uri->segment(3);
-		$this->load->model("Admin_time_keeping_model");
+		
 		$data['user_data'] = $this->Admin_time_keeping_model->get_single_employee($user_id);
 		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
 
@@ -58,9 +60,14 @@ class Admin_time_keeping extends CI_Controller {
 		$this->load->view('admin/template/footer',$data);
 	}
 
-	public function view_employee()
+	public function view_employees()
 	{
-		//employe tables here
+		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
+		$data['title'] = "Employees";
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_employees',$data);
+		$this->load->view('admin/template/footer',$data);
 	}
 
 	public function delete_employee()
@@ -71,7 +78,7 @@ class Admin_time_keeping extends CI_Controller {
 		$data['active_flag'] = "N";
 		$id = $this->uri->segment(3);;
 		$this->Admin_time_keeping_model->update_data($data,$id);
-		$this->index();	
+		$this->view_employees();	
 	}
 
 	public function form_validation(){
@@ -132,9 +139,9 @@ class Admin_time_keeping extends CI_Controller {
 				unset($data['hidden_id']);
 				$this->Admin_time_keeping_model->update_data($data,$id);
 			}
-			$this->index();		
+			$this->view_employees();		
 		}else{
-			$this->index();
+			$this->view_employees();
 		}
 	}
 
