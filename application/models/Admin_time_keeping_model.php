@@ -14,7 +14,6 @@ class Admin_time_keeping_model extends CI_Model{
 	function fetch_data(){
 		$this->db->where("active_flag","Y");
 		$query = $this->db->get("emp_timekeeping_details");
-		//$query = $this->db->get("emp_timekeeping_details");
 		return $query;
 	}
 

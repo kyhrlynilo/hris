@@ -15,12 +15,6 @@
 </div>
 </div> -->
 
-<div class="fixed-action-btn">
-    <a id="add" class="btn-floating btn-large waves-effect blue" href="<?php echo base_url(); ?>admin_time_keeping/add_employee">
-        <i class="material-icons white-text ">add</i>
-    </a>        
-</div>
-
 <div class="row">
     <nav>
         <div class="nav-wrapper blue" style="margin-top: 10px;">

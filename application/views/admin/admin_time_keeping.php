@@ -35,10 +35,46 @@
 
     <div class="col s12 card pad-lg">
 
-        WORK IN PROGRESS
-
+        <table id="table_time_records" class=" table striped highlight" >
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Department</th>
+                    <th>Date and Time</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Employee</th>
+                    <th>Department</th>
+                    <th>Date and Time</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
 </div>
 
 
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#table_time_records').DataTable({'advance_filter':true});
+        $('select').material_select();
+        $('.tap-target').tapTarget('open');
+        $('.modal').modal();        
+    });
+</script>
