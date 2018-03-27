@@ -91,9 +91,84 @@ class Admin_time_keeping extends CI_Controller {
 		$this->view_employees();	
 	}
 
+	public function process_employee()
+	{
+		$title 	= "";
+		$text 	= "";
+		$icon 	= "";
+		$buttons = array( "success" => "Okay" );
+
+		try
+		{
+			$data = $this->get_params();
+			
+			if($data['citizenship'] == DUAL)
+			{
+				$data['citizenship'].= isset($data['country']) ? " " .ucwords($data['country']) : ""; 				
+			}
+
+			unset($data['country']);
+
+			$required_fields = array(
+							'first_name',
+							'last_name',
+							'sex',
+							'civil_status',
+							'birth_date',
+							'citizenship',
+							'email_address'
+							);
+			
+			$this->validate_data($required_fields,$data);	
+
+			if(empty($data['id']))
+			{
+				$data['emp_id'] = $this->generate_employee_id($data);				
+				$this->Admin_time_keeping_model->insert_data($data);
+				$additional_data = array(
+					'first_name' => $data['first_name'],
+					'last_name'	 => $data['last_name'],
+					'emp_id'  	 => $data['emp_id']
+				);
+				$this->ion_auth->register($identity, $data['emp_id'] , $data['email'], $additional_data)
+				$text = "Employee has been added!";
+			}
+			else
+			{				
+				$id = $data['id'];
+				unset($data['id']);
+				$this->Admin_time_keeping_model->update_data($data,$id);
+				$text = "Employee has been updated!";				
+			}
+
+			
+	
+			$icon = "success";		
+			$title = "Sucess";
+		}
+		catch(Exception $e)
+		{
+			$title = "Error";
+			$text = $e->getMessage();
+			$icon = "error";
+			$buttons = array( "error" => "Try Again" );
+		}
+	
+
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons
+		);	
+
+		echo json_encode($result);
+	}
+
 	public function form_validation()
 	{
-	
+		
+						
 		$this->form_validation->set_rules('last_name','Last Name','required');
 		$this->form_validation->set_rules('first_name','First Name','required');
 		$this->form_validation->set_rules('mid_name','Middle Name','required');
@@ -110,12 +185,14 @@ class Admin_time_keeping extends CI_Controller {
 		$this->form_validation->set_rules('emp_status','Employment Status','required');
 
 		if($this->form_validation->run()){
-			$this->load->model('Admin_time_keeping_model');
-			//$data = $this->input->post();
 
+			$this->load->model('Admin_time_keeping_model');
+			$emp_id = substr($this->input->post('last_name',true),0,1)
+						.substr($this->input->post('first_name',true),0,1)
+						;
 			$data = array(
 				"id"				=>$this->input->post("hidden_id"),
-				"emp_id"			=>$this->input->post("emp_id"),
+				"emp_id"			=>$emp_id,
 				"last_name"			=>$this->input->post("last_name"),
 				"first_name"		=>$this->input->post("first_name"),
 				"mid_name"			=>$this->input->post("mid_name"),
@@ -186,6 +263,17 @@ class Admin_time_keeping extends CI_Controller {
 	    return $token;
 	}
 
+	function generate_employee_id($data)
+	{
+		$date 			= date('Y-m-d');
+		$append 		= substr($date,0,4);
+		$append 		= strrev($append);
+		$suffix 		= $this->Admin_time_keeping_model->get_last_id();
+		$suffix 		= str_pad($suffix, 5, "0", STR_PAD_LEFT);
+		$employee_id  	= substr($data['last_name'],0,1).substr($data['first_name'],0,1).$append.$suffix;		
+
+		return $employee_id;
+	}
 	
 
 }

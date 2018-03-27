@@ -103,13 +103,13 @@
             title : "Are you sure?",
             text  : "You want to delete " +name +"?",
             icon: "warning",
-            buttons: true,
+            buttons: ['No','Yes'],
             dangerMode: true
         }).then((willDelete)=>{
                 if(willDelete) {
                     window.location.href = '<?php echo base_url(); ?>Admin_time_keeping/delete_employee/' +id;
                 } else {
-                    swal({title:"Deleting cancelled"});
+                    swal({title:"Cancelled",text:"Deleting of employee cancelled."});
                 }
             }
         );

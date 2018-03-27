@@ -30,4 +30,19 @@ class Admin_time_keeping_model extends CI_Model{
 		
 	}
 
+	public function get_last_id()
+	{
+		$sql = $this->db->select('id')
+			->from('emp_timekeeping_details')
+			->limit(1)
+			->order_by('id','desc')
+			->get()->result();
+
+		$last_id = 0;
+		foreach($sql as $key):
+			$last_id = $key->id;
+		endforeach;
+
+		return $last_id;
+	}
 }
