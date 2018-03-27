@@ -130,7 +130,7 @@ class Admin_time_keeping extends CI_Controller {
 					'last_name'	 => $data['last_name'],
 					'emp_id'  	 => $data['emp_id']
 				);
-				$this->ion_auth->register($identity, $data['emp_id'] , $data['email'], $additional_data)
+				//$this->ion_auth->register($identity, $data['emp_id'] , $data['email'], $additional_data)
 				$text = "Employee has been added!";
 			}
 			else
