@@ -7,6 +7,14 @@
 .modal { width: 20% !important ; height: 30% !important ; } 
 </style>
 
+
+    <div class="fixed-action-btn">
+        <a id="add" class="btn-floating btn-large waves-effect blue" href="<?php echo base_url(); ?>admin_time_keeping/add_employee">
+            <i class="material-icons white-text ">add</i>
+        </a>        
+    </div>
+
+
 <!-- Tap Target Structure -->
 <!-- <div class="tap-target blue" data-activates="add">
 <div class="tap-target-content white-text">
