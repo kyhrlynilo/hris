@@ -47,3 +47,25 @@ function reset_fields(id)
 {
 	$('#'+id)[0].reset();
 }
+
+var IO = new function(){
+    this.setSubmitScript = function( io ){
+        $('#'+io.form_id).on("submit",function(e){
+
+            e.preventDefault();     
+            button_loader(io.button_id,1);
+
+            $.post(
+                io.data_receiver_url,
+                {
+                    data: get_form_data(io.form_id)
+                },
+                function(data){                             
+                    button_loader(io.button_id,0);
+                    notify( data, io.redirect_url );              
+                }
+                );
+
+        });
+    }            
+}

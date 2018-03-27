@@ -227,7 +227,16 @@ foreach($user_data as $row)
             aftershow: function(){} //Function for after opening timepicker
         });
 
-         $('#admin_time_employee_keeping_form').on("submit",function(e){
+        var io = {
+            form_id : "admin_time_employee_keeping_form",
+            button_id : "save",
+            data_receiver_url : base_url + "admin_time_keeping/process_employee/",
+            redirect_url : base_url + "admin_time_keeping/view_employees"
+        }
+        
+        IO.setSubmitScript(io);
+
+        /* $('#admin_time_employee_keeping_form').on("submit",function(e){
         
             e.preventDefault();     
             button_loader("save",1);
@@ -243,7 +252,7 @@ foreach($user_data as $row)
                 }
             );
 
-        });
+        });*/
 
     });
 
