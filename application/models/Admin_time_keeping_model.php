@@ -14,7 +14,6 @@ class Admin_time_keeping_model extends CI_Model{
 	function fetch_data(){
 		$this->db->where("active_flag","Y");
 		$query = $this->db->get("emp_timekeeping_details");
-		//$query = $this->db->get("emp_timekeeping_details");
 		return $query;
 	}
 
@@ -25,5 +24,26 @@ class Admin_time_keeping_model extends CI_Model{
 
 			return $employees;
 	}
+
+<<<<<<< HEAD
+	function is_email_available($email_address)  
+      {  
+           $this->db->where('email_address', $email_address);  
+           $query = $this->db->get("emp_timekeeping_details");  
+           if($query->num_rows() > 0)  
+           {  
+                return true;  
+           }  
+           else  
+           {  
+                return false;  
+           }  
+      }  
+=======
+	public function time_in_out($emp_id, $type)
+	{
+		
+	}
+>>>>>>> 35329521a898da37162e070d342bb586c8019246
 
 }

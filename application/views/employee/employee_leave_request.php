@@ -1,10 +1,3 @@
-<style type="text/css">
-td{
-	border: 1px solid black;
-}
-</style>
-
-
 <div class="row">
 	<div class="card row" style="margin-bottom: 0;">
 		<nav>
@@ -19,155 +12,153 @@ td{
 
 	<div class="col s12 card pad-lg">
 		<div class="container">
-			<div class="row" style="margin-top:20px;">
-				<div class="col s12 center" style="border: 1px solid black;">
-					<h4>REQUEST FOR COMPENSATORY TIME-OFF</h4>
-				</div>
+			<div class="row" style="text-align: center;">
+				<h4>REQUEST FOR COMPENSATORY TIME-OFF</h4>
 			</div>
+<form method="post" id="admin_time_keeping_form" action="<?php echo base_url()?>Admin_time_keeping/form_validation">
 
 			<div class="row">
-				<div class="col s3" style="padding:10px; border: 1px solid black;border-right: none;">
-					1. AGENCY	<br> University of Makati
-				</div>
-				<div class="col s3" style="padding:10px; border: 1px solid black;border-right: none;">
-					1.1 DEPARTMENT/OFFICE	<br> &nbsp;
-				</div>
-				<div class="col s6" style="padding:10px; border: 1px solid black;">
-					2. NAME (Surname, Given Name, M.I.)	<br> &nbsp;
-				</div>
-				<div class="col s3" style="padding:10px; border: 1px solid black; border-top: none;border-right: none;">
-					3. DATE OF FILING	<br> &nbsp;
-				</div>
-				<div class="col s3" style="padding:10px; border: 1px solid black; border-top: none;border-right: none;">
-					4. POSITION	<br> &nbsp;
-				</div>
-				<div class="col s6" style="padding:10px; border: 1px solid black; border-top: none;">
-					4.1 STATUS OF APPOINTMENT	<br> &nbsp;
+				<div class="col s4" >
+					<label for="leave_type">Type</label>
+					<select id="leave_type" name="leave_type">
+						<option value="<?php echo SL; ?>"><?php echo SL; ?></option>
+						<option value="<?php echo VL; ?>"><?php echo VL; ?></option>
+					</select>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col s3">
-					<br>
-					5. NUMBER OF DAYS APPLIED FOR 
-				</div>
-				<div class="col s1">
-					<input type="number" name="">
-				</div>
-				<div class="col s12">
-					INCLUSIVE DATES
-				</div>  
-				<div class="row"></div>		
-				<div class="col s3">
-					<input type="date" name="">
-				</div>
-				<div class="col s3">
-					<input type="date" name="">
-				</div>
-				<div class="col s3">
-					<input type="date" name="">
-				</div>
-				<div class="col s3">
-					<input type="date" name="">
+					<label for="emp_status">Employment Status</label>
+					<select id="emp_status" name="emp_status">
+						<option value="<?php echo ES_R; ?>"><?php echo ES_R; ?></option>
+						<option value="<?php echo ES_C; ?>"><?php echo ES_C; ?></option>
+						<option value="<?php echo ES_PT; ?>"><?php echo ES_PT; ?></option>
+						<option value="<?php echo ES_JO; ?>"><?php echo ES_JO; ?></option>
+					</select>
 				</div>
 			</div>
-			<div class="divider"></div>	
-			<div class="row" style="margin-top: 20px;">
-				<div class="col s6">
-					6. RECOMMENDATION
-				</div>
-				<div class="col s6">
-					7b. CERTIFICATION FOR CTO
-				</div>
-				<div class="col s6">
-					<p>
-						<input class="with-gap" name="group3" type="radio" id="test5" checked />
-						<label for="test5">Approval</label>
-					</p>
-					<p>
-						<input class="with-gap" name="group3" type="radio" id="s6" checked />
-						<label for="s6">Disapproval due to</label>
-					</p>
-
-					<div class="row" style="margin-top: 80px;">
-						<div class="col s10 center">
-							_________________________________________________
-							<br>Department / Office Head
-						</div>
-					</div>  			
-				</div>  		
-				<div class="col s6">
-					<div class="col s12" style="margin-top: 10px;">
-						As of _________________, 20________
-					</div>
-					<div class="col s6" style="margin-top:20px;">
-						Previous Balance 
-					</div>
-					<div class="col s6" style="margin-top:20px;">&nbsp;
-
-					</div>
-
-					<div class="col s6" style="margin-top:20px;">
-						Earned 
-					</div>
-					<div class="col s6" style="margin-top:20px;">&nbsp;
-
-					</div>
-
-					<div class="col s6" style="margin-top:20px;">
-						Less 
-					</div>
-					<div class="col s6" style="margin-top:20px;">&nbsp;
-
-					</div>
-
-					<div class="col s6" style="margin-top:20px;">
-						BALANCE	
-					</div>
-					<div class="col s6">&nbsp;
-
-					</div>
-				</div>
-				<div class="col s6 offset-s6">
-					<div class="col s12">
-						Processed By	
-					</div>
-					<div class="col s12" style="margin-top:20px;">
-						<b>
-							NENITA M RABOT <br>
-							Administrative Officer II
-						</b>
-					</div>
-					<div class="col s12" style="margin-top: 20px;">
-						Attested : 
-					</div>
-					<div class="col s12" style="margin-top: 20px;">
-						<b>Engr. SHEILA I. VILLANUEVA </b> <br>
-						Head-HRMO
-					</div>
-					<div class="col s12">
-						Approved by:
-					</div>
-					<div class="col s12">
-
-						<div class="input-field" style="border: 1px solid black;margin-top: 20px; padding: 10px;">
-							<b>AURORA F. SERRANO</b><br>
-							Vice President for Administration and Finance
-						</div>
-
+			<div class="row">
+				<div class="col s12"  >
+					<div class="input-field ">
+						<input id="cs_id_no" name="cs_id_no" type="text" class="validate" >
+						<label for="cs_id_no">Reason</label>
 					</div>
 				</div>
 			</div>
-
-			<div class="row" style="margin-top: 50px;border: 1px solid black; padding: 10px;">
-				<div class="col s12 center">
-					<button class="btn blue">SUBMIT</button>
-					<button type="clear" class="btn orange">CLEAR</button>
+			<div class="row">
+				<div class="col s4" >
+					<div class="input-field ">
+						<input id="birth_date" name="birth_date" type="text" class="datepicker" >
+						<label for="birth_date">Start Date: <small>(mm/dd/yyyy)</small></label>
+						<span class="text-danger"><?php echo form_error("date_from");?></span>
+					</div>
+				</div>
+				<div class="col s4" >
+					<div class="input-field ">
+						<input id="birth_date" name="birth_date" type="text" class="datepicker" >
+						<label for="birth_date">End Date: <small>(mm/dd/yyyy)</small></label>
+						<span class="text-danger"><?php echo form_error("date_to");?></span>
+					</div>
+				</div>
+				<div class="col s4" >
+					<div class="input-field ">
+						<input id="cs_id_no" name="cs_id_no" type="text" class="validate" >
+						<label for="cs_id_no">Leave Hours (per Day)</label>
+					</div>
 				</div>
 			</div>
+			
 
 
-
+<div class="row" style="margin-top: 50px;border: 1px solid black; padding: 10px;">
+		<div class="col s12 center">
+			<button class="btn blue">SUBMIT</button>
+			<button type="clear" class="btn orange">CLEAR</button>
 		</div>
 	</div>
+
+</form>			
+		</div>
+	</div>
+
 </div>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    populateCountries("country");
+    $('select').material_select();
+
+
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false // Close upon selecting a date,
+      });
+
+    $('.timepicker').pickatime({
+        default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+        fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+        twelvehour: false, // Use AM/PM or 24-hour format
+        donetext: 'OK', // text for done-button
+        cleartext: 'Clear', // text for clear-button
+        canceltext: 'Cancel', // Text for cancel-button
+        autoclose: false, // automatic close timepicker
+        ampmclickable: true, // make AM PM clickable
+        aftershow: function(){} //Function for after opening timepicker
+      });
+
+  });
+
+  function citizenship_checker()
+  {
+    if($('#cb_fil').is(':checked'))
+    { 
+      $('.typetoggle').hide();
+      $("#country").val("");
+      $('#cb_birth').removeAttr("disabled");
+      $('#cb_natural').removeAttr("disabled");
+      $('.select-dropdown').attr("disabled",true);  
+      $('#cb_birth').prop("checked",true);
+    }
+
+    if(!$('#cb_fil').is(':checked'))
+    {  
+      $('.typetoggle').show();
+      $('#cb_birth').attr("disabled",true);
+      $('#cb_natural').attr("disabled",true);
+      $('.select-dropdown').removeAttr("disabled",true);
+      $('#cb_birth').prop("checked",false);
+      $('#cb_natural').prop("checked",false);
+
+    }
+
+    $('select').material_select();
+  }
+
+  $(document).ready(function(){  
+    $('#email_address').change(function(){  
+     var email_address = $('#email_address').val();  
+
+     if(email_address != '')  
+     {
+       $('#email_result').show();
+       $.ajax({  
+         url:"<?php echo base_url(); ?>Admin_time_keeping/check_email_avalibility",  
+         method:"POST",  
+         data:{email_address:email_address},  
+         success:function(data){  
+          $('#email_result').html(data);  
+        }  
+      });  
+     } 
+     else{
+      $('#email_result').hide();
+    } 
+  });  
+  });  
+
+</script>

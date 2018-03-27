@@ -3,12 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_time_keeping extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model("Admin_time_keeping_model");
+	}
 	
 	public function index()
-	{
-
-		$this->load->model("Admin_time_keeping_model");
-		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
+	{		
 		$data['title'] = "Time Keeping";
 
 		$this->load->view('admin/template/header',$data);
@@ -16,29 +18,28 @@ class Admin_time_keeping extends CI_Controller {
 		$this->load->view('admin/template/footer',$data);
 	}
 
-	public function employee_profile($id){
+	public function employee_profile($id)
+	{
 
 		if($id == null OR empty($id))
 			throw new Exception("Parameter Error", 1);
 			
-		
 		$data['title'] = "View Time Keeping";
 		$user_id = $this->uri->segment(3);
-		$this->load->model("Admin_time_keeping_model");
+		
 		$data['user_data'] = $this->Admin_time_keeping_model->get_single_employee($user_id);
 
-	
 		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_time_keeping_view',$data);
+		$this->load->view('admin/admin_time_keeping_employee_view',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
 	public function add_employee()
 	{
- 		$data['title'] = "Admin Time Keeping";
+ 		$data['title'] = "Add Employee";
  		$data['uniqid'] = $this->getToken(10);
 		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_time_keeping_add',$data);
+		$this->load->view('admin/admin_time_keeping_employee_add',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
@@ -49,33 +50,54 @@ class Admin_time_keeping extends CI_Controller {
 			throw new Exception("Parameter Error", 1);
 		$data['title'] = "Edit Employee";
 		$user_id = $this->uri->segment(3);
-		$this->load->model("Admin_time_keeping_model");
+		
 		$data['user_data'] = $this->Admin_time_keeping_model->get_single_employee($user_id);
 		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
 
 		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_time_keeping_edit',$data);
+		$this->load->view('admin/admin_time_keeping_employee_edit',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
-	public function view_employee()
+	public function view_employees()
 	{
-		//employe tables here
+		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
+		$data['title'] = "Employees";
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_employees',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	function others()
+	{
+		//$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
+		$data['title'] = "Time Records";
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_employees',$data);
+		$this->load->view('admin/template/footer',$data);
 	}
 
 	public function delete_employee()
 	{
 
-		$this->load->model('Admin_time_keeping_model');
 
 		$data['active_flag'] = "N";
 		$id = $this->uri->segment(3);;
 		$this->Admin_time_keeping_model->update_data($data,$id);
-		$this->index();	
+<<<<<<< HEAD
+		//$this->index();	
+		redirect('admin_time_keeping','refresh');
+=======
+		$this->view_employees();	
+>>>>>>> 35329521a898da37162e070d342bb586c8019246
 	}
 
-	public function form_validation(){
+	public function form_validation()
+	{
 	
+		$this->load->library('form_validation');
 		$this->form_validation->set_rules('last_name','Last Name','required');
 		$this->form_validation->set_rules('first_name','First Name','required');
 		$this->form_validation->set_rules('mid_name','Middle Name','required');
@@ -93,7 +115,7 @@ class Admin_time_keeping extends CI_Controller {
 
 		if($this->form_validation->run()){
 			$this->load->model('Admin_time_keeping_model');
-			//$data = $this->input->post();
+		
 
 			$data = array(
 				"id"				=>$this->input->post("hidden_id"),
@@ -132,13 +154,57 @@ class Admin_time_keeping extends CI_Controller {
 				unset($data['hidden_id']);
 				$this->Admin_time_keeping_model->update_data($data,$id);
 			}
-			$this->index();		
+<<<<<<< HEAD
+			redirect('admin_time_keeping','refresh');	
+			/*redirect(base_url()."Admin_time_keeping/inserted");*/
 		}else{
-			$this->index();
+				
+			$this->add_employee();
 		}
 	}
 
+	/*function inserted(){
+		$this->add_employee();
+	}*/
+
+	function check_email_avalibility(){  
+           if(!filter_var($_POST["email_address"], FILTER_VALIDATE_EMAIL))  
+           {  	 
+              		 echo '<div class="input-field">';	
+                     echo '<label class="validate">Invalid email</label>';
+                     echo '</div>';       
+           }  
+           else  
+           {  
+                $this->load->model("Admin_time_keeping_model");  
+                if($this->Admin_time_keeping_model->is_email_available($_POST["email_address"]))  
+                {  
+                	 echo '<div class="input-field">';	
+                     echo '<label class="validate">Email already register</label>';
+                     echo '</div>';
+                     echo '<script></script>';     
+                }
+            
+                else  
+                {  	 	
+                	 echo '<div class="input-field">';	
+                     echo '<label class="validate">Email available</label>';  
+                     echo '</div>';  
+                }           
+           }  
+     }    
+
 	function crypto_rand_secure($min, $max){
+=======
+			$this->view_employees();		
+		}else{
+			$this->view_employees();
+		}
+	}
+
+	function crypto_rand_secure($min, $max)
+	{
+>>>>>>> 35329521a898da37162e070d342bb586c8019246
 	    $range = $max - $min;
 	    if ($range < 1) return $min; // not so random...
 	    $log = ceil(log($range, 2));
@@ -152,20 +218,21 @@ class Admin_time_keeping extends CI_Controller {
 	    return $min + $rnd;
 	}
 
-		function getToken($length)
+	function getToken($length)
 	{
-	    $token = "";
-	    $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	    $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-	    $codeAlphabet.= "0123456789";
+		$token = "";
+		$codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		$codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+		$codeAlphabet.= "0123456789";
 	    $max = strlen($codeAlphabet); // edited
 
 	    for ($i=0; $i < $length; $i++) {
-	        $token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
+	    	$token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
 	    }
 
 	    return $token;
 	}
 
+	
 
 }

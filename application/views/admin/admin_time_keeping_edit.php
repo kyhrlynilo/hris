@@ -174,18 +174,18 @@
           <div class="col s3">
             <label for="emp_status">Employment Status</label>
             <select name="emp_status" >
-              <option value="<?php echo ES_R; ?>" <?php echo $details->emp_status == ES_R ?  "selected" : ""; ?> >Regular</option>
-              <option value="<?php echo ES_C; ?>" <?php echo $details->emp_status == ES_C ?  "selected" : ""; ?> >Casual</option>
-              <option value="<?php echo ES_PT; ?>" <?php echo $details->emp_status == ES_PT ?  "selected" : ""; ?> >Parttime</option>
-              <option value="<?php echo ES_JO; ?>" <?php echo $details->emp_status == ES_JO ?  "selected" : ""; ?> >Job-order</option>
+              <option value="<?php echo ES_R; ?>" <?php echo $details->emp_status == ES_R ?  "selected" : ""; ?> ><?php echo ES_R; ?></option>
+              <option value="<?php echo ES_C; ?>" <?php echo $details->emp_status == ES_C ?  "selected" : ""; ?> ><?php echo ES_C; ?></option>
+              <option value="<?php echo ES_PT; ?>" <?php echo $details->emp_status == ES_PT ?  "selected" : ""; ?> ><?php echo ES_PT; ?></option>
+              <option value="<?php echo ES_JO; ?>" <?php echo $details->emp_status == ES_JO ?  "selected" : ""; ?> ><?php echo ES_JO; ?></option>
             </select>
           </div>
             <div class="col s3">
               <label for="emp_type">Employment Type</label>
               <select name="emp_type" >
-              <option value="<?php echo ET_A; ?>" <?php echo $details->emp_type == ET_A ?  "selected" : ""; ?>>Admin</option>
-              <option value="<?php echo ET_F; ?>" <?php echo $details->emp_type == ET_F ?  "selected" : ""; ?>>Faculty</option>
-              <option value="<?php echo ET_SA; ?>" <?php echo $details->emp_type == ET_SA ?  "selected" : ""; ?>>Student Assistant</option>
+              <option value="<?php echo ET_A; ?>" <?php echo $details->emp_type == ET_A ?  "selected" : ""; ?>><?php echo ET_A; ?></option>
+              <option value="<?php echo ET_F; ?>" <?php echo $details->emp_type == ET_F ?  "selected" : ""; ?>><?php echo ET_F; ?></option>
+              <option value="<?php echo ET_SA; ?>" <?php echo $details->emp_type == ET_SA ?  "selected" : ""; ?>><?php echo ET_SA; ?></option>
             </select>
             </div>
         </div>
