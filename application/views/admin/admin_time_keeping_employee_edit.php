@@ -230,7 +230,7 @@ foreach($user_data as $row)
         
         IO.setSubmitScript({
             form_id : "admin_time_employee_keeping_form",
-            button_id : "save",
+            button_id : "update",
             data_receiver_url : base_url + "admin_time_keeping/process_employee/",
             redirect_url : base_url + "admin_time_keeping/view_employees"
             //,post_script : postScript
