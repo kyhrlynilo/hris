@@ -227,14 +227,20 @@ foreach($user_data as $row)
             aftershow: function(){} //Function for after opening timepicker
         });
 
-        var io = {
+        
+        IO.setSubmitScript({
             form_id : "admin_time_employee_keeping_form",
             button_id : "save",
             data_receiver_url : base_url + "admin_time_keeping/process_employee/",
-            redirect_url : base_url + "admin_time_keeping/view_employees"
+            redirect_url : base_url + "admin_time_keeping/view_employees",
+            //post_script : postScript
+            
+        });
+
+        function postScript()
+        {
+            alert('hey!');
         }
-        
-        IO.setSubmitScript(io);
 
         /* $('#admin_time_employee_keeping_form').on("submit",function(e){
         

@@ -62,7 +62,9 @@ var IO = new function(){
                 },
                 function(data){                             
                     button_loader(io.button_id,0);
-                    notify( data, io.redirect_url );              
+                	notify( data, io.redirect_url ); 
+                    if(io.post_script != null && io.post_script instanceof Function ) 
+                    	io.post_script();            
                 }
                 );
 
