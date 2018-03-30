@@ -232,8 +232,8 @@ foreach($user_data as $row)
             form_id : "admin_time_employee_keeping_form",
             button_id : "save",
             data_receiver_url : base_url + "admin_time_keeping/process_employee/",
-            redirect_url : base_url + "admin_time_keeping/view_employees",
-            //post_script : postScript
+            redirect_url : base_url + "admin_time_keeping/view_employees"
+            //,post_script : postScript
             
         });
 
