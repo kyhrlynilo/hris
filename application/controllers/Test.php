@@ -18,14 +18,12 @@ class Test extends CI_Controller {
 
 	public function some_test_process()
 	{
-	
 		$buttons 	= array( "success" => "Okay" );
-
 		try
 		{	
 			$data = $this->get_params();
 	
-			$required_fields = array('some_input' );
+			$required_fields = array('some_input');
 		
 			$this->validate_data($required_fields,$data);
 			//Do any process here.  
