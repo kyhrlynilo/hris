@@ -140,12 +140,29 @@ class CI_Controller {
 			if($key == count($null_values) - 2 )
 				$result.=$value ." and  "; 
 			else
-				$result.= $key < count($null_values) - 1 ? $value .", " : $value; 
+				$result.= $key < count($null_values) - 1 ? "$value, " : "$value"; 
 		}
 
 		if(count($null_values) > 0)
 			throw new Exception(ucfirst($result) ." is required!" , 1);
 		
+	}
+
+	public function handle_catch($e)
+	{
+		$title = "Error";
+		$text = $e->getMessage();
+		$icon = "error";
+		$buttons = array( "error" => "Try Again" );
+
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons
+		);
+
+		echo json_encode($result);
 	}
 
 }
