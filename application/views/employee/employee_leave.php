@@ -1,4 +1,8 @@
-
+<style type="text/css">
+td{
+	border: 1px solid black;
+}
+</style>
 
 <div class="fixed-action-btn">
 	<a id="add" class="btn-floating btn-large waves-effect grey" href="<?php echo base_url(); ?>Employee_leave/request_leave">
@@ -20,65 +24,6 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-		
-		<table id="table_leave" class="table striped highlight">
-			<thead>
-				<tr>
-					<th>Type</th>
-					<th>Reason</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Leave Hours</th>
-					<th>Total</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<th>Type</th>
-					<th>Reason</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Leave Hours</th>
-					<th>Total</th>
-					<th>Status</th>
-				</tr>
-			</tfoot>
-			<tbody>
-				<?php 
-				if($fetch_data->num_rows()>0){
-					foreach ($fetch_data->result() as $row) {
-						?>
-						<tr>
-							<td><?php echo $row->leave_type ?></td>
-							<td><?php echo $row->reason ?></td>
-							<td><?php echo $row->date_from ?></td>
-							<td><?php echo $row->date_to ?></td>
-							<td><?php echo $row->leave_hr_day ?></td>
-							<td><?php echo $row->total_hrs ?></td>
-							<td><?php echo $row->status ?></td>
-						</tr>
-						<?php
-					}
-
-				}else{
-					?>
-					<tr>
-						<td colspan="3">No data found</td>
-					</tr>
-					<?php
-				}
-				?>
-
-			</tbody>
-
-		</table>
-
+		Leave
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#table_leave').dataTable();
-		$('select').material_select();
-	});
-</script>
