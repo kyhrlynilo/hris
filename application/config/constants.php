@@ -122,6 +122,10 @@ defined('ET_A') OR define('ET_A',"Admin");
 defined('ET_F') OR define('ET_F',"Faculty");
 defined('ET_SA') OR define('ET_SA',"Student Assistant");
 
+/*TYPE OF LEAVE*/
+defined('SL') OR define('SL',"Sick Leave");
+defined('VL') OR define('VL',"Vacation Leave");
+
 /*<<<<<<< HEAD
 =======
 <<<<<<< HEAD
