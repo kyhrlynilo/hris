@@ -86,7 +86,12 @@ header, main, footer {
 					var result = JSON.parse(data);					
 					setTimeout(function(){ 
 						if(result.icon == "success")
-							window.location.replace("<?php echo base_url(); ?>Admin");
+						{
+							if(result.text == "Hello Admin!")
+								window.location.replace('<?php echo base_url(); ?>admin_time_keeping');
+							else							
+								window.location.replace('<?php echo base_url(); ?>employee');
+						}
 
 					},300);
 				});

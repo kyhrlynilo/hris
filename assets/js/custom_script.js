@@ -24,9 +24,11 @@ function button_loader(id, num)
 
 function get_form_data(form_id)
 {
-	var data = $("form#" +form_id  +" :input").each(function(){
+	/*var data = $("form#" +form_id  +" :input").each(function(){	
 		var input = $(this); 
-	}).serializeArray();
+	}).serializeArray();*/
+
+	var data = $("form#" +form_id  +" :input").serializeArray();
 
 	return data;
 }

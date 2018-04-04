@@ -76,6 +76,13 @@ header, main, footer {
 	</nav>
 </div>
 
+<style type="text/css">
+	.btn{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+</style>
+
 <div class="container-fluid">
 <div class="row" style="margin-bottom: 0;">
 
@@ -158,6 +165,7 @@ header, main, footer {
                 preloader.fadeOut(preloaderFadeOutTime);
             }
             hidePreloader();
+            $('.tooltipped').tooltip({delay: 50});
 	});
 	
 </script>

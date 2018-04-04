@@ -12,11 +12,20 @@ class Admin_time_keeping extends CI_Controller {
 	public function index()
 	{		
 		$data['title'] = "Time Keeping";
-
+		
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_time_keeping',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
+
+ ####### #     # ######  #       ####### #     # ####### ####### 
+ #       ##   ## #     # #       #     #  #   #  #       #       
+ #       # # # # #     # #       #     #   # #   #       #       
+ #####   #  #  # ######  #       #     #    #    #####   #####   
+ #       #     # #       #       #     #    #    #       #       
+ #       #     # #       #       #     #    #    #       #       
+ ####### #     # #       ####### #######    #    ####### ####### 
+                                                                 
 
 	public function employee_profile($id)
 	{
@@ -39,7 +48,7 @@ class Admin_time_keeping extends CI_Controller {
 	public function add_employee()
 	{
  		$data['title'] = "Add Employee";
- 		$data['uniqid'] = $this->getToken(10);
+ 		
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_time_keeping_employee_add',$data);
 		$this->load->view('admin/template/footer',$data);
@@ -65,16 +74,6 @@ class Admin_time_keeping extends CI_Controller {
 	{
 		$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
 		$data['title'] = "Employees";
-
-		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_time_keeping_employees',$data);
-		$this->load->view('admin/template/footer',$data);
-	}
-
-	function others()
-	{
-		//$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
-		$data['title'] = "Time Records";
 
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_time_keeping_employees',$data);
@@ -112,11 +111,12 @@ class Admin_time_keeping extends CI_Controller {
 			$required_fields = array(
 							'first_name',
 							'last_name',
-							'sex',
+							'gender',
 							'civil_status',
 							'birth_date',
 							'citizenship',
-							'email_address'
+							'email_address',
+							'department'
 							);
 			
 			$this->validate_data($required_fields,$data);	
@@ -124,13 +124,15 @@ class Admin_time_keeping extends CI_Controller {
 			if(empty($data['id']))
 			{
 				$data['emp_id'] = $this->generate_employee_id($data);				
-				$this->Admin_time_keeping_model->insert_data($data);
+				$id = $this->Admin_time_keeping_model->insert_data($data);
 				$additional_data = array(
 					'first_name' => $data['first_name'],
 					'last_name'	 => $data['last_name'],
 					'emp_id'  	 => $data['emp_id']
 				);
-				//$this->ion_auth->register($identity, $data['emp_id'] , $data['email'], $additional_data)
+				//echo "<pre>"; print_r($data); exit();
+				$this->ion_auth->register( $data['email_address'], $data['emp_id'] , $data['email_address'], $additional_data );
+				$this->ion_auth->add_to_group(array(4), $id);
 				$text = "Employee has been added!";
 			}
 			else
@@ -165,104 +167,6 @@ class Admin_time_keeping extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function form_validation()
-	{
-		
-						
-		$this->form_validation->set_rules('last_name','Last Name','required');
-		$this->form_validation->set_rules('first_name','First Name','required');
-		$this->form_validation->set_rules('mid_name','Middle Name','required');
-		$this->form_validation->set_rules('birth_date','Birth Date','required');
-		$this->form_validation->set_rules('birth_place','Birth Place','required');
-		$this->form_validation->set_rules('gender','Gender','required');
-		$this->form_validation->set_rules('civil_status','Civil Status','required');
-		$this->form_validation->set_rules('citizenship','Citizenship','required');
-		$this->form_validation->set_rules('address','Address','required');
-		$this->form_validation->set_rules('email_address','Email Address','required');
-		$this->form_validation->set_rules('cellphone_number','Cellphone Number','required');
-		$this->form_validation->set_rules('department','Department','required');
-		$this->form_validation->set_rules('emp_type','Employment Type','required');
-		$this->form_validation->set_rules('emp_status','Employment Status','required');
-
-		if($this->form_validation->run()){
-
-			$this->load->model('Admin_time_keeping_model');
-			$emp_id = substr($this->input->post('last_name',true),0,1)
-						.substr($this->input->post('first_name',true),0,1)
-						;
-			$data = array(
-				"id"				=>$this->input->post("hidden_id"),
-				"emp_id"			=>$emp_id,
-				"last_name"			=>$this->input->post("last_name"),
-				"first_name"		=>$this->input->post("first_name"),
-				"mid_name"			=>$this->input->post("mid_name"),
-				"birth_date"		=>$this->input->post("birth_date"),
-				"birth_place"		=>$this->input->post("birth_place"),
-				"gender"			=>$this->input->post("gender"),
-				"civil_status"		=>$this->input->post("civil_status"),
-				"citizenship"		=>$this->input->post("citizenship"),
-				"citizenship_type"	=>$this->input->post("citizenship_type"),
-				"address"			=>$this->input->post("address"),
-				"email_address"		=>$this->input->post("email_address"),
-				"cellphone_number"	=>$this->input->post("cellphone_number"),
-				"department"		=>$this->input->post("department"),
-				"emp_type"			=>$this->input->post("emp_type"),
-				"emp_status"		=>$this->input->post("emp_status")
-			);
-		
-			if($data['citizenship'] == DUAL)
-			{	
-				$data['citizenship_type'] = "";
-				$data['citizenship'] .= " ". $this->input->post("country"); 
-				unset($data['country']);
-			}
-			
-			if (is_null($data['id']))
-			{  	
-				$this->Admin_time_keeping_model->insert_data($data);
-			}
-			else
-			{	
-				$id = $data['id'];
-				unset($data['hidden_id']);
-				$this->Admin_time_keeping_model->update_data($data,$id);
-			}
-			$this->view_employees();		
-		}else{
-			$this->view_employees();
-		}
-	}
-
-	function crypto_rand_secure($min, $max)
-	{
-	    $range = $max - $min;
-	    if ($range < 1) return $min; // not so random...
-	    $log = ceil(log($range, 2));
-	    $bytes = (int) ($log / 8) + 1; // length in bytes
-	    $bits = (int) $log + 1; // length in bits
-	    $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
-	    do {
-	        $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
-	        $rnd = $rnd & $filter; // discard irrelevant bits
-	    } while ($rnd > $range);
-	    return $min + $rnd;
-	}
-
-	function getToken($length)
-	{
-		$token = "";
-		$codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		$codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-		$codeAlphabet.= "0123456789";
-	    $max = strlen($codeAlphabet); // edited
-
-	    for ($i=0; $i < $length; $i++) {
-	    	$token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
-	    }
-
-	    return $token;
-	}
-
 	function generate_employee_id($data)
 	{
 		$date 			= date('Y-m-d');
@@ -274,6 +178,276 @@ class Admin_time_keeping extends CI_Controller {
 
 		return $employee_id;
 	}
-	
+  #####   #####  #     # ####### ######  #     # #       ####### 
+ #     # #     # #     # #       #     # #     # #       #       
+ #       #       #     # #       #     # #     # #       #       
+  #####  #       ####### #####   #     # #     # #       #####   
+       # #       #     # #       #     # #     # #       #       
+ #     # #     # #     # #       #     # #     # #       #       
+  #####   #####  #     # ####### ######   #####  ####### ####### 
 
+	public function time_schedule($emp_id = null)
+	{
+		if(!isset($emp_id) OR empty($emp_id))
+			throw new Exception("No employee id", 1);
+
+		$data['title'] = "Official Time Schedule";
+		$data['employee'] = $this->Admin_time_keeping_model->get_single_employee($emp_id);
+		$data['schedule'] = $this->Admin_time_keeping_model->get_schedule($emp_id);
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_time_schedule',$data);
+		$this->load->view('admin/template/footer',$data);
+			
+	}
+
+	public function time_schedule_add($emp_id = null)
+	{
+		if(!isset($emp_id) OR empty($emp_id))
+			throw new Exception("No employee id", 1);
+
+		$data['title'] = "Add Official Time Schedule";
+		$data['employee'] = $this->Admin_time_keeping_model->get_single_employee($emp_id);
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_time_schedule_add',$data);
+		$this->load->view('admin/template/footer',$data);
+			
+	}
+
+	public function time_schedule_edit($emp_id = null, $id = null)
+	{
+		if(!isset($emp_id) OR empty($emp_id) OR !isset($id) OR empty($id))
+			throw new Exception("No employee id", 1);
+
+		$data['title'] = "Official Time Schedule";
+		$data['employee'] = $this->Admin_time_keeping_model->get_single_employee($emp_id);
+		$data['schedule'] = $this->Admin_time_keeping_model->get_single_schedule($id);		
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_time_schedule_edit',$data);
+		$this->load->view('admin/template/footer',$data);
+			
+	}
+	
+	public function process_time_schedule()
+	{
+
+ 		$buttons 	= array( "success" => "Okay" );
+ 		try
+ 		{	
+ 			$data = $this->get_params();
+ 		
+ 			$required_fields = array(
+ 						'type', 						
+ 						'effective_on',
+ 						'effective_until',
+ 						'days',
+ 						'time_start',
+ 						'time_end'
+ 					);
+
+ 			$this->validate_data($required_fields,$data);
+
+ 			$data['days'] 			= implode(",", $data['days']);
+ 			$data['time_start']   	= date("G:i", strtotime($data['time_start']));
+ 			$data['time_end'] 	  	= date("G:i", strtotime($data['time_end']));
+ 			$data['date_created'] 	= date("Y-m-d H:m:s");
+
+ 			$effective_on = $data['effective_on'];
+ 			$effective_until = $data['effective_until'];
+
+ 			$time_start = $data['time_start'];
+ 			$time_end = $data['time_end']; 			
+
+ 			if(date('Y-m-d',strtotime($effective_until)) <= date('Y-m-d',strtotime($effective_on)))
+ 				throw new Exception("Date of effectivity error.", 1);
+ 			
+ 			if(strtotime($time_start) >= strtotime($time_end))
+ 				throw new Exception("Time period error.", 1);
+ 			 			
+			if(empty($data['id']))
+			{
+				$this->Admin_time_keeping_model->insert_time_schedule($data);
+				$text = "Official Time Schedule Added!";
+			}
+			else
+			{
+				$id = $data['id'];
+				unset($data['id']);
+				unset($data['date_created']);	
+				$this->Admin_time_keeping_model->update_time_schedule($id,$data);
+				$text = "Official Time Schedule Updated!";				
+			}
+
+ 			$title 	= "Success!";
+ 			$icon 	= 'success';	
+
+
+			$result = array(
+				"title" => $title , 
+				"text" => $text ,
+				"icon" => $icon ,
+				"buttons" => $buttons
+			);
+
+			echo json_encode($result);
+		}
+		catch(Exception $e)
+		{
+			$this->handle_catch($e);
+		}
+	
+	}
+
+	public function delete_time_schedule($id = "")
+	{
+		$title 	= "";
+		$text 	= "";
+		$icon 	= "";
+		$buttons = array( "success" => "Okay" );
+
+		try
+		{
+			/*if( !$this->ion_auth->logged_in() OR $id == null) 			
+				throw new Exception("Nice try", 1);	*/			
+			
+			$this->Admin_time_keeping_model->delete_time_schedule($id);
+			$title = "Success!";
+			$text = "School load has been deleted.";
+			$icon = "success";
+
+		}
+		catch(Exception $e)
+		{
+			$title = "Error";
+			$text = $e->getMessage();
+			$icon = "error";
+			$buttons = array( "error" => "Try again" );
+		}
+
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons 
+		);	
+
+		echo json_encode($result);
+	}
+
+ ####### ### #     # #######   #    # ####### ####### ######  ### #     #  #####  
+    #     #  ##   ## #         #   #  #       #       #     #  #  ##    # #     # 
+    #     #  # # # # #         #  #   #       #       #     #  #  # #   # #       
+    #     #  #  #  # #####     ###    #####   #####   ######   #  #  #  # #  #### 
+    #     #  #     # #         #  #   #       #       #        #  #   # # #     # 
+    #     #  #     # #         #   #  #       #       #        #  #    ## #     # 
+    #    ### #     # #######   #    # ####### ####### #       ### #     #  #####  
+
+    public function dtr($emp_id = null, $year = null, $month = null, $day_from = null, $day_to = null )
+    {
+    	if(!isset($emp_id) OR empty($emp_id))
+    		throw new Exception("Parameter error!", 1);
+
+    	# SETTINGS PARAMS
+    	$data['emp_id'] 	= $emp_id;
+		$data['selected_year'] 		= ( isset( $year) OR !empty($year) ) ? $year : 2018   ;
+		$data['selected_month'] 	= ( isset( $month) OR !empty($month) ) ? $month : 1   ;
+		$data['selected_day_from'] 	= ( isset( $day_from) OR !empty($day_from) ) ? $day_from : 1   ;
+		$data['selected_day_to'] 	= ( isset( $day_to) OR !empty($day_to) ) ? $day_to : 1   ;	 
+
+		# NEEDED DATAS
+    	$total_days 			= cal_days_in_month(CAL_GREGORIAN, $data['selected_month'], $data['selected_year']);
+    	$data['times']			= $this->Admin_time_keeping_model->get_time_records_by_emp_year_month($emp_id, $data['selected_year'], $data['selected_month']);
+    	$data['honos']  		= $this->Admin_time_keeping_model->get_honorariums($emp_id);
+    	$data['days_from'] 		= array();
+    	$data['days_to'] 		= array();
+    	for( $a = 1; $a <= $total_days; $a++)
+    	{
+    		$data['days_to'][] = $a;
+    		$data['days_from'][] = $a;
+    	}
+
+    	# COMMON DATAS
+    	$data['title']	= "Daily Time Records";
+		$data['months'] = MONTHS;
+		$data['years'] 	= YEARS;		
+		$data['employee'] = $this->Admin_time_keeping_model->get_single_employee($emp_id);
+		
+		if($this->input->post('generate',true))
+		{
+			$year = $this->input->post('year',true);
+			$month = $this->input->post('month',true);
+			$day_from = $this->input->post('day_from',true);
+			$day_to = $this->input->post('day_to',true);
+			$location = base_url() ."admin_time_keeping/dtr/$emp_id/$year/$month/$day_from/$day_to";
+
+			header("Location: $location");
+		}
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_dtr',$data);
+		$this->load->view('admin/template/footer',$data);
+    		
+    }
+
+    public function others()
+	{
+		//$data['fetch_data'] = $this->Admin_time_keeping_model->fetch_data();
+		$data['title'] = "Time Records";
+		$data['employees'] =  $this->Admin_time_keeping_model->fetch_data();
+		$data['times'] = $this->Admin_time_keeping_model->get_time_records();
+
+		if($this->input->post("delete_time",true))
+		{
+
+			$id = $this->input->post("delete_time",true); 
+		
+			$this->Admin_time_keeping_model->delete_time_record($id);
+			header("Refresh: 0");
+		}
+
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/others',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function process_time()
+	{
+		$buttons 	= array( "success" => "Okay" );
+ 		try
+ 		{	
+ 			$data = $this->get_params();
+ 		
+ 			$required_fields = array(
+ 						'emp_id', 						
+ 						'date',
+ 						'time',
+ 						'type'
+ 					);
+
+ 			$this->validate_data($required_fields,$data);
+	
+ 		
+			$this->Admin_time_keeping_model->insert_time($data);
+			$text = "Timed In!";				
+		
+
+ 			$title 	= "Success!";
+ 			$icon 	= 'success';	
+
+
+			$result = array(
+				"title" => $title , 
+				"text" => $text ,
+				"icon" => $icon ,
+				"buttons" => $buttons
+			);
+
+			echo json_encode($result);
+		}
+		catch(Exception $e)
+		{
+			$this->handle_catch($e);
+		}
+	}
+
+	
 }

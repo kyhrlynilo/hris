@@ -1,4 +1,4 @@
- <?php
+<?php
  defined('BASEPATH') OR exit('No direct script access allowed');
 
  class Teves_test extends CI_Controller {
@@ -49,10 +49,20 @@
  		{	
  			$data = $this->get_params();
 
- 			$required_fields = array('some_input' );
+ 			echo "<pre>"; print_r($data); exit();
+ 			
+ 			/*$required_fields = array(
+ 						'type', 						
+ 						'effective_on',
+ 						'effective_until',
+ 						'days',
+ 						'time_start',
+ 						'time_end'
+ 					);
 
- 			$this->validate_data($required_fields,$data);
+ 			$this->validate_data($required_fields,$data);*/
 
+ 			$data['date_created'] = date("Y-m-d H:m:s");
 
 			if(empty($data['id']))
 			{
@@ -63,7 +73,7 @@
 			{
 				$id = $data['id'];
 				unset($data['id']);
-				$this->model->insert_data($id,$data);
+				$this->model->update_data($id,$data);
 				$text = "Successfully Updated!";				
 			}
 
@@ -97,12 +107,12 @@
 
 		try
 		{
-			if( !$this->ion_auth->logged_in() OR $id == null) 			
-				throw new Exception("Nice try", 1);				
+			/*if( !$this->ion_auth->logged_in() OR $id == null) 			
+				throw new Exception("Nice try", 1);	*/			
 			
 			$this->model->delete_data($id);
 			$title = "Success!";
-			$text = "Employee has been deleted.";
+			$text = "School load has been deleted.";
 			$icon = "success";
 
 		}
@@ -111,7 +121,7 @@
 			$title = "Error";
 			$text = $e->getMessage();
 			$icon = "error";
-			$buttons = array( "error" => "Okay" );
+			$buttons = array( "error" => "Try again" );
 		}
 
 		$result = array(

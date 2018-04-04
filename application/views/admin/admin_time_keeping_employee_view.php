@@ -1,3 +1,11 @@
+<?php 
+$details = array();
+foreach($user_data as $row)
+{
+    $details = $row;
+}
+
+?>
 <div class="row">
 
     <div class="card row" style="margin-bottom: 0;">
@@ -6,25 +14,21 @@
                 <div class="col s11">
                     <a href="<?php echo base_url(); ?>admin_time_keeping" class="breadcrumb">Time Keeping</a>
                     <a href="<?php echo base_url(); ?>admin_time_keeping/view_employees" class="breadcrumb">Employees</a>
-                    <a href="#" class="breadcrumb">Employee Profile</a>
+                    <a href="#" class="breadcrumb"><?php echo $details->last_name.", ".$details->first_name ." " .$details->mid_name;; ?></a>
                 </div>    
             </div>
         </nav>
     </div>
 
     <div class="col s12 card pad-lg">
-        <?php 
-        $details = array();
-        foreach($user_data as $row)
-        {
-            $details = $row;
-        }
-
-        ?>
+        <div class="row">
+            <h5>Employee Profile</h5>
+        </div>
+       
         <input type="hidden" id="hidden_id" name="hidden_id" value="<?php echo $details->id; ?>"> 
         <br/>
         <div class="row">
-            <div class="col s2 offset-s7">
+            <div class="col s3">
                 Employee ID:
             </div>
             <div class="col s3">

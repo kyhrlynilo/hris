@@ -96,9 +96,18 @@ class CI_Controller {
 	public function get_params()
 	{
 		$params = $this->input->post("data",true);
+		
 		$data = array();
 		foreach($params as $param):
-			$data[ $param["name"] ] = isset( $param["value"] ) ? $param["value"] : "";
+			if(strpos($param['name'],'[]') !== false)
+			{
+				$input_name = str_replace('[]', '', $param['name']);
+				$data[$input_name][] = isset( $param["value"] ) ? $param["value"] : ""; 
+			}
+			else
+			{				
+				$data[ $param["name"] ] = isset( $param["value"] ) ? $param["value"] : "";
+			}
 		endforeach;
 
 		return $data;
@@ -126,13 +135,19 @@ class CI_Controller {
 	{
 		$result = "";
 		$null_values = array();
-		foreach($params as $key => $value)
+		//echo "<pre>"; print_r($params);print_r($required_fields); exit();
+		/*foreach($params as $key => $value)
 		{
 			if(in_array($key, $required_fields))
 			{	
 				if( empty( preg_replace('/\s+/', '', $value) ) )
 					array_push($null_values,str_replace('_'," ",$key));
 			}
+		}*/
+		foreach($required_fields as $field)
+		{
+			if(!isset($params[$field]) OR empty( preg_replace('/\s+/', '', $params[$field] ) ) )
+				array_push($null_values, str_replace('_'," ",$field));
 		}
 
 		foreach($null_values as $key => $value)

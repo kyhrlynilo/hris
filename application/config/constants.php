@@ -122,6 +122,17 @@ defined('ET_A') OR define('ET_A',"Admin");
 defined('ET_F') OR define('ET_F',"Faculty");
 defined('ET_SA') OR define('ET_SA',"Student Assistant");
 
+/*TYPES OF HONORARY*/
+defined('HONO_GR') OR define('HONO_GR',"Hono-graduate");
+defined('HONO_UG') OR define('HONO_UG',"Hono-undegraduate");
+
+# FOR TIME KEEPING COMPUTATIONS
+defined('MONTHS') OR define('MONTHS', ['','January','February','March','April','May','June','July','August','September','October','Novermber','December']);
+defined('YEARS') OR define('YEARS', [2016,2017,2018,2019,2020]);
+defined('DAYS') OR define('DAYS', ['SUN','MON','TUE','WED','THU','FRI','SAT']);
+defined('IN') OR define('IN',"in");
+defined('OUT') OR define('OUT',"out");
+defined('STANDARD_DATE') OR define('STANDARD_DATE',"Y-m-d");
 /*<<<<<<< HEAD
 =======
 <<<<<<< HEAD

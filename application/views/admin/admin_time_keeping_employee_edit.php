@@ -22,7 +22,7 @@ foreach($user_data as $row)
     <div class="col s12 card pad-lg" style="padding: 20px;">
         <form method="post" id="admin_time_employee_keeping_form" >
             
-            <input type="hidden" id="id" name="id" value="<?php echo $details->id; ?>"> 
+            <input type="hidden" id="id" name="id" value="<?php echo $details->emp_id; ?>"> 
 
             <div class="row">
                 <div class="col s4">

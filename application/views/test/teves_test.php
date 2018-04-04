@@ -13,8 +13,8 @@
 				<div class="input-field">
 					<select name="type">
 						<option value="" disabled selected>Choose your option</option>
-						<option value="Hono-undergrad">HONOUNDERGRAD</option>
-						<option value="Hono-graduate">HONOGRAD</option>
+						<option value="<?php echo HONO_UG; ?>"><?php echo HONO_UG; ?></option>
+						<option value="<?php echo HONO_GR; ?>"><?php echo HONO_GR; ?></option>
 					</select>
 					<label>TYPE</label>
 				</div>
@@ -85,12 +85,6 @@
 		</div>
 		<div class="row">
 			<div class="col s12">
-				<input type="hidden" name="date_created" value="<?php echo date("Y-m-d H:m:s"); ?>">
-				<?php //echo "Date: ".date("Y-m-d H:m:s"); ?>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col s12">
 				<div class="input-field">
 					<input type="submit" class="btn" name="add" id="id_add">
 					<a href="<?php echo base_url(); ?>teves_test/" class="waves-effect waves-light btn">View</a>
@@ -100,6 +94,33 @@
 	</form>
 </div>
 <script type="text/javascript">
+	
+	$(document).ready(function() {
+		$('select').material_select();
+		$('.tooltipped').tooltip({delay: 50});
+
+		$('.timepicker').pickatime({
+		    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+		    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+		    twelvehour: false, // Use AM/PM or 24-hour format
+		    donetext: 'OK', // text for done-button
+		    cleartext: 'Clear', // text for clear-button
+		    canceltext: 'Cancel', // Text for cancel-button
+		    autoclose: false, // automatic close timepicker
+		    ampmclickable: true, // make AM PM clickable
+		    aftershow: function(){} //Function for after opening timepicker
+		});
+
+		$('.datepicker').pickadate({
+		    selectMonths: true, // Creates a dropdown to control month
+		    selectYears: 15, // Creates a dropdown of 15 years to control year,
+		    today: 'Today',
+		    clear: 'Clear',
+		    close: 'Ok',
+		    closeOnSelect: false // Close upon selecting a date,
+		});
+	});
+
 	IO.setSubmitScript({
 		form_id : "form",
 		button_id : "id_add",
@@ -107,34 +128,6 @@
 		redirect_url : base_url + "teves_test"
         //,post_script : postScript
     });	
-</script>
 
-<script type="text/javascript">
-	$('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year,
-    today: 'Today',
-    clear: 'Clear',
-    close: 'Ok',
-    closeOnSelect: false // Close upon selecting a date,
-});
-
-	$(document).ready(function() {
-		$('select').material_select();
-	});
-
-	$('.timepicker').pickatime({
-    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
-    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
-    twelvehour: false, // Use AM/PM or 24-hour format
-    donetext: 'OK', // text for done-button
-    cleartext: 'Clear', // text for clear-button
-    canceltext: 'Cancel', // Text for cancel-button
-    autoclose: false, // automatic close timepicker
-    ampmclickable: true, // make AM PM clickable
-    aftershow: function(){} //Function for after opening timepicker
-});
-	$(document).ready(function(){
-		$('.tooltipped').tooltip({delay: 50});
-	});
+	
 </script>

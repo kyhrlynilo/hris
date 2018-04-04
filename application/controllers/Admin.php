@@ -40,8 +40,13 @@ class Admin extends CI_Controller {
 			if ($this->ion_auth->login($data['email'], $data['password'], FALSE /*$remember*/))
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
+				
+				$id = $this->ion_auth->user()->row()->id;
+				$groups = $this->ion_auth->get_users_groups($id)->result();
+				$group_id = $groups[0]->id;
+			
 				$title = "Authentication successful!";
-				$text = "Hello! Admin";
+				$text = $group_id == 1 ? "Hello Admin!" : "Hello Employee!";
 				$icon = "success";
 				$button = FALSE;
 			}
