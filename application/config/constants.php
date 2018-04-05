@@ -122,8 +122,10 @@ defined('ET_A') OR define('ET_A',"Admin");
 defined('ET_F') OR define('ET_F',"Faculty");
 defined('ET_SA') OR define('ET_SA',"Student Assistant");
 
+defined('DTR') OR define('DTR',"Daily Time Record");
 defined('HONO_GR') OR define('HONO_GR',"Hono-graduate");
 defined('HONO_UG') OR define('HONO_UG',"Hono-undegraduate");
+defined('HONO_SU') OR define('HONO_SU',"Hono-supervisory");
 
 # FOR TIME KEEPING COMPUTATIONS
 defined('MONTHS') OR define('MONTHS', ['','January','February','March','April','May','June','July','August','September','October','Novermber','December']);
@@ -136,6 +138,10 @@ defined('STANDARD_DATE') OR define('STANDARD_DATE',"Y-m-d");
 /*TYPE OF LEAVE*/
 defined('SL') OR define('SL',"Sick Leave");
 defined('VL') OR define('VL',"Vacation Leave");
+
+#common
+defined('FLAG_YES') OR define('FLAG_YES',"Y");
+defined('FLAG_NO') OR define('FLAG_NO',"N");
 
 /*<<<<<<< HEAD
 =======

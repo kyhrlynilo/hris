@@ -12,6 +12,7 @@ class Admin_leave extends CI_Controller {
 	{
 		$data['title'] = "Employees Leave Request";
 		$data['fetch_data'] = $this->Admin_leave_request_employees_model->get_pending_data();
+		
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_leave',$data);
 		$this->load->view('admin/template/footer',$data);

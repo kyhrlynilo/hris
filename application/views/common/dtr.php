@@ -114,15 +114,86 @@ foreach($employee as $emp){ $emp_detail = $emp; }
                             </thead>
                             <tbody>
                                 <?php 
+                               
                                 for($a = $selected_day_from; $a<=$selected_day_to; $a++ ){ 
                                     $date = $selected_year ."-"  
                                                     .str_pad($selected_month, 2, "0", STR_PAD_LEFT) ."-"
                                                     .str_pad($a, 2, "0", STR_PAD_LEFT);
                                    
                                     $day = date('D', strtotime($date));
+
+                                    $ins =get_time_in_per_days($date, $times);
+                                    $outs =get_time_out_per_days($date, $times);
+                                    sort($ins);
+                                    sort($outs);
+
                                 ?>
                                     <tr>
                                         <td><?php echo "$a - " .$day; ?></td>
+                                        <!-- ############## AM TINE IN ############## -->
+                                        <td>
+                                            <?php 
+                                            foreach($ins as $in){
+                                                if(compare_or_equal_time("12:00",$in))
+                                                    echo $in;
+                                            } 
+                                            ?>
+                                        </td>
+
+                                        <!-- ############## AM TIME OUT ############## -->
+                                        <td>
+                                            <?php 
+                                            foreach($outs as $out){
+                                                if(compare_or_equal_time("13:00",$out))
+                                                    echo $out;
+                                            } 
+                                            ?>
+                                        </td>
+
+                                        <!-- ############## PM TIME IN ############## -->
+                                        <td>
+                                            <?php 
+                                            foreach($ins as $in){
+                                                if(compare_or_equal_time($in,"12:00"))
+                                                    echo $in;
+                                            } 
+                                            ?>
+                                        </td>
+                                        
+                                        <!-- ############## PM TIME OUT ############## -->
+                                        <td>
+                                            <?php 
+                                            foreach($outs as $out){
+                                                if(compare_or_equal_time($out,"12:01"))
+                                                    echo $out;
+                                            } 
+                                            ?>
+                                        </td>
+
+                                        <!-- ############## HG ############## -->
+                                        <td>
+                                            <?php 
+                                            echo check_hono_hg($honos, $date, $ins, $outs);
+                                             ?>
+                                        </td>
+
+                                        <!-- ############## HU ############## -->
+                                        <td>
+                                            <?php 
+                                            echo check_hono_hu($honos, $date, $ins, $outs);
+                                             ?>
+                                        </td>
+
+                                        <!-- ############## REMARKS ############## -->
+                                        <td>
+                                            <?php if(count($ins) == 0 AND count($outs) == 0 AND( strtoupper($day)!= "SAT" AND strtoupper($day)!= "SUN" ) )
+                                                    {
+                                                        echo " ABSENT";
+                                                    }
+                                             ?>
+                                            <?php echo isset($ins[0])  ? check_if_late($emp_detail->emp_type, $ins[0]) : ""; ?>
+                                            <?php echo isset($outs[count($outs)-1]) ?  check_if_undertime($emp_detail->emp_type, $outs[count($outs)-1]) : ""; ?>
+                                        </td>
                                     </tr>
 
                                 <?php 
@@ -163,3 +234,127 @@ foreach($employee as $emp){ $emp_detail = $emp; }
         $('select').material_select();
     });
 </script>
+
+
+<?php  
+
+function get_time_in_per_days( $date, $times )
+{
+    $time_per_day = array();
+    foreach($times as $time)
+    {
+        if($date == $time->date AND $time->type == IN)
+            $time_per_day[] = $time->time;
+    }
+
+    return $time_per_day;
+}
+
+function get_time_out_per_days( $date, $times )
+{
+    $time_per_day = array();
+    foreach($times as $time)
+    {
+        if($date == $time->date AND $time->type == OUT)
+            $time_per_day[] = $time->time;
+    }
+
+    return $time_per_day;
+}
+
+function compare_time($greater, $lesser)
+{
+    if(strtotime($greater)>strtotime($lesser))
+        return true;
+    else
+        return false;
+}
+
+function compare_or_equal_time($greater, $lesser)
+{
+    if(strtotime($greater)>=strtotime($lesser))
+        return true;
+    else
+        return false;
+}
+
+
+function check_if_late($type, $time_in)
+{
+  
+    $remarks = "";
+    //if( $type == ES_R )
+        if(compare_time($time_in,"7:00"))
+            $remarks = "LATE";
+
+    return $remarks;
+}
+
+function check_if_undertime($type, $time_out)
+{
+  
+    $remarks = "";
+    //if( $type == ES_R )
+        if(compare_time("17:00", $time_out))
+            $remarks = "UNDERTIME";
+
+    return $remarks;
+}
+
+function check_hono_hg($honos, $date,$ins, $outs)
+{
+    $day            = date('w',strtotime($date));
+    $days           = array();
+    $time_from      = "";
+    $time_to        = "";
+    foreach($honos as $hono)
+    {
+        if($hono->type == HONO_GR)
+        {
+            #
+            $to = date(STANDARD_DATE,strtotime($hono->effective_until));
+            $from = date(STANDARD_DATE,strtotime($hono->effective_on));
+            if( $date >= $from AND $date <= $to )
+            {
+                $days       = explode(",", $hono->days);
+                $time_from  = $hono->time_start;
+                $time_to    = $hono->time_end;
+            }
+        }
+    }
+
+    if( in_array($day, $days) AND count($ins) > 0 and count($outs) > 0 )
+    {
+        echo "Counted";
+    }
+}
+
+function check_hono_hu($honos, $date,$ins, $outs)
+{
+    $day            = date('w',strtotime($date));
+    $days           = array();
+    $time_from      = "";
+    $time_to        = "";
+    foreach($honos as $hono)
+    {
+        if($hono->type == HONO_UG)
+        {
+            #
+            $to = date(STANDARD_DATE,strtotime($hono->effective_until));
+            $from = date(STANDARD_DATE,strtotime($hono->effective_on));
+            if( $date >= $from AND $date <= $to )
+            {
+                $days       = explode(",", $hono->days);
+                $time_from  = $hono->time_start;
+                $time_to    = $hono->time_end;
+            }
+        }
+    }
+
+    if( in_array($day, $days) AND ( count($ins) > 0 and count($outs) > 0 )  )
+    {
+        echo "Counted";
+    }
+}
+
+?>

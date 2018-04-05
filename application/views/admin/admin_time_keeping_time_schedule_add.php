@@ -37,8 +37,10 @@ foreach($employee as $emp)
 					<div class="input-field">
 						<select name="type">
 							<option value="" disabled selected>Choose your option</option>
+							<option value="<?php echo DTR; ?>"><?php echo DTR; ?></option>
 							<option value="<?php echo HONO_UG; ?>"><?php echo HONO_UG; ?></option>
 							<option value="<?php echo HONO_GR; ?>"><?php echo HONO_GR; ?></option>
+							<option value="<?php echo HONO_SU; ?>"><?php echo HONO_SU; ?></option>
 						</select>
 						<label>TYPE</label>
 					</div>

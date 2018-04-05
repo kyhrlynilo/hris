@@ -262,6 +262,12 @@ class Admin_time_keeping extends CI_Controller {
  			
  			if(strtotime($time_start) >= strtotime($time_end))
  				throw new Exception("Time period error.", 1);
+
+ 			# conflict validations
+ 			$ots = $this->Admin_time_keeping_model->get_honorariums($data['emp_id']);
+ 			$this->validate_time_schedule( $ots, [ $data['effective_on'], $data['effective_until'] ], $data['days'], $time_start, $time_end );
+
+ 			# end of conflict validations
  			 			
 			if(empty($data['id']))
 			{
@@ -333,6 +339,19 @@ class Admin_time_keeping extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function validate_time_schedule( $ots, $dates, $days, $time_start, $time_end )
+	{
+		/*$days = explode(",", $days);
+		$this->load->view('common/dtr_computations');
+		$date_from 	= date('Y-m-d', strtotime($dates[0]));
+		$date_to 	= date('Y-m-d', strtotime($dates[1]));
+
+		$sched = get_daily_schedule( $ots,  );
+		
+		exit;*/
+
+	}
+
  ####### ### #     # #######   #    # ####### ####### ######  ### #     #  #####  
     #     #  ##   ## #         #   #  #       #       #     #  #  ##    # #     # 
     #     #  # # # # #         #  #   #       #       #     #  #  # #   # #       
@@ -354,11 +373,11 @@ class Admin_time_keeping extends CI_Controller {
 		$data['selected_day_to'] 	= ( isset( $day_to) OR !empty($day_to) ) ? $day_to : 1   ;	 
 
 		# NEEDED DATAS
-    	$total_days 			= cal_days_in_month(CAL_GREGORIAN, $data['selected_month'], $data['selected_year']);
-    	$data['times']			= $this->Admin_time_keeping_model->get_time_records_by_emp_year_month($emp_id, $data['selected_year'], $data['selected_month']);
-    	$data['honos']  		= $this->Admin_time_keeping_model->get_honorariums($emp_id);
-    	$data['days_from'] 		= array();
-    	$data['days_to'] 		= array();
+    	$total_days 				= cal_days_in_month(CAL_GREGORIAN, $data['selected_month'], $data['selected_year']);
+    	$data['times']				= $this->Admin_time_keeping_model->get_time_records_by_emp_year_month($emp_id, $data['selected_year'], $data['selected_month']);
+    	$data['ots'] 				= $this->Admin_time_keeping_model->get_honorariums($emp_id);
+    	$data['days_from'] 			= array();
+    	$data['days_to'] 			= array();
     	for( $a = 1; $a <= $total_days; $a++)
     	{
     		$data['days_to'][] = $a;
@@ -383,6 +402,7 @@ class Admin_time_keeping extends CI_Controller {
 		}
 
 		$this->load->view('admin/template/header',$data);
+		$this->load->view('common/dtr_computations',$data);
 		$this->load->view('admin/admin_time_keeping_dtr',$data);
 		$this->load->view('admin/template/footer',$data);
     		

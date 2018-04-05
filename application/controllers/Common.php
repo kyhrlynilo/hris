@@ -23,7 +23,8 @@ class Common extends CI_Controller {
 
 		# NEEDED DATAS
     	$total_days 			= cal_days_in_month(CAL_GREGORIAN, $data['selected_month'], $data['selected_year']);
-    	$data['time_records']	= $this->tk_model->get_time_records_by_emp_year_month($emp_id, $data['selected_year'], $data['selected_month']);
+    	$data['times']			= $this->Admin_time_keeping_model->get_time_records_by_emp_year_month($emp_id, $data['selected_year'], $data['selected_month']);
+    	$data['honos']  		= $this->Admin_time_keeping_model->get_honorariums($emp_id);
     	$data['days_from'] 		= array();
     	$data['days_to'] 		= array();
     	for( $a = 1; $a <= $total_days; $a++)
@@ -36,7 +37,7 @@ class Common extends CI_Controller {
     	$data['title']	= "Daily Time Records";
 		$data['months'] = MONTHS;
 		$data['years'] 	= YEARS;		
-		$data['employee'] = $this->tk_model->get_single_employee($emp_id);
+		$data['employee'] = $this->Admin_time_keeping_model->get_single_employee($emp_id);
 		
 		if($this->input->post('generate',true))
 		{
@@ -48,10 +49,10 @@ class Common extends CI_Controller {
 
 			header("Location: $location");
 		}
-		//$this->load->view('admin/template/header',$data);
+
+		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_time_keeping_dtr',$data);
-		//$this->load->view('admin/template/footer',$data);
-    		
+		$this->load->view('admin/template/footer',$data);
     }
 
 

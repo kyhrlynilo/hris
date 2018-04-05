@@ -45,8 +45,10 @@ foreach($schedule as $sched)
 					<div class="input-field">
 						<select name="type">
 							<option value="" disabled>Choose your option</option>
+							<option value="<?php echo DTR;?>" <?php echo $sched_detail->type == DTR ? " selected " : "";  ?> ><?php echo DTR; ?></option>
 							<option value="<?php echo HONO_UG;?>" <?php echo $sched_detail->type == HONO_UG ? " selected " : "";  ?> ><?php echo HONO_UG; ?></option>
 							<option value="<?php echo HONO_GR;?>" <?php echo $sched_detail->type == HONO_GR ? " selected " : "";  ?> ><?php echo HONO_GR; ?></option>
+							<option value="<?php echo HONO_SU;?>" <?php echo $sched_detail->type == HONO_SU ? " selected " : "";  ?> ><?php echo HONO_SU; ?></option>
 						</select>
 						<label>TYPE</label>
 					</div>

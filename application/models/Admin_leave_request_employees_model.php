@@ -13,7 +13,7 @@ class Admin_leave_request_employees_model extends CI_Model {
 			$this->db->where('etkd.email_address = elr.email_address');
 			$this->db->where("status","Pending");
 			$query = $this->db->get();
-
+			
 			return $query;
 		}catch(Exception $e){
 			throw $e;
