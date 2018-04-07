@@ -146,6 +146,13 @@ header, main, footer {
 				</a>
 			</div>
 		</div>
+		<div class="row" style="padding: 0; margin: 0;">
+			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
+				<a class="black-text" href="<?php echo base_url(); ?>Admin_training/">
+					<i class="material-icons left">directions_walk</i> Training
+				</a>
+			</div>
+		</div>
 	</div>
 
 	<div class="col s10">
