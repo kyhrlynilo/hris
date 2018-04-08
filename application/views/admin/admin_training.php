@@ -1,15 +1,6 @@
 <div class="row">
 	<div class="card row" style="margin-bottom: 0;">
 		<nav>
-			<div class="nav-wrapper blue" style="margin-top: 10px;">
-				<ul class="left hide-on-med-and-down">
-					<li class="active"><a href="<?php echo base_url(); ?>Admin_training">Training</a></li>
-					<li><a href="<?php echo base_url(); ?>Admin_time_keeping/view_employees">Employees</a></li>
-					<li><a href="<?php echo base_url(); ?>Admin_time_keeping/others">Others</a></li>
-				</ul>            
-			</div>
-		</nav><br>
-		<nav>
 			<div class="nav-wrapper blue">
 				<div class="col s11">
 					<a href="<?php echo base_url(); ?>Admin_training" class="breadcrumb">Training</a>
@@ -19,6 +10,11 @@
 	</div>
 	<div class="col s12 card pad-lg">
 		<div class="row">
+			<div class="s12">
+				<a href="<?php echo base_url(); ?>Admin_training/training_form" class="waves-effect waves-light btn blue">Add Training</a>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col s12">
 				<table>
 					<thead>
@@ -26,43 +22,75 @@
 							<th>Title</th>
 							<th>Type 1</th>
 							<th>Type 2</th>
-							<th>Location of Seminar</th>
-							<th>Number or Hours</th>
-							<th>Date of Training</th>
+							<th>Sponsor</th>
+							<th>Location</th>
+							<th>Total Hours</th>
+							<th>Date from</th>
+							<th>Date to</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
+						<?php foreach($data_list as $data): ?>
 						<tr>
-							<td>Alvin</td>
-							<td>Eclair</td>
-							<td>$0.87</td>
-							<td>Alvin</td>
-							<td>Eclair</td>
-							<td>$0.87</td>
-							<td>$0.87</td>
+							<td><?php echo $data->title; ?></td>
+							<td><?php echo $data->type_1; ?></td>
+							<td><?php echo $data->type_2; ?></td>
+							<td><?php echo $data->sponsor; ?></td>
+							<td><?php echo $data->location; ?></td>
+							<td><?php echo $data->total_hours; ?></td>
+							<td><?php echo $data->date_from; ?></td>
+							<td><?php echo $data->date_to; ?></td>
+							<td>
+								<a href="<?php echo base_url(); ?>admin_training/training_update_form/<?php echo $data->id; ?>" class=" btn waves-effect waves-light green darken-1" >Update</a>
+								<a href="#delete<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger red" >Delete</a>
+								<a href="#delete<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger blue" >Add Trainies</a>
+							
+							</td>
 						</tr>
-						<tr>
-							<td>Alan</td>
-							<td>Jellybean</td>
-							<td>$3.76</td>
-							<td>Alvin</td>
-							<td>Eclair</td>
-							<td>$0.87</td>
-							<td>$0.87</td>
-						</tr>
-						<tr>
-							<td>Jonathan</td>
-							<td>Lollipop</td>
-							<td>$7.00</td>
-							<td>Alvin</td>
-							<td>Eclair</td>
-							<td>$0.87</td>
-							<td>$0.87</td>
-						</tr>
+						<!-- Modal Structure -->
+						<div id="delete<?php echo $data->id; ?>" class="modal">
+							<div class="modal-content">
+								<h4>Are you sure?</h4>
+								<p>
+									You want to delete <?php echo $data->title ; ?>'s records?
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" onclick="delete_data(id);" id="<?php echo $data->id; ?>" class="btn waves-effect waves-light green">	
+									Yes
+								</button>
+								<button type="button" href="#!" class="white-text orange modal-action modal-close waves-effect waves-red btn-flat ">No</button>
+							</div>
+						</div>
+						<?php endforeach; ?>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('#table_data').DataTable();
+		$('select').material_select();
+		$('.tap-target').tapTarget('open');
+		$('.modal').modal();
+	});
+
+	/**
+	* delete
+	*/
+	function delete_data(id)
+	{
+		button_loader(id,1);
+		$.post("<?php echo base_url() ?>admin_training/delete_data/"+id,
+			function(data){		
+				$('#delete'+id).modal('close');						
+				button_loader(id,0);
+				notify(data, base_url + "admin_training");
+			});
+	}
+</script>

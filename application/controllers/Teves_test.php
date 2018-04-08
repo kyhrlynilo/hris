@@ -48,8 +48,6 @@
  		try
  		{	
  			$data = $this->get_params();
-
- 			echo "<pre>"; print_r($data); exit();
  			
  			/*$required_fields = array(
  						'type', 						
