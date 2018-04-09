@@ -180,12 +180,17 @@ class Admin_time_keeping_model extends CI_Model{
 			throw $e;
 		}
 	}
-
-	public function get_honorariums($emp_id)
+	public function get_honorariums($emp_id, $id = null)
 	{
 		try
 		{
-			$query 	= " SELECT * FROM emp_official_times WHERE emp_id = '$emp_id' ";  
+			  
+			
+			if(isset($id) AND !empty($id))
+				$query 	= " SELECT * FROM emp_official_times WHERE emp_id = '$emp_id' AND id <> $id  ";
+			else
+				$query 	= " SELECT * FROM emp_official_times WHERE emp_id = '$emp_id' ";
+
 			$sql 	= $this->db->query($query)->result();
 
 			return $sql;

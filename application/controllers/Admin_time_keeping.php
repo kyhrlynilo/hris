@@ -264,10 +264,15 @@ class Admin_time_keeping extends CI_Controller {
  				throw new Exception("Time period error.", 1);
 
  			# conflict validations
- 			$ots = $this->Admin_time_keeping_model->get_honorariums($data['emp_id']);
- 			$this->validate_time_schedule( $ots, [ $data['effective_on'], $data['effective_until'] ], $data['days'], $time_start, $time_end );
 
- 			# end of conflict validations
+ 			if(isset($data['id']))
+ 				$ots = $this->Admin_time_keeping_model->get_honorariums($data['emp_id'],$data['id']);
+ 			else
+ 				$ots = $this->Admin_time_keeping_model->get_honorariums($data['emp_id']);
+
+ 			$this->validate_time_schedule( $ots, $data['effective_on'], $data['effective_until'] , $data['days'], $time_start, $time_end );
+
+ 			# end of conflict controller.validateAction( action=any, inclusion=any, exclusion=any )
  			 			
 			if(empty($data['id']))
 			{
@@ -339,18 +344,58 @@ class Admin_time_keeping extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function validate_time_schedule( $ots, $dates, $days, $time_start, $time_end )
+	public function validate_time_schedule( $ots, $date_a, $date_b, $days, $time_start, $time_end )
 	{
-		/*$days = explode(",", $days);
-		$this->load->view('common/dtr_computations');
-		$date_from 	= date('Y-m-d', strtotime($dates[0]));
-		$date_to 	= date('Y-m-d', strtotime($dates[1]));
 
-		$sched = get_daily_schedule( $ots,  );
+		$this->load->view('common/dtr_computations');
+
+		$days = explode(",", $days);		
+		$date_from 	= date('Y-m-d', strtotime($date_a));
+		$date_to 	= date('Y-m-d', strtotime($date_b));
+
+		$time_start_name = $time_start;
+		$time_end_name 	 = $time_end;
+
+		$time_start = strtotime($time_start);
+		$time_end 	= strtotime($time_end);
+
+		$day_start 	= (int) substr($date_from,8,2) ;
+		$day_end 	= (int) substr($date_to,8,2) ;
+		//echo "<pre>";
+		for($a = $day_start; $a <= $day_end; $a++)
+		{	
+			$proper_day = strlen($a) > 1 ? $a : "0$a";  
+			$date = substr($date_from,0,4) ."-" .substr($date_from,5,2) ."-$proper_day"; 
+			$day = date('w',strtotime($date));
+
+			if(in_array($day, $days))
+			{
+				$sched = get_daily_schedule( $ots, $date );
+				if( count($sched) > 0 )	
+				{	
+					foreach($sched as $s)
+					{
+						$day_name = DAYS[$day];
+						$time_from = strtotime($s['from']);
+						$time_to   = strtotime($s['to']);						
+						if($time_start >= $time_from AND $time_start < $time_to )										
+							throw new Exception("Schedule Conflict \n Requested Sched : $day_name ($time_start_name - $time_end_name) \nConflicting Sched : $day_name ($s[from] - $s[to])", 1);
+						
+						if($time_end > $time_from AND $time_end <= $time_to)
+							throw new Exception("Schedule Conflict \n Requested Sched : $day_name ($time_start_name - $time_end_name) \nConflicting Sched : $day_name ($s[from] - $s[to])", 1);
+					}
+				}
+			}				
+			
 		
+		}
+		/*throw new Exception("No error!", 1);
 		exit;*/
+		//exit;
 
 	}
+
+
 
  ####### ### #     # #######   #    # ####### ####### ######  ### #     #  #####  
     #     #  ##   ## #         #   #  #       #       #     #  #  ##    # #     # 
