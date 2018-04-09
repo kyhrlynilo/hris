@@ -135,9 +135,19 @@ defined('IN') OR define('IN',"in");
 defined('OUT') OR define('OUT',"out");
 defined('STANDARD_DATE') OR define('STANDARD_DATE',"Y-m-d");
 
-/*TYPE OF LEAVE*/
+/*TYPEs OF LEAVE*/
+defined('VL') OR define('VL',"Vacation");
+defined('TSE') OR define('TSE',"To seek employment");
+defined('OTH') OR define('OTH',"Others");
+defined('PL') OR define('PL',"Privilege Leave");
 defined('SL') OR define('SL',"Sick Leave");
-defined('VL') OR define('VL',"Vacation Leave");
+defined('MPL') OR define('MPL',"Maternity/Paternity Leave");
+
+/*TYPES OF WHERE LEAVE WILL BE SPENT*/
+defined('LS_WP') OR define('LS_WP',"Within the Philippines");
+defined('LS_AB') OR define('LS_AB',"Abroad");
+defined('LS_IH') OR define('LS_IH',"In Hospital");
+defined('LS_OP') OR define('LS_OP',"Out-patient");
 
 #common
 defined('FLAG_YES') OR define('FLAG_YES',"Y");

@@ -10,6 +10,8 @@
 			<div class="nav-wrapper blue">
 				<div class="col s11">
 					<a href="<?php echo base_url(); ?>Admin_leave" class="breadcrumb">Leave Request</a>
+
+					<a href="<?php echo base_url(); ?>Admin_employee_leave_credit_points" class="breadcrumb">Employee Leave Credit Points</a>
 				</div>		
 			</div>
 		</nav>
@@ -22,11 +24,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Type</th>
-					<!-- <th>Reason</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Leave Hours</th>
-					<th>Total</th> -->
+					<th>Date Filed</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -34,11 +32,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Type</th>
-					<!-- <th>Reason</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Leave Hours</th>
-					<th>Total</th> -->
+					<th>Date Filed</th>
 					<th >Action</th>
 				</tr>
 			</tfoot>
@@ -50,11 +44,7 @@
 						<tr>
 							<td><?php echo $row->last_name ." ". $row->first_name .", ". $row->mid_name ?></td>
 							<td><?php echo $row->leave_type ?></td>
-							<!-- <td><?php echo $row->reason ?></td>
-							<td><?php echo $row->date_from ?></td>
-							<td><?php echo $row->date_to ?></td>
-							<td><?php echo $row->leave_hr_day ?></td>
-							<td><?php echo $row->total_hrs ?></td> -->
+							<td><?php echo $row->date_filed ?></td>
 							<td> 
 								<a href="<?php echo base_url(); ?>Admin_leave/employee_leave_request/<?php echo $row->id; ?>" class="btn green darken-2">View</a>
 							</td>

@@ -24,23 +24,17 @@
 		<table id="table_leave" class="table striped highlight">
 			<thead>
 				<tr>
-					<th>Type</th>
-					<th>Reason</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Leave Hours</th>
-					<th>Total</th>
+					<th>Name</th>
+					<th>Leave Type</th>
+					<th>Date Filed</th>
 					<th>Status</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th>Type</th>
-					<th>Reason</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Leave Hours</th>
-					<th>Total</th>
+					<th>Name</th>
+					<th>Leave Type</th>
+					<th>Date Filed</th>
 					<th>Status</th>
 				</tr>
 			</tfoot>
@@ -50,12 +44,9 @@
 					foreach ($fetch_data->result() as $row) {
 						?>
 						<tr>
+							<td><?php echo $row->full_name ?></td>
 							<td><?php echo $row->leave_type ?></td>
-							<td><?php echo $row->reason ?></td>
-							<td><?php echo $row->date_from ?></td>
-							<td><?php echo $row->date_to ?></td>
-							<td><?php echo $row->leave_hr_day ?></td>
-							<td><?php echo $row->total_hrs ?></td>
+							<td><?php echo $row->date_filed ?></td>
 							<td><?php echo $row->status ?></td>
 						</tr>
 						<?php
