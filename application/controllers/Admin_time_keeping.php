@@ -431,8 +431,8 @@ class Admin_time_keeping extends CI_Controller {
 
     	# COMMON DATAS
     	$data['title']	= "Daily Time Records";
-		$data['months'] = MONTHS;
-		$data['years'] 	= YEARS;		
+		$data['months'] = constant(MONTHS);
+		$data['years'] 	= constant(YEARS);		
 		$data['employee'] = $this->Admin_time_keeping_model->get_single_employee($emp_id);
 		
 		if($this->input->post('generate',true))
