@@ -23,17 +23,18 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Type</th>
+					<th>Leave Type</th>
 					<th>Date Filed</th>
-					<th>Action</th>
+					<th>Status</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<th>Name</th>
-					<th>Type</th>
+					<th>Leave Type</th>
 					<th>Date Filed</th>
-					<th >Action</th>
+					<th>Status</th>
+					<th>Action</th>
 				</tr>
 			</tfoot>
 			<tbody>
@@ -42,9 +43,10 @@
 					foreach ($fetch_data->result() as $row) {
 						?>
 						<tr>
-							<td><?php echo $row->last_name ." ". $row->first_name .", ". $row->mid_name ?></td>
+							<td><?php echo $row->full_name ?></td>
 							<td><?php echo $row->leave_type ?></td>
 							<td><?php echo $row->date_filed ?></td>
+							<td><?php echo $row->status ?></td>
 							<td> 
 								<a href="<?php echo base_url(); ?>Admin_leave/employee_leave_request/<?php echo $row->id; ?>" class="btn green darken-2">View</a>
 							</td>
@@ -60,8 +62,12 @@
 					<?php
 				}
 				?>
+
 			</tbody>
+
 		</table>
+	
+
 	
 	</div>
 </div>
