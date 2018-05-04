@@ -273,13 +273,10 @@ p{
 						<!-- </div> -->
 					</div>
 				</div>
-
 			</div>
-
 			<div class="row">
-				<img src="<?php echo $details->image_file;?>" width="100" height="100" alt="Leave Request Form Image">
+				<img src="<?php echo base_url()."uploads/".$details->image_file;?>" width="100" height="100" target alt="Leave Request Form Image">
 			</div>
-
 			<div class="row">
 				<div class="col s12" style="text-align: center;">
 					<a href="<?php echo base_url(); ?>Admin_leave/approve_leave_request/<?php echo $details->id; ?>" class="btn green darken-2">Approve</a>
@@ -287,8 +284,6 @@ p{
 					<a href="<?php echo base_url(); ?>Admin_leave/disapprove_leave_request/<?php echo $details->id; ?>" class="btn orange darken-2 modal-trigger" >Disapprove</a>
 				</div>
 			</div>
-
-
 	</div>
 </div>
 

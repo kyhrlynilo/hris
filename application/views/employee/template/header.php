@@ -6,7 +6,7 @@
 	<title><?php echo isset($title) ? $title : "Please define Title!"; ?></title>
 
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/materialize.min.css"> 
-	<link rel="stylesheet" href="	<?php echo base_url(); ?>assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/offline.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/datatables.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">	
@@ -129,6 +129,13 @@ header, main, footer {
 			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
 				<a class="white-text" href="<?php echo base_url(); ?>Employee_payroll/">
 					<i class="fa fa-road fa-2x left"></i> Payroll
+				</a>
+			</div>			
+		</div>
+			<div class="row">
+			<div class="col s12" style="border-bottom: 1px solid grey;padding-bottom: 10px;">
+				<a class="white-text" href="<?php echo base_url(); ?>Employee_training/">
+					<i class="material-icons left">directions_walk</i> Trainings
 				</a>
 			</div>			
 		</div>

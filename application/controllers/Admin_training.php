@@ -7,7 +7,6 @@ class Admin_training extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("Admin_training_model","model");
-
 	}
 
 	public function index()
@@ -15,6 +14,7 @@ class Admin_training extends CI_Controller {
 
 		$data['title'] = "Training";
 		$data['data_list'] = $this->model->get_data();
+		$data['employee_list'] = $this->model->get_data_employee();
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_training',$data);
 		$this->load->view('admin/template/footer',$data);
@@ -39,26 +39,32 @@ class Admin_training extends CI_Controller {
 		$data['title'] = "Update Training";
 		$data['data_list'] = $this->model->get_single_data($id);
 		$this->load->view('admin/template/header',$data);
- 		$this->load->view('admin/admin_training_form_update',$data);
- 		$this->load->view('admin/template/footer',$data);
-	}
-
-		public function training_form()
-	{
-
-		$data['title'] = "Add Employee";
-		$this->load->view('admin/template/header',$data);
-		$this->load->view('admin/admin_training_form',$data);
+		$this->load->view('admin/admin_training_form_update',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
 
+	public function training_details($id)
+	{	
+
+		if($id == null OR empty($id))
+			throw new Exception("Parameter Error", 1);
+
+		$data['title'] = "Training Details";
+		$data['data_list'] = $this->model->get_single_data($id);
+		$data['emp_list'] = $this->model->get_single_emp_data($id);
+		$data['form_id'] = $this->uri->segment(3);
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_details',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
 	public function insert()
- 	{
- 		$buttons 	= array( "success" => "Okay" );
- 		try
- 		{	
- 			$data = $this->get_params();
+	{
+		$buttons = array( "success" => "Okay" );
+		try
+		{	
+			$data = $this->get_params();
 
 
 			if(empty($data['id']))
@@ -74,9 +80,9 @@ class Admin_training extends CI_Controller {
 				$text = "Successfully Updated!";				
 			}
 
- 			$title 	= "Some success title.";
- 			$text 	= "Some success message.";
- 			$icon 	= 'success';	
+			$title 	= "Some success title.";
+			$text 	= "Some success message.";
+			$icon 	= 'success';	
 
 
 			$result = array(
@@ -103,8 +109,6 @@ class Admin_training extends CI_Controller {
 
 		try
 		{
-			/*if( !$this->ion_auth->logged_in() OR $id == null) 			
-				throw new Exception("Nice try", 1);	*/			
 			
 			$this->model->delete_data($id);
 			$title = "Success!";
@@ -129,5 +133,229 @@ class Admin_training extends CI_Controller {
 
 		echo json_encode($result);		
 	}
+
+
+	public function remove_trainee($id = "")
+	{
+		$title 	= "";
+		$text 	= "";
+		$icon 	= "";
+		$buttons = array( "success" => "Okay" );
+
+		try
+		{
+			
+			$this->model->delete_trainee($id);
+			$title = "Success!";
+			$text = "School load has been deleted.";
+			$icon = "success";
+
+		}
+		catch(Exception $e)
+		{
+			$title = "Error";
+			$text = $e->getMessage();
+			$icon = "error";
+			$buttons = array( "error" => "Try again" );
+		}
+
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons 
+		);	
+
+		echo json_encode($result);		
+	}
+
+	public function add_employee_training(){
+		$buttons = array( "success" => "Okay" );
+		try
+		{	
+
+			$data = $this->get_params();
+
+			$value =array();
+			for($i=0;$i<count($data['emp_id']);$i++){
+				$value[$i] = array(
+					'training_id' => $data['training_id'],
+					'emp_id' => $data['emp_id'][$i]
+				);
+			}
+
+			if(empty($data['id']))
+			{
+				$this->model->add_employee_training($value);
+				$text = "Successfully Added!";
+			}
+
+			$title 	= "Some success title.";
+			$text 	= "Some success message.";
+			$icon 	= 'success';	
+
+
+			$result = array(
+				"title" => $title , 
+				"text" => $text ,
+				"icon" => $icon ,
+				"buttons" => $buttons
+			);
+
+			echo json_encode($result);
+		}
+		catch(Exception $e)
+		{
+			$this->handle_catch($e);
+		}
+	}
+
+	public function reports(){
+
+		$data['title'] = "Reports";
+		/*$data['data_list'] = $this->model->get_data();
+		$data['employee_list'] = $this->model->get_data_employee();*/
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_reports',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function anouncement(){
+
+		$data['title'] = "Anouncement";
+		$data['data_list'] = $this->model->get_data_anouncement();
+		/*$data['employee_list'] = $this->model->get_data_employee();*/
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_anouncement',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function admin_training_anouncement_form(){
+
+		$data['title'] = "Form";
+		$data['data_list'] = $this->model->get_data();
+		/*$data['employee_list'] = $this->model->get_data_employee();*/
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_anouncement_form',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function training_insert()
+	{
+	
+		$title 	= "";
+		$text 	= "";
+		$icon 	= "";
+		$buttons = array( "success" => "Okay" );
+
+		try
+		{
+			$data = $this->get_params();
+
+			$required_fields = array('training_id','anouncement');
+			
+			$this->validate_data($required_fields,$data);			
+
+
+			/*echo "<pre>";
+			print_r($data);
+			echo "</pre>";
+			exit();*/
+			if(empty($data['id']))
+			{
+				$this->model->insert_training_anouncement($data);
+				$text = "Anouncement has been added!";
+			}
+			else
+			{
+				$id = $data['id'];
+				unset($data['id']);
+				$this->model->update_training_anouncement($id,$data);
+				$text = "Anouncement has been updated!";				
+			}
+	
+			$icon = "success";		
+			$title = "Sucess";
+		}
+		catch(Exception $e)
+		{
+			$title = "Error";
+			$text = $e->getMessage();
+			$icon = "error";
+			$buttons = array( "error" => "Try Again" );
+		}
+	
+
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons
+		);	
+
+		echo json_encode($result);		
+	}
+
+
+	public function training_update_form_anouncement($id)
+	{	
+
+		if($id == null OR empty($id))
+			throw new Exception("Parameter Error", 1);
+
+		$data['title'] = "Update Training";
+		$data['data_list'] = $this->model->get_data();
+		$data['update_data_list'] = $this->model->get_single_data_anouncement($id);
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_anouncement_form_update',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+
+	public function delete_data_announcement($id = "")
+	{
+		$title 	= "";
+		$text 	= "";
+		$icon 	= "";
+		$buttons = array( "success" => "Okay" );
+
+		try
+		{
+			
+			$this->model->delete_training_anouncement($id);
+			$title = "Success!";
+			$text = "Anouncement has been deleted.";
+			$icon = "success";
+
+		}
+		catch(Exception $e)
+		{
+			$title = "Error";
+			$text = $e->getMessage();
+			$icon = "error";
+			$buttons = array( "error" => "Try again" );
+		}
+
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons 
+		);	
+
+		echo json_encode($result);		
+	}
+
+	public function employee_trainings(){
+
+		$data['title'] = "Employee List";
+		//$data['data_list'] = $this->model->get_data_anouncement();
+		/*$data['employee_list'] = $this->model->get_data_employee();*/
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_employee',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+
 
 }

@@ -4,6 +4,9 @@
 			<div class="nav-wrapper blue">
 				<div class="col s11">
 					<a href="<?php echo base_url(); ?>Admin_training" class="breadcrumb">Training</a>
+					<a href="<?php echo base_url(); ?>Admin_training/employee_trainings" class="breadcrumb">Employee</a>
+					<a href="<?php echo base_url(); ?>Admin_training/reports" class="breadcrumb">Reports</a>
+					<a href="<?php echo base_url(); ?>Admin_training/anouncement" class="breadcrumb">Anouncement</a>
 				</div>		
 			</div>
 		</nav>
@@ -27,50 +30,80 @@
 							<th>Total Hours</th>
 							<th>Date from</th>
 							<th>Date to</th>
-							<th>Action</th>
+							<th width="350px">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php foreach($data_list as $data): ?>
-						<tr>
-							<td><?php echo $data->title; ?></td>
-							<td><?php echo $data->type_1; ?></td>
-							<td><?php echo $data->type_2; ?></td>
-							<td><?php echo $data->sponsor; ?></td>
-							<td><?php echo $data->location; ?></td>
-							<td><?php echo $data->total_hours; ?></td>
-							<td><?php echo $data->date_from; ?></td>
-							<td><?php echo $data->date_to; ?></td>
-							<td>
-								<a href="<?php echo base_url(); ?>admin_training/training_update_form/<?php echo $data->id; ?>" class=" btn waves-effect waves-light green darken-1" >Update</a>
-								<a href="#delete<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger red" >Delete</a>
-								<a href="#delete<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger blue" >Add Trainies</a>
+							<tr>
+								<td><?php echo $data->title; ?></td>
+								<td><?php echo $data->type_1; ?></td>
+								<td><?php echo $data->type_2; ?></td>
+								<td><?php echo $data->sponsor; ?></td>
+								<td><?php echo $data->location; ?></td>
+								<td><?php echo $data->total_hours; ?></td>
+								<td><?php echo $data->date_from; ?></td>
+								<td><?php echo $data->date_to; ?></td>
+								<td>
+									<a href="<?php echo base_url(); ?>admin_training/training_details/<?php echo $data->id; ?>" class=" btn waves-effect waves-light yellow darken-1" >View</a>
+									<a href="<?php echo base_url(); ?>admin_training/training_update_form/<?php echo $data->id; ?>" class=" btn waves-effect waves-light green darken-1" >Update</a>
+									<a href="#delete<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger red" >Delete</a>
+									<a href="#add_emp<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger blue" >Add Trainies</a>
+								</td>
+							</tr>
+							<!-- Modal Structure -->
+							<div id="delete<?php echo $data->id; ?>" class="modal">
+								<div class="modal-content">
+									<h4>Are you sure?</h4>
+									<p>
+										You want to delete <?php echo $data->title ; ?>'s records?
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" onclick="delete_data(id);" id="<?php echo $data->id; ?>" class="btn waves-effect waves-light green">	
+										Yes
+									</button>
+									<button type="button" href="#!" class="white-text orange modal-action modal-close waves-effect waves-red btn-flat ">No</button>
+								</div>
+							</div>
+							<!-- End of first modal -->
 							
-							</td>
-						</tr>
-						<!-- Modal Structure -->
-						<div id="delete<?php echo $data->id; ?>" class="modal">
-							<div class="modal-content">
-								<h4>Are you sure?</h4>
-								<p>
-									You want to delete <?php echo $data->title ; ?>'s records?
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" onclick="delete_data(id);" id="<?php echo $data->id; ?>" class="btn waves-effect waves-light green">	
-									Yes
-								</button>
-								<button type="button" href="#!" class="white-text orange modal-action modal-close waves-effect waves-red btn-flat ">No</button>
-							</div>
-						</div>
 						<?php endforeach; ?>
 					</tbody>
 				</table>
+					<!-- start of second modal -->
+							<div id="add_emp<?php echo $data->id; ?>" class="modal modal1 modal-fixed-footer">
+								<div class="modal-content">
+									<h4>Select Employee</h4>
+									<div class="input-field col s12">
+										<form method="POST" id="form">
+											<input type="hidden" name="training_id" value="<?php echo $data->id; ?>">
+											<select name="emp_id[]" multiple>
+												<option value="" disabled selected>Choose your option</option>
+												<?php foreach($employee_list as $data): ?>
+													<!-- <option value="<?php echo $data->cs_id_no; ?>"><?php //echo $data->last_name.",".$data->first_name." ".$data->mid_name; ?></option> -->
+													<option value="<?php echo $data->cs_id_no; ?>"><?php echo $data->fullname; ?></option>
+												<?php endforeach;?>
+											</select>
+											<label>Employee List</label>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<input type="submit" class="btn " name="add" id="id_add">
+									</for>
+									<button type="button" href="#!" class="white-text orange modal-action modal-close waves-effect waves-red btn-flat ">
+										No
+									</button>
+								</div>
+							</div>
+							<!-- end of second modal -->		
 			</div>
 		</div>
 	</div>
 </div>
-
+<style type="text/css">
+.modal1 { width: 50% !important ; height: 100% !important ; } 
+</style>
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -79,6 +112,12 @@
 		$('.tap-target').tapTarget('open');
 		$('.modal').modal();
 	});
+
+	$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal1').modal();
+});
+
 
 	/**
 	* delete
@@ -93,4 +132,17 @@
 				notify(data, base_url + "admin_training");
 			});
 	}
+
+
+	IO.setSubmitScript({
+		form_id : "form",
+		button_id : "id_add",
+		data_receiver_url : base_url + "admin_training/add_employee_training",
+		redirect_url : base_url + "admin_training"
+        //,post_script : postScript
+    });	
+
+</script>
+
+
 </script>

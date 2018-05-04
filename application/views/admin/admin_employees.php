@@ -96,7 +96,7 @@
 	function delete_emp(id)
 	{
 		button_loader(id,1);
-		$.post("<?php echo base_url() ?>admin_employees/delete_employee/"+id,
+		$.post("<?php echo base_url() ?>admin_employees/training_insert/"+id,
 			function(data){		
 				$('#delete'+id).modal('close');						
 				button_loader(id,0);
