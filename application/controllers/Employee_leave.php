@@ -6,13 +6,18 @@ class Employee_leave extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("Employee_leave_request_model");
+		$this->load->model("Employee_leave_points_balance_history_model");
 	}
 
 	public function index()
-	{
+	{	$data['user_email'] = $this->ion_auth->user()->row()->email;
+		//$data['email_address'] = $this->ion_auth->user()->row()->email;
+		$data['fetch_data'] = $this->Employee_leave_request_model->get_single_data($data['user_email']);
+		$user_email = $data['user_email'];
+		$data['user_vlp_data'] = $this->Employee_leave_points_balance_history_model->get_single_employee_vacation_leave_points($user_email);
+		$data['user_slp_data'] = $this->Employee_leave_points_balance_history_model->get_single_employee_sick_leave_points($user_email);
 
-		$data['email_address'] = "marlontaguicana@gmail.com";
-		$data['fetch_data'] = $this->Employee_leave_request_model->get_single_data($data['email_address']);
+
 		$data['title'] = "Employee Leave";
 		$this->load->view('employee/template/header',$data);
 		$this->load->view('employee/employee_leave',$data);
@@ -68,8 +73,8 @@ class Employee_leave extends CI_Controller {
 			if(isset($_POST['place_leave_spent'])){
 				$data['place_leave_spent'] = $this->input->post("place_leave_spent",TRUE);
 			}
-		
-			$data['email_address'] = "marlontaguicana@gmail.com";
+			
+			$data['email_address'] = $this->ion_auth->user()->row()->email;
 			$data['emp_id'] = $this->generate_employee_id($data);
 
 			$this->Employee_leave_request_model->insert_data($data);

@@ -128,9 +128,9 @@ defined('HONO_UG') OR define('HONO_UG',"Hono-undegraduate");
 defined('HONO_SU') OR define('HONO_SU',"Hono-supervisory");
 
 # FOR TIME KEEPING COMPUTATIONS
-defined('MONTHS') OR define('MONTHS', ['','January','February','March','April','May','June','July','August','September','October','Novermber','December']);
-defined('YEARS') OR define('YEARS', [2016,2017,2018,2019,2020]);
-defined('DAYS') OR define('DAYS', ['SUN','MON','TUE','WED','THU','FRI','SAT']);
+defined('MONTHS') OR define('MONTHS', serialize(['','January','February','March','April','May','June','July','August','September','October','Novermber','December']));
+defined('YEARS') OR define('YEARS', serialize([2016,2017,2018,2019,2020]));
+defined('DAYS') OR define('DAYS', serialize(['SUN','MON','TUE','WED','THU','FRI','SAT']));
 defined('IN') OR define('IN',"in");
 defined('OUT') OR define('OUT',"out");
 defined('STANDARD_DATE') OR define('STANDARD_DATE',"Y-m-d");

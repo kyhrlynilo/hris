@@ -29,6 +29,7 @@ class Admin extends CI_Controller {
 		$text = "";
 		$icon = "";
 		$button = "Okay";
+		$user_email="";
 		try
 		{
 			$params = $this->input->post("data",true);
@@ -42,6 +43,7 @@ class Admin extends CI_Controller {
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				
 				$id = $this->ion_auth->user()->row()->id;
+
 				$groups = $this->ion_auth->get_users_groups($id)->result();
 				$group_id = $groups[0]->id;
 			

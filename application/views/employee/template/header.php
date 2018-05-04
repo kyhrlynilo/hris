@@ -86,7 +86,9 @@ header, main, footer {
 			</div>
 			<div class="col s8" style="padding: 20px;margin-top: 50px;">
 				<b>Employee Juandroid</b>
-				juan@employee.com
+			</div>
+			<div class="col s12">
+				<?php echo isset($user_email) ? $user_email	 : "user@gmail.com"; ?>
 			</div>
 		</div>
 		<div class="row">

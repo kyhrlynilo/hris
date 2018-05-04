@@ -134,6 +134,12 @@ class Admin_time_keeping extends CI_Controller {
 				$this->ion_auth->register( $data['email_address'], $data['emp_id'] , $data['email_address'], $additional_data );
 				$this->ion_auth->add_to_group(array(4), $id);
 				$text = "Employee has been added!";
+
+				$email = $data['email_address'];
+				$empid = $data['emp_id'];
+				$emptype = $data['emp_type'];
+				$this->Admin_time_keeping_model->insert_data_emp_leave_balance($email,$empid,$emptype);
+				$this->process_credit_points();
 			}
 			else
 			{				
@@ -514,5 +520,26 @@ class Admin_time_keeping extends CI_Controller {
 		}
 	}
 
-	
+	/*
+		LEAVE CREDIT POINTS
+	*/
+
+	public function process_credit_points(){
+		try{
+
+
+			$data['email_address'] = $this->Admin_time_keeping_model->get_email();
+			$email = $data['email_address'];
+			
+			$emails="";
+			foreach ($email as $row) {   
+				$emails .= $row->email_address.'|';
+			}
+			$this->Admin_time_keeping_model->insert_credit_points_data($emails);
+		}
+		catch(Exception $e)
+		{
+			$this->handle_catch($e);
+		}
+	}
 }
