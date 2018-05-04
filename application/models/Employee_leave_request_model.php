@@ -86,4 +86,6 @@ class Employee_leave_request_model extends CI_Model {
 		return $last_id;
 	}
 
+	
+
 }
