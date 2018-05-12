@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
-		<div class="row">
+	<!-- 	<div class="row">
 			<div class="col s6">
 				<div class="input-field">
 					<select>
@@ -25,7 +25,7 @@
 					<label>Select department</label>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="row">
 			<div class="col s3">
 				<div class="input-field">
@@ -41,6 +41,16 @@
 			</div>
 			<div class="col s2">
 				<button type="submit" class="btn">Submit</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				Number of Employees per Training
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				Number of Trainings per Employee
 			</div>
 		</div>
 	</div>

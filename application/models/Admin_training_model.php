@@ -87,9 +87,7 @@ class Admin_training_model extends CI_Model
 		try
 		{
 			$fields = "";
-			//$data = $this->db->select($fields)->from("training_employees")->where("training_id",$id)->get()->result();
-
-			$data = $this->db->query("SELECT CONCAT(emp_info.last_name,', ',emp_info.first_name,' ',emp_info.mid_name) as fullname, emp_info.cs_id_no, training_employees.id from emp_info JOIN training_employees ON emp_info.cs_id_no=training_employees.emp_id")->result();
+			$data = $this->db->query("SELECT training_employees.id ,CONCAT(emp_info.last_name,', ',emp_info.first_name,' ',emp_info.mid_name) as fullname , training_employees.emp_id from emp_info join training_employees ON emp_info.cs_id_no=training_employees.emp_id where training_employees.training_id='$id'")->result();
 
 			return $data;
 		}
@@ -119,7 +117,7 @@ class Admin_training_model extends CI_Model
 	function add_employee_training($values){
 		try
 		{
-			$this->db->insert_batch("training_employees",$values);
+			$this->db->insert("training_employees",$values);
 		}
 		catch(Exception $e)
 		{
@@ -207,4 +205,41 @@ class Admin_training_model extends CI_Model
 	}
 
 
-}
+		public function get_training_data($id)
+	{
+		try
+		{
+			$fields = "";
+			$data = $this->db->select($fields)->from("trainings")->where("id",$id)->get()->result();
+
+			return $data;
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+
+	public function training_get_employee($id)
+	{
+		try
+		{
+			/*$fields = "";
+			$this->db->select('CONCAT(emp_info.last_name,', ',emp_info.first_name,' ',emp_info.mid_name) as fullname, emp_info.cs_id_no, training_employees.emp_id');
+			$this->db->from('emp_info');
+			$this->db->join('training_employees ON emp_info.cs_id_no=training_employees.emp_id','left');
+			$this->db->where('emp_info.cs_id_no NOT IN (select emp_id from training_employees where training_id=7)')
+			$data = $this->db->get()->result();*/
+
+				$data = $this->db->query("SELECT CONCAT(emp_info.last_name,', ',emp_info.first_name,' ',emp_info.mid_name) as fullname, emp_info.cs_id_no, training_employees.emp_id from emp_info left JOIN training_employees ON emp_info.cs_id_no=training_employees.emp_id where emp_info.cs_id_no NOT IN (select emp_id from training_employees where training_id=$id)")->result();
+
+			return $data;
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+
+	
+} 

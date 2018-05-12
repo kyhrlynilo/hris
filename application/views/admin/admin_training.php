@@ -48,7 +48,8 @@
 									<a href="<?php echo base_url(); ?>admin_training/training_details/<?php echo $data->id; ?>" class=" btn waves-effect waves-light yellow darken-1" >View</a>
 									<a href="<?php echo base_url(); ?>admin_training/training_update_form/<?php echo $data->id; ?>" class=" btn waves-effect waves-light green darken-1" >Update</a>
 									<a href="#delete<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger red" >Delete</a>
-									<a href="#add_emp<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger blue" >Add Trainies</a>
+									<a href="<?php echo base_url(); ?>admin_training/training_adding_trainees/<?php echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger blue" >Add Trainies</a>
+									<!-- <a href="#add_emp<?php //echo $data->id; ?>" class="waves-effect waves-light btn modal-trigger blue" >Add Trainies</a> -->
 								</td>
 							</tr>
 							<!-- Modal Structure -->
@@ -67,36 +68,9 @@
 								</div>
 							</div>
 							<!-- End of first modal -->
-							
 						<?php endforeach; ?>
 					</tbody>
-				</table>
-					<!-- start of second modal -->
-							<div id="add_emp<?php echo $data->id; ?>" class="modal modal1 modal-fixed-footer">
-								<div class="modal-content">
-									<h4>Select Employee</h4>
-									<div class="input-field col s12">
-										<form method="POST" id="form">
-											<input type="hidden" name="training_id" value="<?php echo $data->id; ?>">
-											<select name="emp_id[]" multiple>
-												<option value="" disabled selected>Choose your option</option>
-												<?php foreach($employee_list as $data): ?>
-													<!-- <option value="<?php echo $data->cs_id_no; ?>"><?php //echo $data->last_name.",".$data->first_name." ".$data->mid_name; ?></option> -->
-													<option value="<?php echo $data->cs_id_no; ?>"><?php echo $data->fullname; ?></option>
-												<?php endforeach;?>
-											</select>
-											<label>Employee List</label>
-										</div>
-									</div>
-									<div class="modal-footer">
-										<input type="submit" class="btn " name="add" id="id_add">
-									</for>
-									<button type="button" href="#!" class="white-text orange modal-action modal-close waves-effect waves-red btn-flat ">
-										No
-									</button>
-								</div>
-							</div>
-							<!-- end of second modal -->		
+				</table>	
 			</div>
 		</div>
 	</div>
@@ -117,8 +91,6 @@
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal1').modal();
 });
-
-
 	/**
 	* delete
 	*/
@@ -132,7 +104,6 @@
 				notify(data, base_url + "admin_training");
 			});
 	}
-
 
 	IO.setSubmitScript({
 		form_id : "form",
