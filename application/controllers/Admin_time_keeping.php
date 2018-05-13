@@ -516,7 +516,8 @@ class Admin_time_keeping extends CI_Controller {
 						'emp_id' 	=> $data['emp_id'],
 						'date' 		=> $data['date'],
 						'type' 		=> LATE,
-						'mins' 		=> $is_late[1]
+						'mins' 		=> $is_late[1],
+						'time'		=> $data['time']
 					);
 
 					$this->db->insert('emp_tardiness',$fields);
@@ -533,7 +534,8 @@ class Admin_time_keeping extends CI_Controller {
 						'emp_id' 	=> $data['emp_id'],
 						'date' 		=> $data['date'],
 						'type' 		=> UNDERTIME,
-						'mins' 		=> $is_undertime[1]
+						'mins' 		=> $is_undertime[1],
+						'time'		=> $data['time']
 					);
 
 					$this->db->insert('emp_tardiness',$fields);
@@ -568,7 +570,8 @@ class Admin_time_keeping extends CI_Controller {
 		LEAVE CREDIT POINTS
 	*/
 
-	public function process_credit_points(){
+	public function process_credit_points()
+	{
 		try{
 
 
@@ -585,5 +588,22 @@ class Admin_time_keeping extends CI_Controller {
 		{
 			$this->handle_catch($e);
 		}
+	}
+
+	######  ####### ######  ####### ######  #######  #####  
+	#     # #       #     # #     # #     #    #    #     # 
+	#     # #       #     # #     # #     #    #    #       
+	######  #####   ######  #     # ######     #     #####  
+	#   #   #       #       #     # #   #      #          # 
+	#    #  #       #       #     # #    #     #    #     # 
+	#     # ####### #       ####### #     #    #     #####  
+                                                         
+	public function reports()
+	{
+		$data['title'] = "Time Keeping";
+		
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_time_keeping_reports',$data);
+		$this->load->view('admin/template/footer',$data);
 	}
 }
