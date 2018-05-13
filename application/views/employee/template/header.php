@@ -1,4 +1,5 @@
 <?php $modules = $this->db->select()->from("sys_modules")->get()->result(); ?>
+<?php $user_info = $this->session->get_userdata('user_info');  # print_r($this->session->get_userdata()); exit(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -43,8 +44,8 @@ header, main, footer {
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
 	<li>
-		<a href="#!">
-		Options
+		<a href="<?php echo base_url(); ?>Profile">
+		Profile
 		</a>
 	</li>
 	<li class="divider"></li>
@@ -85,10 +86,8 @@ header, main, footer {
 				<img src="<?php echo base_url(); ?>assets\images\user.png" alt="" class="circle">
 			</div>
 			<div class="col s8" style="padding: 20px;margin-top: 50px;">
-				<b>Employee Juandroid</b>
-			</div>
-			<div class="col s12">
-				<?php echo isset($user_email) ? $user_email	 : "user@gmail.com"; ?>
+				<b><?= $user_info['user_info']['first_name'] .$user_info['user_info']['mid_name'] .$user_info['user_info']['last_name']; ?></b>
+				<?= $user_info['user_info']['email_address']; ?>
 			</div>
 		</div>
 		<div class="row">

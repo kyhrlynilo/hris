@@ -51,6 +51,13 @@ class Admin extends CI_Controller {
 				$text = $group_id == 1 ? "Hello Admin!" : "Hello Employee!";
 				$icon = "success";
 				$button = FALSE;
+				$data 	= (array) $this->User_model->get_user_data($this->session->userdata('email'));
+				$group 	= $this->ion_auth->get_users_groups($this->session->userdata('user_id'))->result();
+				foreach($group as $grp)
+				{		
+					$data['group_id'] = $grp->id;
+				}
+				$_SESSION['user_info'] = $data;
 			}
 			else
 			{

@@ -437,8 +437,8 @@ class Admin_time_keeping extends CI_Controller {
 
     	# COMMON DATAS
     	$data['title']	= "Daily Time Records";
-		$data['months'] = constant(MONTHS);
-		$data['years'] 	= constant(YEARS);		
+		$data['months'] = MONTHS;
+		$data['years'] 	= YEARS;		
 		$data['employee'] = $this->Admin_time_keeping_model->get_single_employee($emp_id);
 		
 		if($this->input->post('generate',true))
@@ -475,6 +475,7 @@ class Admin_time_keeping extends CI_Controller {
 			header("Refresh: 0");
 		}
 
+
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/others',$data);
 		$this->load->view('admin/template/footer',$data);
@@ -482,11 +483,12 @@ class Admin_time_keeping extends CI_Controller {
 
 	public function process_time()
 	{
+
 		$buttons 	= array( "success" => "Okay" );
  		try
  		{	
  			$data = $this->get_params();
- 		
+ 			
  			$required_fields = array(
  						'emp_id', 						
  						'date',
@@ -498,6 +500,48 @@ class Admin_time_keeping extends CI_Controller {
 	
  		
 			$this->Admin_time_keeping_model->insert_time($data);
+			
+			# LATE, UNDERTIME AND ABSENCES DETECTION
+
+			$this->load->view('common/dtr_computations',$data);
+			$ots = $this->Admin_time_keeping_model->get_honorariums($data['emp_id']);
+			if( $data['type'] == IN )
+			{
+				$is_late = array();
+				$is_late = is_late( $ots, $data['date'], $data['time'] );
+
+				if(isset($is_late[0]) AND $is_late[0] == FLAG_YES )
+				{
+					$fields = array(
+						'emp_id' 	=> $data['emp_id'],
+						'date' 		=> $data['date'],
+						'type' 		=> LATE,
+						'mins' 		=> $is_late[1]
+					);
+
+					$this->db->insert('emp_tardiness',$fields);
+				}
+			}
+
+			if( $data['type'] == OUT )
+			{
+				$is_undertime = array();
+				$is_undertime = is_undertime( $ots, $data['date'], $data['time'] );
+				if( isset($is_undertime[0]) AND $is_undertime[0] == FLAG_YES )
+				{
+					$fields = array(
+						'emp_id' 	=> $data['emp_id'],
+						'date' 		=> $data['date'],
+						'type' 		=> UNDERTIME,
+						'mins' 		=> $is_undertime[1]
+					);
+
+					$this->db->insert('emp_tardiness',$fields);
+				}
+			}
+
+			# LATE, UNDERTIME AND ABSENCES DETECTION
+			
 			$text = "Timed In!";				
 		
 
