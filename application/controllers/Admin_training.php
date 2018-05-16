@@ -234,14 +234,29 @@ class Admin_training extends CI_Controller {
 	}
 
 
-
 	public function reports(){
 
 		$data['title'] = "Reports";
-		/*$data['data_list'] = $this->model->get_data();
-		$data['employee_list'] = $this->model->get_data_employee();*/
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_training_reports',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function reports_employee_training(){
+
+		$data['title'] = "Reports";
+		$data['data_list'] = $this->model->reports_no_of_emp_trainings();
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_reports_employee_training',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function reports_training_employee(){
+
+		$data['title'] = "Reports";
+		$data['data_list'] = $this->model->reports_no_of_training_emp();
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_reports_training_employee',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
@@ -403,9 +418,7 @@ class Admin_training extends CI_Controller {
 
 	
 			/*$required_fields = array('training_id','emp_id');
-			
-			$this->validate_data($required_fields,$data);			
-*/
+			$this->validate_data($required_fields,$data); */
 			if(empty($data['id']))
 			{
 				$this->model->add_employee_training($data);

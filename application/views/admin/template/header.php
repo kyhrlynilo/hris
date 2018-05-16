@@ -6,7 +6,7 @@
 	<title><?php echo isset($title) ? $title : "Please define Title!"; ?></title>
 
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/materialize.min.css"> 
-	<link rel="stylesheet" href="	<?php echo base_url(); ?>assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/offline.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/datatables.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">	
