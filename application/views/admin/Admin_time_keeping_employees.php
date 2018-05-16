@@ -29,6 +29,7 @@
             <ul class="left hide-on-med-and-down">
                 <li><a href="<?php echo base_url(); ?>Admin_time_keeping">Time Keeping</a></li>
                 <li class="active"><a href="<?php echo base_url(); ?>Admin_time_keeping/view_employees">Employees</a></li>
+                <li><a href="<?php echo base_url(); ?>Admin_time_keeping/reports">Reports</a></li>
                 <li><a href="<?php echo base_url(); ?>Admin_time_keeping/others">Others</a></li>
             </ul>            
         </div>
