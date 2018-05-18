@@ -13,51 +13,19 @@
 	</div>
 
 	<div class="col s12 card pad-lg">
+	
 		<div class="row">
-			<div class="col s6">
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected>Choose your option</option>
-						<option value="Department 1">Department 1</option>
-						<option value="Department 2">Department 2</option>
-						<option value="Department 3">Department 3</option>
-					</select>
-					<label>Select department</label>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col s3">
-				<div class="input-field">
-					<input type="text" id="date_from" name="date_from" class="datepicker">
-					<label for="date_from">Date from</label>
-				</div>
-			</div>
-			<div class="col s3">
-				<div class="input-field">
-					<input type="text" id="date_to" name="date_to" class="datepicker">
-					<label for="date_to">Date from</label>
-				</div>
-			</div>
-			<div class="col s2">
-				<button type="submit" class="btn">Submit</button>
+			<div class="col s12">
+				<a href="<?php echo base_url(); ?>Admin_training/reports_employee_training" class="waves-effect waves-light btn blue darken-2">Number of Employees per Training</a>
+	
+				<a href="<?php echo base_url(); ?>Admin_training/reports_training_employee" class="waves-effect waves-light btn blue darken-2">Number of Trainings per Employee</a>
 			</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('select').material_select();
-	});
+	
 
-	$('.datepicker').pickadate({
-		    selectMonths: true, // Creates a dropdown to control month
-		    selectYears: 15, // Creates a dropdown of 15 years to control year,
-		    today: 'Today',
-		    clear: 'Clear',
-		    close: 'Ok',
-		    closeOnSelect: false // Close upon selecting a date,
-		});
 
 
 </script>

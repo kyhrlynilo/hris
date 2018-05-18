@@ -5,7 +5,7 @@
 			<div class="nav-wrapper blue">
 				<div class="col s11">
 					<a href="<?php echo base_url(); ?>Admin_training" class="breadcrumb">Training</a>
-					<a href="<?php echo base_url(); ?>Admin_training" class="breadcrumb">Employee</a>
+					<a href="<?php echo base_url(); ?>Admin_training/employee_trainings" class="breadcrumb">Employee</a>
 					<a href="<?php echo base_url(); ?>Admin_training/reports" class="breadcrumb">Reports</a>
 					<a href="<?php echo base_url(); ?>Admin_training/anouncement" class="breadcrumb">Anouncement</a>
 				</div>		

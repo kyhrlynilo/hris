@@ -87,9 +87,7 @@ class Admin_training_model extends CI_Model
 		try
 		{
 			$fields = "";
-			//$data = $this->db->select($fields)->from("training_employees")->where("training_id",$id)->get()->result();
-
-			$data = $this->db->query("SELECT CONCAT(emp_info.last_name,', ',emp_info.first_name,' ',emp_info.mid_name) as fullname, emp_info.cs_id_no, training_employees.id from emp_info JOIN training_employees ON emp_info.cs_id_no=training_employees.emp_id")->result();
+			$data = $this->db->query("SELECT training_employees.id ,CONCAT(emp_info.last_name,', ',emp_info.first_name,' ',emp_info.mid_name) as fullname , training_employees.emp_id from emp_info join training_employees ON emp_info.cs_id_no=training_employees.emp_id where training_employees.training_id='$id'")->result();
 
 			return $data;
 		}
@@ -119,7 +117,7 @@ class Admin_training_model extends CI_Model
 	function add_employee_training($values){
 		try
 		{
-			$this->db->insert_batch("training_employees",$values);
+			$this->db->insert("training_employees",$values);
 		}
 		catch(Exception $e)
 		{
@@ -164,7 +162,7 @@ class Admin_training_model extends CI_Model
 		try
 		{
 			$fields = "";
-	
+
 			$this->db->select('training_anouncement.id, trainings.title, training_anouncement.anouncement');
 			$this->db->from('trainings');
 			$this->db->join('training_anouncement', 'trainings.id=training_anouncement.training_id');
@@ -194,7 +192,7 @@ class Admin_training_model extends CI_Model
 		}
 	}
 
-		public function delete_training_anouncement($id)
+	public function delete_training_anouncement($id)
 	{
 		try
 		{
@@ -207,4 +205,65 @@ class Admin_training_model extends CI_Model
 	}
 
 
-}
+	public function get_training_data($id)
+	{
+		try
+		{
+			$fields = "";
+			$data = $this->db->select($fields)->from("trainings")->where("id",$id)->get()->result();
+
+			return $data;
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+
+	public function training_get_employee($id)
+	{
+		try
+		{
+			$data = $this->db->query("SELECT CONCAT(emp_info.last_name,', ',emp_info.first_name,' ',emp_info.mid_name) as fullname, emp_info.cs_id_no, training_employees.emp_id from emp_info left JOIN training_employees ON emp_info.cs_id_no=training_employees.emp_id where emp_info.cs_id_no NOT IN (select emp_id from training_employees where training_id=$id)")->result();
+
+			return $data;
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+
+
+
+	public function reports_no_of_emp_trainings()
+	{
+		try
+		{
+			$fields = "";
+			 $data = $this->db->query("SELECT distinct(training_employees.training_id), trainings.title, trainings.date_from, trainings.date_to ,count(training_employees.emp_id) as participants from trainings JOIN training_employees ON training_employees.training_id=trainings.id group by training_employees.training_id")->result();
+			return $data;
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+
+	public function reports_no_of_training_emp()
+	{
+		try
+		{
+			$fields = "";
+			 $data = $this->db->query("SELECT concat(emp_info.last_name,' ',emp_info.first_name) as fullname,training_employees.emp_id, count(training_employees.emp_id) as no from emp_info join training_employees ON emp_info.cs_id_no=training_employees.emp_id group by training_employees.emp_id")->result();
+			return $data;
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+
+
+	
+} 

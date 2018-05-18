@@ -169,54 +169,94 @@ class Admin_training extends CI_Controller {
 		echo json_encode($result);		
 	}
 
-	public function add_employee_training(){
+		public function add_employee_training()
+	{
+		$title 	= "";
+		$text 	= "";
+		$icon 	= "";
 		$buttons = array( "success" => "Okay" );
+
 		try
-		{	
-
+		{
 			$data = $this->get_params();
-
-			$value =array();
-			for($i=0;$i<count($data['emp_id']);$i++){
-				$value[$i] = array(
-					'training_id' => $data['training_id'],
-					'emp_id' => $data['emp_id'][$i]
-				);
+			
+			/*if($data['citizenship'] == DUAL)
+			{
+				$data['citizenship'].= isset($data['country']) ? " " .ucwords($data['country']) : ""; 
+				unset($data['country']);
 			}
 
+			$required_fields = array('first_name','last_name','sex','civil_status','date_of_birth');
+			
+			$this->validate_data($required_fields,$data);			
+			*/
+		/*	echo "<pre>";
+			print_r($data);
+			echo "</pre>";
+			exit();
+*/
+			
 			if(empty($data['id']))
 			{
-				$this->model->add_employee_training($value);
-				$text = "Successfully Added!";
+				$this->model->add_employee_training($data);
+				$text = "Employee has been added!";
+			}
+			else
+			{
+				$id = $data['id'];
+				unset($data['id']);
+				$this->model->update_employee($id,$data);
+				$text = "Employee has been updated!";				
 			}
 
-			$title 	= "Some success title.";
-			$text 	= "Some success message.";
-			$icon 	= 'success';	
-
-
-			$result = array(
-				"title" => $title , 
-				"text" => $text ,
-				"icon" => $icon ,
-				"buttons" => $buttons
-			);
-
-			echo json_encode($result);
+			
+	
+			$icon = "success";		
+			$title = "Sucess";
 		}
 		catch(Exception $e)
 		{
-			$this->handle_catch($e);
+			$title = "Error";
+			$text = $e->getMessage();
+			$icon = "error";
+			$buttons = array( "error" => "Try Again" );
 		}
+	
+
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons
+		);	
+
+		echo json_encode($result);		
 	}
+
 
 	public function reports(){
 
 		$data['title'] = "Reports";
-		/*$data['data_list'] = $this->model->get_data();
-		$data['employee_list'] = $this->model->get_data_employee();*/
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_training_reports',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function reports_employee_training(){
+
+		$data['title'] = "Reports";
+		$data['data_list'] = $this->model->reports_no_of_emp_trainings();
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_reports_employee_training',$data);
+		$this->load->view('admin/template/footer',$data);
+	}
+
+	public function reports_training_employee(){
+
+		$data['title'] = "Reports";
+		$data['data_list'] = $this->model->reports_no_of_training_emp();
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_reports_training_employee',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
 
@@ -240,7 +280,7 @@ class Admin_training extends CI_Controller {
 		$this->load->view('admin/template/footer',$data);
 	}
 
-	public function training_insert()
+	public function training_insert($id)
 	{
 	
 		$title 	= "";
@@ -256,11 +296,6 @@ class Admin_training extends CI_Controller {
 			
 			$this->validate_data($required_fields,$data);			
 
-
-			/*echo "<pre>";
-			print_r($data);
-			echo "</pre>";
-			exit();*/
 			if(empty($data['id']))
 			{
 				$this->model->insert_training_anouncement($data);
@@ -357,5 +392,64 @@ class Admin_training extends CI_Controller {
 	}
 
 
+	public function training_adding_trainees($id){
 
+		$data['title'] = "Adding trainees";
+		$data['training_name'] = $this->model->get_training_data($id);
+		$data['employeee_list'] = $this->model->training_get_employee($id);
+		$data['form_id'] = $this->uri->segment(3);
+		$this->load->view('admin/template/header',$data);
+		$this->load->view('admin/admin_training_adding_trainees',$data);
+		$this->load->view('admin/template/footer',$data);
+
+	}
+
+	public function add_trainees($id)
+	{
+	
+		$title 	= "";
+		$text 	= "";
+		$icon 	= "";
+		$buttons = array( "success" => "Okay" );
+
+		try
+		{
+			$data = $this->get_params();
+
+	
+			/*$required_fields = array('training_id','emp_id');
+			$this->validate_data($required_fields,$data); */
+			if(empty($data['id']))
+			{
+				$this->model->add_employee_training($data);
+				$text = "Anouncement has been added!";
+			}
+			else
+			{
+				$id = $data['id'];
+				unset($data['id']);
+				//$this->model->update_training_anouncement($id,$data);
+				$text = "Anouncement has been updated!";				
+			}
+	
+			$icon = "success";		
+			$title = "Sucess";
+		}
+		catch(Exception $e)
+		{
+			$title = "Error";
+			$text = $e->getMessage();
+			$icon = "error";
+			$buttons = array( "error" => "Try Again" );
+		}
+	
+		$result = array(
+			"title" => $title , 
+			"text" => $text ,
+			"icon" => $icon ,
+			"buttons" => $buttons
+		);	
+
+		echo json_encode($result);		
+	}
 }

@@ -128,9 +128,9 @@ defined('HONO_UG') OR define('HONO_UG',"Hono-undegraduate");
 defined('HONO_SU') OR define('HONO_SU',"Hono-supervisory");
 
 # FOR TIME KEEPING COMPUTATIONS
-defined('MONTHS') OR define('MONTHS', serialize(['','January','February','March','April','May','June','July','August','September','October','Novermber','December']));
-defined('YEARS') OR define('YEARS', serialize([2016,2017,2018,2019,2020]));
-defined('DAYS') OR define('DAYS', serialize(['SUN','MON','TUE','WED','THU','FRI','SAT']));
+defined('MONTHS') OR define('MONTHS', ['','January','February','March','April','May','June','July','August','September','October','Novermber','December']);
+defined('YEARS') OR define('YEARS', [2016,2017,2018,2019,2020]);
+defined('DAYS') OR define('DAYS', ['SUN','MON','TUE','WED','THU','FRI','SAT']);
 defined('IN') OR define('IN',"in");
 defined('OUT') OR define('OUT',"out");
 defined('STANDARD_DATE') OR define('STANDARD_DATE',"Y-m-d");
@@ -153,6 +153,17 @@ defined('LS_OP') OR define('LS_OP',"Out-patient");
 defined('FLAG_YES') OR define('FLAG_YES',"Y");
 defined('FLAG_NO') OR define('FLAG_NO',"N");
 
+#user_groups
+defined('GROUP_ADMIN') OR define('GROUP_ADMIN',1);
+defined('GROUP_MEMBER') OR define('GROUP_MEMBER',2);
+defined('GROUP_DEV') OR define('GROUP_DEV',3);
+defined('GROUP_EMP') OR define('GROUP_EMP',4);
+
+#tardiness_type
+defined('LATE') OR define('LATE','late');
+defined('UNDERTIME') OR define('UNDERTIME','undertime');
+
+
 /*<<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -169,3 +180,4 @@ defined('FLAG_NO') OR define('FLAG_NO',"N");
 
 >>>>>>> 38739a41c3128d1b44fbcba565214a315d55f656
 */
+

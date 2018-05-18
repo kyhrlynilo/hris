@@ -12,7 +12,6 @@ class Admin_employees extends CI_Controller {
 		{
 			redirect('Admin/login', 'refresh');
 		}*/
-		
 	}
 
 	public function index()
