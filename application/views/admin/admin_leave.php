@@ -10,8 +10,11 @@
 			<div class="nav-wrapper blue">
 				<div class="col s11">
 					<a href="<?php echo base_url(); ?>Admin_leave" class="breadcrumb">Leave Request</a>
+<<<<<<< HEAD
 
 					<a href="<?php echo base_url(); ?>Admin_employee_leave_credit_points" class="breadcrumb">Employee Leave Credit Points</a>
+=======
+>>>>>>> 4eb4bbf8fa44f6d08343bb6adad740d6fbadf89a
 				</div>		
 			</div>
 		</nav>
