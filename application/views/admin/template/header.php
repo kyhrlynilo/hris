@@ -1,5 +1,5 @@
 <?php $modules = $this->db->select()->from("sys_modules")->get()->result(); ?>
-<?php $user_info = $this->session->get_userdata('user_info');  # print_r($this->session->get_userdata()); exit(); ?>
+<?php //$user_info = $this->session->get_userdata('user_info');  # print_r($this->session->get_userdata()); exit(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,10 +91,10 @@ header, main, footer {
 			<div class="col s4 center" style="padding: 20px;margin-top: 50px;">
 				<img src="<?php echo base_url(); ?>assets\images\user.png" alt="" class="circle">
 			</div>
-			<div class="col s8" style="padding: 20px;margin-top: 50px;">
+		<!-- 	<div class="col s8" style="padding: 20px;margin-top: 50px;">
 				<b><?= $user_info['user_info']['first_name'] .$user_info['user_info']['mid_name'] .$user_info['user_info']['last_name']; ?></b>
 				<?= $user_info['user_info']['email_address']; ?>
-			</div>
+			</div> -->
 		</div>
 		<div class="row" style="padding: 0; margin: 0;">
 			<div class="col s12 grey" style="border-bottom: 1px solid blue;padding: 10px;">
@@ -155,10 +155,7 @@ header, main, footer {
 		</div>
 	</div>
 
-	<div class="col s10">
-
-		
-
+<!-- 	<div class="col s10"> -->
 
 <script type="text/javascript">
 	const base_url = '<?php echo base_url(); ?>';

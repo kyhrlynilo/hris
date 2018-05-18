@@ -134,12 +134,6 @@ class Admin_time_keeping extends CI_Controller {
 				$this->ion_auth->register( $data['email_address'], $data['emp_id'] , $data['email_address'], $additional_data );
 				$this->ion_auth->add_to_group(array(4), $id);
 				$text = "Employee has been added!";
-
-				$email = $data['email_address'];
-				$empid = $data['emp_id'];
-				$emptype = $data['emp_type'];
-				$this->Admin_time_keeping_model->insert_data_emp_leave_balance($email,$empid,$emptype);
-				$this->process_credit_points();
 			}
 			else
 			{				
@@ -566,6 +560,7 @@ class Admin_time_keeping extends CI_Controller {
 		}
 	}
 
+<<<<<<< HEAD
 	/*
 		LEAVE CREDIT POINTS
 	*/
@@ -606,4 +601,7 @@ class Admin_time_keeping extends CI_Controller {
 		$this->load->view('admin/admin_time_keeping_reports',$data);
 		$this->load->view('admin/template/footer',$data);
 	}
+=======
+	
+>>>>>>> parent of 377544f... Merge branch 'master' of https://github.com/kyhrlynilo/hris
 }

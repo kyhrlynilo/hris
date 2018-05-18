@@ -5,8 +5,7 @@ class Employee extends CI_Controller {
 
 
 	public function index()
-	{	
-		$data['user_email'] = $this->ion_auth->user()->row()->email;
+	{
 		$data['title'] = "Employee";
 		$this->load->view('employee/template/header',$data);
 		$this->load->view('employee/employee',$data);

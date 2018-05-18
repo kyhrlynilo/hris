@@ -18,35 +18,16 @@ class Admin_leave extends CI_Controller {
 		$this->load->view('admin/template/footer',$data);
 	}
 
-	public function approve_leave_request(){
-	
+	public function approve_leave_request($id){
+		$data="Approved";
+		$this->Admin_leave_request_employees_model->update_data($data,$id);
+		redirect('admin_leave','refresh');
+	}
 
-		if($this->input->post("status") === 'Disapproved'){
-			$this->form_validation->set_rules('dsapr_reason','Disapproved Reason','required');
-			if($this->form_validation->run()){
-					$this->load->model('Admin_leave_request_employees_model');
-				$data =array( 
-					"status"		=>	$this->input->post("status"),
-					"id"			=>	$this->input->post("hidden_id"),
-					"dsapr_reason"	=>	$this->input->post("dsapr_reason")); 
-			
-				$id = $data['id'];
-				$this->Admin_leave_request_employees_model->update_data($data,$id);
-				redirect('admin_leave','refresh');
-			}else{
-				echo validation_errors();	
-			}
-		}else{
-				$data =array( 
-					"status"		=>	$this->input->post("status"),
-					"id"			=>	$this->input->post("hidden_id"),
-					"dsapr_reason"	=>	$this->input->post("dsapr_reason")); 
-			
-				$id = $data['id'];
-				$this->Admin_leave_request_employees_model->update_data($data,$id);
-				redirect('admin_leave','refresh');
-		}
-
+	public function disapprove_leave_request($id){
+		$data="Disapproved";
+		$this->Admin_leave_request_employees_model->update_data($data,$id);
+		redirect('admin_leave','refresh');
 	}
 
 	public function employee_leave_request($id){
@@ -58,8 +39,6 @@ class Admin_leave extends CI_Controller {
 		$user_id = $this->uri->segment(3);
 		$this->load->model("Admin_time_keeping_model");
 		$data['user_data'] = $this->Admin_leave_request_employees_model->get_single_employee($user_id);
-		$data['user_vlp_data'] = $this->Admin_leave_request_employees_model->get_single_employee_vacation_leave_points($user_id);
-		$data['user_slp_data'] = $this->Admin_leave_request_employees_model->get_single_employee_sick_leave_points($user_id);
 		$this->load->view('admin/template/header',$data);
 		$this->load->view('admin/admin_leave_request_view',$data);
 		$this->load->view('admin/template/footer',$data);

@@ -86,8 +86,13 @@ header, main, footer {
 				<img src="<?php echo base_url(); ?>assets\images\user.png" alt="" class="circle">
 			</div>
 			<div class="col s8" style="padding: 20px;margin-top: 50px;">
+<<<<<<< HEAD
 				<b><?= $user_info['user_info']['first_name'] .$user_info['user_info']['mid_name'] .$user_info['user_info']['last_name']; ?></b>
 				<?= $user_info['user_info']['email_address']; ?>
+=======
+				<b>Employee Juandroid</b>
+				juan@employee.com
+>>>>>>> parent of 377544f... Merge branch 'master' of https://github.com/kyhrlynilo/hris
 			</div>
 		</div>
 		<div class="row">

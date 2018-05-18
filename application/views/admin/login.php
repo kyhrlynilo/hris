@@ -89,7 +89,7 @@ header, main, footer {
 						{
 							if(result.text == "Hello Admin!")
 								window.location.replace('<?php echo base_url(); ?>admin_time_keeping');
-							else		
+							else							
 								window.location.replace('<?php echo base_url(); ?>employee');
 						}
 
